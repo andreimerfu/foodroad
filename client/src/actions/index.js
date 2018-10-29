@@ -43,14 +43,10 @@ export const login = (userData) => {
   return dispatch => {
     return axios.post('/auth/sign_in', {...userData})
       .then(res => {
-        const uid = res.headers['uid']
-        const client = res.headers['client']
-        const accessToken = res.headers['access-token']
-        const expiry = res.headers['expiry']
-        localStorage.setItem('uid', uid);
-        localStorage.setItem('client', client);
-        localStorage.setItem('accessToken', accessToken);
-        localStorage.setItem('expiry', expiry);
+        localStorage.setItem('uid', res.headers['uid']);
+        localStorage.setItem('client', res.headers['client']);
+        localStorage.setItem('accessToken', res.headers['access-token']);
+        localStorage.setItem('expiry', res.headers['expiry']);
         dispatch(loginSuccess(uid, client, accessToken, expiry))
       })
       .catch(error => {
