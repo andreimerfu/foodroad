@@ -2,7 +2,8 @@ import axios from 'axios';
 import * as moment from 'moment';
 
 import { LOGIN_SUCCESS,
-         LOGIN_FAILURE
+         LOGIN_FAILURE,
+         LOGOUT
        } from './types';
 
 //_________________________________________________________________
@@ -19,6 +20,12 @@ const loginFailure = (error) => {
   return {
     type: LOGIN_FAILURE,
     error
+  }
+}
+
+const logoutSuccess = () => {
+  return {
+    type: LOGOUT
   }
 }
 
@@ -51,3 +58,32 @@ export const login = (userData) => {
       })
   }
 }
+
+
+export const logout = () => {
+  return dispatch => {
+    return axios.delete('/auth/sign_out', {
+      headers : {
+        'uid': localStorage.getItem('uid'),
+        'client': localStorage.getItem('client'),
+        'access-token': localStorage.getItem('accessToken'),
+        'expiry': localStorage.getItem('expiry')
+      }
+    })
+    .then(res => {
+      invalidateUser();
+      dispatch(logoutSuccess());
+    })
+    .catch(error => {
+      console.log(error);
+    })
+  }
+}
+
+const invalidateUser = () => {
+  localStorage.removeItem('uid');
+  localStorage.removeItem('client');
+  localStorage.removeItem('accessToken');
+  localStorage.removeItem('expiry');
+}
+

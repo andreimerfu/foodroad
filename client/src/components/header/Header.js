@@ -4,10 +4,19 @@ import { connect } from 'react-redux';
 
 class Header extends React.Component  {
 
+  constructor() {
+    super();
+    this.handleLogout = this.handleLogout.bind(this);
+  }
+
+  handleLogout() {
+    this.props.logout();
+  }
+
   renderAuthButtons() {
     const { isAuth } = this.props.auth;
     if (isAuth) {
-      return <p className='btn btn-outline-danger' > Logout </p>
+      return <p className='btn btn-outline-danger' onClick={this.handleLogout} > Logout </p>
     }
     return (
       <Link className='btn btn-outline-success' to='/login'>Login <span className='sr-only'>(current)</span></Link>

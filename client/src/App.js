@@ -22,12 +22,16 @@ class App extends Component {
     store.dispatch(actions.checkAuthState());
   }
 
+  logout() {
+    store.dispatch(actions.logout());
+  }
+
   render() {
     return (
       <Provider store={store}>
         <BrowserRouter>
           <div className="App">
-              <Header />
+              <Header logout={this.logout}/>
               <div className="container">
                 <Route exact path='/' />
                 <Route exact path='/login' component={Login} />
