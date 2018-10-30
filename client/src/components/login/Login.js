@@ -20,6 +20,8 @@ class Login extends React.Component {
    render() {
 
     const { isAuth } = this.props.auth;
+    //location.state is undefined if register is not true so registerSuccess is false in this case
+    const { registerSuccess } = this.props.location.state || false ;
 
     if (isAuth) {
       return <Redirect to={{pathname: '/'}} />
@@ -31,6 +33,12 @@ class Login extends React.Component {
           <div className="row">
             <div className="col-md-4">
               <h1>Login</h1>
+              {
+                registerSuccess &&
+                 <div className='alert alert-success'>
+                  <p> Thanks for signing up. Please confirm your email! </p>
+                 </div>
+              }
                 <LoginForm submitCb={this.loginUser} />
             </div>
           </div>

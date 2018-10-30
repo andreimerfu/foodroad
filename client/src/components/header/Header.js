@@ -19,7 +19,10 @@ class Header extends React.Component  {
       return <p className='btn btn-outline-danger' onClick={this.handleLogout} > Logout </p>
     }
     return (
-      <Link className='btn btn-outline-success' to='/login'>Login <span className='sr-only'>(current)</span></Link>
+      <React.Fragment>
+        <Link className='btn btn-outline-success' to='/login'>Login <span className='sr-only'>(current)</span></Link>
+        <Link className='btn btn-outline-success' to='/register'>Register</Link>
+      </React.Fragment>
     )
   }
 
