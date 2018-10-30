@@ -9,10 +9,9 @@ import { LOGIN_SUCCESS,
 //_________________________________________________________________
 // AUTH ACTIONS
 
-const loginSuccess = (uid, client, accessToken, expiry) => {
+const loginSuccess = () => {
   return {
     type: LOGIN_SUCCESS,
-    uid, client, accessToken, expiry
   }
 }
 
@@ -27,6 +26,17 @@ const logoutSuccess = () => {
   return {
     type: LOGOUT
   }
+}
+
+export const register = (userData) => {
+  console.log(userData);
+  return axios.post('/auth', {...userData})
+    .then(res => {
+      //
+    })
+    .catch(error => {
+      console.log("eroare");
+    })
 }
 
 export const checkAuthState = () => {
@@ -47,7 +57,7 @@ export const login = (userData) => {
         localStorage.setItem('client', res.headers['client']);
         localStorage.setItem('accessToken', res.headers['access-token']);
         localStorage.setItem('expiry', res.headers['expiry']);
-        dispatch(loginSuccess(uid, client, accessToken, expiry))
+        dispatch(loginSuccess())
       })
       .catch(error => {
         dispatch(loginFailure(error));

@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 
 import { BrowserRouter, Route} from 'react-router-dom';
 import Login  from './components/login/Login';
+import { Register } from './components/register/Register';
 
 import './App.css';
 import * as actions from './actions';
@@ -34,6 +35,7 @@ class App extends Component {
               <div className="container">
                 <Route exact path='/' />
                 <Route exact path='/login' component={Login} />
+                <Route exact path='/register' component={Register} />
               </div>
           </div>
         </BrowserRouter>
