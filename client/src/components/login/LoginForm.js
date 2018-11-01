@@ -8,7 +8,6 @@ const LoginForm = props => {
   const { handleSubmit, pristine, submitting, submitCb} = props
   return (
     <form onSubmit={handleSubmit(submitCb)}>
-
       <Field
         name="email"
         type="email"

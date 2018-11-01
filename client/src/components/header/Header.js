@@ -16,13 +16,22 @@ class Header extends React.Component  {
   renderAuthButtons() {
     const { isAuth } = this.props.auth;
     if (isAuth) {
-      return <p className='btn btn-outline-danger' onClick={this.handleLogout} > Logout </p>
+      return (
+        <div className="btn-group">
+          <button type="button" className="btn btn-info dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span className="sr-only">Toggle Dropdown</span>
+          </button>
+          <div className="dropdown-menu">
+            <a className="dropdown-item" href="/">Profil</a>
+            <a className="dropdown-item" href="/">Istoric comenzi</a>
+            <div className="dropdown-divider"></div>
+            <p className='dropdown-item' onClick={this.handleLogout} > Logout </p>
+          </div>
+        </div>
+      )
     }
     return (
-      <React.Fragment>
-        <Link className='btn btn-outline-success' to='/login'>Login <span className='sr-only'>(current)</span></Link>
-        <Link className='btn btn-outline-success' to='/register'>Register</Link>
-      </React.Fragment>
+        <Link className='btn btn-outline-info' to='/login'>Login <span className='sr-only'>(current)</span></Link>
     )
   }
 
@@ -30,14 +39,15 @@ class Header extends React.Component  {
     return (
       <nav className='navbar navbar-expand-lg navbar-light bg-light'>
         <div className='container'>
-            <a className='navbar-brand d-inline-block align-top' href='/'>
-              <img src='../images/logo.jpg' width='40' height='55'  alt=''/>
-                FoodRoad
-            </a>
+          <a className='navbar-brand d-inline-block align-top' href='/'>
+            Food
+            <img src='../images/logo.jpg' width='40' height='42'  alt=''/>
+            Road
+          </a>
           <button className='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation'>
             <span className='navbar-toggler-icon'></span>
           </button>
-           <form className="form-inline">
+          <form className="form-inline">
             { this.renderAuthButtons() }
           </form>
         </div>

@@ -1,6 +1,6 @@
 import React from 'react';
 import RegisterForm from './RegisterForm';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 
 import * as actions from '../../actions';
 
@@ -32,10 +32,14 @@ export class Register extends React.Component {
     return (
       <section id="register">
         <div className="bnb-form">
-          <div className="row">
-            <div className="col-md-5">
+          <div className="row justify-content-center">
+            <div className="col-md-4">
               <h1>Register</h1>
               <RegisterForm submitCb={this.registerUser} />
+              <div className='row  btn-register'>
+                <p className='span-12'> Already have an account? </p>
+                <Link className='btn btn-outline-success' to='/login'>Login</Link>
+              </div>
             </div>
           </div>
         </div>
