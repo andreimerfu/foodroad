@@ -2,7 +2,8 @@ import React from 'react';
 import LoginForm from './LoginForm';
 import * as actions from '../../actions';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
+//import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 class Login extends React.Component {
 
@@ -28,9 +29,10 @@ class Login extends React.Component {
     }
 
     return (
+
       <section id="login">
         <div className="bnb-form">
-          <div className="row">
+          <div className="row justify-content-center">
             <div className="col-md-4">
               <h1>Login</h1>
               {
@@ -39,7 +41,11 @@ class Login extends React.Component {
                   <p> Thanks for signing up. Please confirm your email! </p>
                  </div>
               }
-                <LoginForm submitCb={this.loginUser} />
+              <LoginForm submitCb={this.loginUser} />
+              <div className='row  btn-register'>
+                <p className='span-12'> Don't have an account? </p>
+                <Link className='btn btn-outline-success' to='/register'>Register</Link>
+              </div>
             </div>
           </div>
         </div>

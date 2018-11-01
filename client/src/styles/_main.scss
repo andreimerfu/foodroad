@@ -1,0 +1,10 @@
+@import 'variables.scss';
+@import 'header/header.scss';
+@import 'login/login.scss';
+body {
+  font-family: $font-raleway;
+}
+
+.btn {
+    font-weight: bold;
+}
