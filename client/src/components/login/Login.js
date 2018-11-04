@@ -3,7 +3,6 @@ import LoginForm from './LoginForm';
 import * as actions from '../../actions';
 import { connect } from 'react-redux';
 import { Redirect, Link } from 'react-router-dom';
-//import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 class Login extends React.Component {
 
@@ -14,15 +13,14 @@ class Login extends React.Component {
   }
 
   loginUser(userData) {
-    console.log(userData);
     this.props.dispatch(actions.login(userData));
   }
 
    render() {
 
-    const { isAuth } = this.props.auth;
+    const { isAuth, errors } = this.props.auth;
     //location.state is undefined if register is not true so registerSuccess is false in this case
-    const { registerSuccess } = this.props.location.state || false ;
+    const { registerSuccess } = this.props.location.state || false;
 
     if (isAuth) {
       return <Redirect to={{pathname: '/'}} />
@@ -38,10 +36,10 @@ class Login extends React.Component {
               {
                 registerSuccess &&
                  <div className='alert alert-success'>
-                  <p> Thanks for signing up. Please confirm your email! </p>
+                   <p> A confirmation email was sent to your account </p> 
                  </div>
               }
-              <LoginForm submitCb={this.loginUser} />
+              <LoginForm submitCb={this.loginUser} errors={errors}/>
               <div className='row  btn-register'>
                 <p className='span-12'> Don't have an account? </p>
                 <Link className='btn btn-outline-success' to='/register'>Register</Link>

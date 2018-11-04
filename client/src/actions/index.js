@@ -15,10 +15,10 @@ const loginSuccess = () => {
   }
 }
 
-const loginFailure = (error) => {
+const loginFailure = (errors) => {
   return {
     type: LOGIN_FAILURE,
-    error
+    errors
   }
 }
 
@@ -29,10 +29,10 @@ const logoutSuccess = () => {
 }
 
 export const register = (userData) => {
-  console.log(userData);
-  return axios.post('/auth', {...userData})
+  var confirm_success_url = "http://localhost:3001/login";
+  return axios.post('/auth', {...userData, confirm_success_url})
     .then(res => {
-      //
+      //something
     })
     .catch(error => {
       console.log("eroare");
@@ -41,7 +41,6 @@ export const register = (userData) => {
 
 export const checkAuthState = () => {
   return dispatch => {
-    const token = localStorage.getItem('access-token');
     const expire = localStorage.getItem('expiry');
     if (moment().isBefore(moment.unix(expire))) {
       dispatch(loginSuccess());
@@ -60,7 +59,7 @@ export const login = (userData) => {
         dispatch(loginSuccess())
       })
       .catch(error => {
-        dispatch(loginFailure(error));
+        dispatch(loginFailure(error.response.data.errors));
       })
   }
 }
