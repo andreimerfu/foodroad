@@ -7,4 +7,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable
   include DeviseTokenAuth::Concerns::User
+
+  def tokens_has_json_column_type?
+    false
+  end
 end
