@@ -43,7 +43,7 @@ class Register extends React.Component {
               <RegisterForm submitCb={this.registerUser} errors={errors}/>
               <div className='row auth-row'>
                 <p className='span-12'> Already have an account? </p>
-                <Link className='btn btn-outline-success auth-btn' to='/login'>Login</Link>
+                <Link className='btn btn-outline-info auth-btn' to='/login'>Login</Link>
               </div>
             </div>
           </div>

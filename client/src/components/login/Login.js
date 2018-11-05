@@ -52,7 +52,7 @@ class Login extends React.Component {
               <LoginForm submitCb={this.loginUser} errors={errors}/>
               <div className='row auth-row'>
                 <p className='span-12'> Don't have an account? </p>
-                <Link className='btn btn-outline-success auth-btn' to='/register'>Register</Link>
+                <Link className='btn btn-outline-info auth-btn' to='/register'>Register</Link>
               </div>
             </div>
           </div>

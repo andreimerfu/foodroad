@@ -14,7 +14,8 @@
     margin: 0 auto; }
   .bnb-form .span-12 {
     margin-top: 7px;
-    margin-left: auto; }
+    margin-left: auto;
+    margin-bottom: 7px; }
   .bnb-form .auth-btn {
     margin-right: auto;
     margin-left: 10px; }
