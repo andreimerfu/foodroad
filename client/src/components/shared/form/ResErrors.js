@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { Alert } from 'reactstrap';
 
 export function ResErrors(props) {
   
@@ -7,10 +8,6 @@ export function ResErrors(props) {
 
   return (
     errors.length > 0 &&
-          <div className='alert alert-danger'>
-         	 {errors}
-          </div>
+     <Alert color="danger"> {errors} </Alert>
   )
-
-
 }

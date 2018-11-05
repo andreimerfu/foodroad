@@ -1,10 +1,13 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { AuthInput } from '../shared/form/AuthInput';
+import { ResErrors } from '../shared/form/ResErrors';
 
 const RegisterForm = props => {
-  const { handleSubmit, pristine, submitting, submitCb} = props
+  const { handleSubmit, pristine, submitting, submitCb, errors} = props
   return (
+    <div>
+    <ResErrors errors={errors} />
     <form onSubmit={handleSubmit(submitCb)}>
       <Field
         name="email"
@@ -31,9 +34,9 @@ const RegisterForm = props => {
         Register
       </button>
     </form>
+    </div>
   )
 }
-
 
 export default reduxForm({
   form: 'registerForm',

@@ -3,6 +3,7 @@ import * as moment from 'moment';
 
 import { LOGIN_SUCCESS,
          LOGIN_FAILURE,
+         REGISTER_FAILURE,
          LOGOUT
        } from './types';
 
@@ -28,16 +29,26 @@ const logoutSuccess = () => {
   }
 }
 
+const registerFailure = (errors) => {
+  return {
+    type: REGISTER_FAILURE,
+    errors
+  }
+}
+
 export const register = (userData) => {
   var confirm_success_url = "http://localhost:3001/login";
-  return axios.post('/auth', {...userData, confirm_success_url})
-    .then(res => {
-      //something
-    })
-    .catch(error => {
-      console.log("eroare");
-    })
+  return dispatch => {
+    return axios.post('/auth', {...userData, confirm_success_url})
+      .then(res => {
+        //something
+      })
+      .catch(error => {
+        dispatch(registerFailure(error.response.data.errors.full_messages));
+      })
+    }
 }
+
 
 export const checkAuthState = () => {
   return dispatch => {

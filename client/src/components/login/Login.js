@@ -3,6 +3,7 @@ import LoginForm from './LoginForm';
 import * as actions from '../../actions';
 import { connect } from 'react-redux';
 import { Redirect, Link } from 'react-router-dom';
+import { Alert } from 'reactstrap';
 
 class Login extends React.Component {
 
@@ -10,6 +11,16 @@ class Login extends React.Component {
     super();
 
     this.loginUser = this.loginUser.bind(this);
+
+    this.state = {
+      visible: true
+    }
+
+    setTimeout(() => {
+      this.setState({
+        visible: false
+      })
+    }, 3000);
   }
 
   loginUser(userData) {
@@ -27,17 +38,16 @@ class Login extends React.Component {
     }
 
     return (
-
       <section id="login">
         <div className="bnb-form">
           <div className="row justify-content-center">
             <div className="col-md-4">
               <h1>Login</h1>
               {
-                registerSuccess &&
-                 <div className='alert alert-success'>
-                   <p> A confirmation email was sent to your account </p> 
-                 </div>
+                 registerSuccess&&
+                 <Alert color="success" isOpen={this.state.visible} >
+                    Thanks for signing up. Please confirm your email!
+                  </Alert>
               }
               <LoginForm submitCb={this.loginUser} errors={errors}/>
               <div className='row  btn-register'>

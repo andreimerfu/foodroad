@@ -1,5 +1,6 @@
 import { LOGIN_SUCCESS,
          LOGIN_FAILURE,
+         REGISTER_FAILURE,
          LOGOUT
         } from '../actions/types';
 
@@ -24,6 +25,8 @@ export const authReducer = (state = INITIAL_STATE, action) => {
         errors: []
       });
     case LOGIN_FAILURE:
+      return Object.assign({}, state, {errors: action.errors});
+    case REGISTER_FAILURE:
       return Object.assign({}, state, {errors: action.errors});
     case LOGOUT:
       return Object.assign({}, state, {isAuth: false});

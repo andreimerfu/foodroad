@@ -7,7 +7,7 @@ import { ResErrors } from '../shared/form/ResErrors';
 const LoginForm = props => {
   const { handleSubmit, pristine, submitting, submitCb, errors} = props
   return (
-   <div >
+   <div>
     <ResErrors errors={errors} />
     <form onSubmit={handleSubmit(submitCb)}>
       <Field
