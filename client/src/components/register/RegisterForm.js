@@ -30,9 +30,11 @@ const RegisterForm = props => {
         className='form-control'
         component={AuthInput}
       />
-      <button className='btn btn-success' type="submit" disabled={pristine || submitting}>
+      <div className='form-row'>
+      <button className='btn btn-success submit-btn' type="submit" disabled={pristine || submitting}>
         Register
       </button>
+      </div>
     </form>
     </div>
   )

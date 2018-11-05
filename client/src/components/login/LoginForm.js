@@ -24,9 +24,11 @@ const LoginForm = props => {
         className='form-control'
         component={AuthInput}
       />
-      <button className='btn btn-success' type="submit" disabled={ pristine || submitting }>
+      <div className='form-row'>
+      <button className='btn btn-success submit-btn' type="submit" disabled={ pristine || submitting }>
         Submit
       </button>
+      </div>
     </form>
     </div>
   )

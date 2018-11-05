@@ -21,7 +21,7 @@ class Header extends React.Component  {
           <button type="button" className="btn btn-info dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <span className="sr-only">Toggle Dropdown</span>
           </button>
-          <div className="dropdown-menu">
+          <div className="dropdown-menu dropdown-menu-right">
             <a className="dropdown-item" href="/">Profil</a>
             <a className="dropdown-item" href="/">Istoric comenzi</a>
             <div className="dropdown-divider"></div>

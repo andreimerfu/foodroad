@@ -50,9 +50,9 @@ class Login extends React.Component {
                   </Alert>
               }
               <LoginForm submitCb={this.loginUser} errors={errors}/>
-              <div className='row  btn-register'>
+              <div className='row auth-row'>
                 <p className='span-12'> Don't have an account? </p>
-                <Link className='btn btn-outline-success' to='/register'>Register</Link>
+                <Link className='btn btn-outline-success auth-btn' to='/register'>Register</Link>
               </div>
             </div>
           </div>

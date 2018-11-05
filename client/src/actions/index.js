@@ -41,7 +41,7 @@ export const register = (userData) => {
   return dispatch => {
     return axios.post('/auth', {...userData, confirm_success_url})
       .then(res => {
-        //something
+        
       })
       .catch(error => {
         dispatch(registerFailure(error.response.data.errors.full_messages));

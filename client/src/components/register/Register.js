@@ -24,19 +24,12 @@ class Register extends React.Component {
     );
   }
 
-
-  // registerUser(userData) {
-  //   this.props.dispatch(actions.register(userData)).then(
-  //     registerd=> this.setState({redirect: true}),
-  //   );
-  // }
-
   render() {
 
 
     const { redirect } = this.state;
     const { errors } = this.props.auth;
- console.log(errors);
+    
     if( errors.length === 0 && redirect) {
       return <Redirect to={{pathname: '/login', state: {registerSuccess: true  }}} />
     }
@@ -48,9 +41,9 @@ class Register extends React.Component {
             <div className="col-md-4">
               <h1>Register</h1>
               <RegisterForm submitCb={this.registerUser} errors={errors}/>
-              <div className='row  btn-register'>
+              <div className='row auth-row'>
                 <p className='span-12'> Already have an account? </p>
-                <Link className='btn btn-outline-success' to='/login'>Login</Link>
+                <Link className='btn btn-outline-success auth-btn' to='/login'>Login</Link>
               </div>
             </div>
           </div>

@@ -6,14 +6,22 @@
 
 .bnb-form {
   margin-top: 30px; }
-  .bnb-form .btn-register {
-    margin-top: 1rem;
-    padding: 15px; }
+  .bnb-form .submit-btn {
+    margin: 0 auto;
+    width: 30%; }
+  .bnb-form .auth-row {
+    padding: 15px;
+    margin: 0 auto; }
   .bnb-form .span-12 {
-    margin: 7px; }
+    margin-top: 7px;
+    margin-left: auto; }
+  .bnb-form .auth-btn {
+    margin-right: auto;
+    margin-left: 10px; }
 
 body {
   font-family: "Raleway", sans-serif; }
 
 .btn {
-  font-weight: bold; }
+  font-weight: bold;
+  border-radius: 22.5px; }

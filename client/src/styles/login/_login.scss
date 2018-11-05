@@ -1,12 +1,23 @@
 .bnb-form {
   margin-top: 30px;
 
-  .btn-register {
-    margin-top:1rem;
+  .submit-btn {
+  	margin: 0 auto;
+  	width: 30%;
+  }
+
+  .auth-row {
     padding: 15px;
+    margin: 0 auto;
   }
 
   .span-12 {
-    margin: 7px;
+    margin-top: 7px;
+    margin-left: auto;
+  }
+
+  .auth-btn {
+  	margin-right: auto;
+    margin-left: 10px;
   }
 }
