@@ -28,6 +28,11 @@ Things you may want to cover:
     * `rails server` (or `rails s`) to start the backend server
     * `cd client/`, then `yarn install` and `yarn start` to start the frontend server
 
+* Mail Catcher
+    * `gem install mailcatcher`
+    * `mailcatcher`
+    * `open browser on http://localhost:1080`
+
 * How to run the test suite
 
 * Services (job queues, cache servers, search engines, etc.)
