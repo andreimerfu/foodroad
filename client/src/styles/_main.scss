@@ -2,6 +2,7 @@
 @import 'header/header.scss';
 @import 'login/login.scss';
 @import 'home/home.scss';
+@import 'restaurants/restaurants.scss';
 
 body {
   font-family: $font-raleway;
@@ -11,3 +12,4 @@ body {
     font-weight: bold;
     border-radius: 22.5px;
 }
+
