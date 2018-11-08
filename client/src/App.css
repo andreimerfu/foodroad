@@ -20,6 +20,13 @@
     margin-right: auto;
     margin-left: 10px; }
 
+.home-container .row-search {
+  position: absolute;
+  top: 50%;
+  width: 100%; }
+  .home-container .row-search .search-btn {
+    width: 20%; }
+
 .page-title {
   font-family: "Rock Salt", cursive;
   font-size: 18px;
