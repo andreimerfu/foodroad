@@ -20,6 +20,42 @@
     margin-right: auto;
     margin-left: 10px; }
 
+.page-title {
+  font-family: "Rock Salt", cursive;
+  font-size: 18px;
+  margin: 30px; }
+
+.restaurant-detail-link:hover {
+  text-decoration: none; }
+
+.card {
+  border: none;
+  margin-right: 20px; }
+  .card .card-img-top {
+    width: 250px;
+    height: 170px; }
+  .card .card-body {
+    padding: 0.25rem;
+    margin-bottom: 1.25rem; }
+    .card .card-body .card-subtitle {
+      margin: 0;
+      font-size: 14px;
+      text-transform: uppercase;
+      color: #a9a9a9; }
+    .card .card-body .card-title {
+      margin: 0;
+      padding-bottom: 5px;
+      font-weight: 600;
+      color: #20322a; }
+    .card .card-body .card-text-rate {
+      margin: 0;
+      color: #a9a9a9; }
+      .card .card-body .card-text-rate .card-daily-rate {
+        font-weight: 600;
+        color: #20322a; }
+    .card .card-body .card-text-km {
+      color: #484848; }
+
 body {
   font-family: "Raleway", sans-serif; }
 
