@@ -1,7 +1,8 @@
 {
   "name": "food-road",
   "engines": {
-    "node": "8.12.0"
+    "node": "8.12.0",
+    "yarn": "1.12.1"
   },
   "scripts": {
     "build": "cd client && yarn install && yarn run build && cd ..",
