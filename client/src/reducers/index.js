@@ -1,14 +1,16 @@
-import * as redux from 'redux';
-import {reducer as formReducer } from 'redux-form';
+
 import thunk from 'redux-thunk';
-import { createStore, applyMiddleware, compose,combineReducers } from 'redux';
+import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
+import { reducer as formReducer } from 'redux-form';
 import { authReducer } from './auth-reducer';
+import { restaurantReducer } from './restaurant-reducer';
 
 
 export const init = () => {
-  const reducer = redux.combineReducers({
+  const reducer = combineReducers({
     form: formReducer,
-    auth: authReducer
+    auth: authReducer,
+    restaurants: restaurantReducer
   });
 
   const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

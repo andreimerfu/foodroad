@@ -11,4 +11,11 @@ class User < ActiveRecord::Base
   def tokens_has_json_column_type?
     false
   end
+
+  enum role: [:user, :admin, :restaurant, :courier]
+  after_initialize :set_default_role, :if => :new_record?
+
+  def set_default_role
+    self.role ||= :user
+  end
 end
