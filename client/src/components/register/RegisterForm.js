@@ -24,7 +24,7 @@ const RegisterForm = props => {
         component={AuthInput}
       />
       <Field
-        name="password_confirmation"
+        name="password-confirmation"
         type="password"
         label='Password Confirmation'
         className='form-control'
