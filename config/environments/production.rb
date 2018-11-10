@@ -55,6 +55,7 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "food-road_#{Rails.env}"
 
   config.action_mailer.perform_caching = false
+  config.action_mailer.perform_deliveries = true
 
   config.action_mailer.default_url_options = { host: 'https://foodroad.herokuapp.com/' }
 
@@ -65,7 +66,7 @@ Rails.application.configure do
     domain: 'https://foodroad.herokuapp.com/',
     user_name: 'foodroadmailer@gmail.com',
     password: 'foodroad123',
-    authentication: 'plain',
+    authentication: :login,
     enable_starttls_auto: true
   }
 
