@@ -32,5 +32,6 @@ module FoodRoad
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
     config.middleware.use ActionDispatch::Flash
+    Geokit::default_units = :kms
   end
 end

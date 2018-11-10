@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(version: 2018_11_10_135105) do
     t.integer "delivery_zone", default: 0
     t.integer "min_order", default: 0
     t.integer "delivery_time", default: 0
+    t.float "lat", default: 0.0
+    t.float "lng", default: 0.0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
