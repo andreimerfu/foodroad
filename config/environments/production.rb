@@ -64,7 +64,7 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     address: 'smtp.gmail.com',
     port: 587,
-    domain: 'https://foodroad.herokuapp.com',
+    domain: 'foodroad.herokuapp.com',
     user_name: 'foodroadmailer@gmail.com',
     password: 'foodroad123',
     authentication: :login,
