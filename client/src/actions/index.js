@@ -38,7 +38,7 @@ const registerFailure = (errors) => {
 }
 
 export const register = (userData) => {
-  var confirm_success_url = "http://localhost:3001/login";
+  var confirm_success_url = window.location.href + "login";
   return dispatch => {
     return axios.post('/auth', {...userData, confirm_success_url})
       .then(res => {
