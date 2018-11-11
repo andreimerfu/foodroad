@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Header  from './components/header/Header';
 import { Provider } from 'react-redux';
-import { CookiesProvider, withCookies } from 'react-cookie';
+import { CookiesProvider } from 'react-cookie';
 
 import { BrowserRouter, Route} from 'react-router-dom';
 import Login  from './components/login/Login';
@@ -37,7 +37,7 @@ class App extends Component {
             <div className="App">
                 <Header logout={this.logout}/>
                 <div className="container">
-                  <Route exact path='/' render={() => (<RestaurantSearch cookies={this.props.cookies}/>)} />
+                  <Route exact path='/' component={RestaurantSearch} />
                   <Route exact path='/login' component={Login} />
                   <Route exact path='/register' component={Register} />
                   <Route exact path='/restaurants' component={RestaurantIndex}/>
@@ -50,4 +50,4 @@ class App extends Component {
   }
 }
 
-export default withCookies(App);
+export default App;

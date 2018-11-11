@@ -25,7 +25,6 @@ export function RestaurantCard(props) {
             <p className='card-text-rate'>&#183; <span className='card-daily-rate'>{restaurant.min_order} RON </span> Comanda minima &#183; </p>
           </div>
         </div>
-
       </Link>
     </div>
   )

@@ -1,12 +1,9 @@
 import React from 'react';
-import PlacesAutocomplete, {
-  geocodeByAddress,
-  getLatLng,
-} from 'react-places-autocomplete';
-//import * as actions from '../../actions';
+import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
 import { instanceOf } from 'prop-types';
 
 import { withCookies, Cookies } from 'react-cookie';
+import { Redirect } from 'react-router-dom';
 
 
 class RestaurantSearch extends React.Component {
@@ -17,7 +14,17 @@ class RestaurantSearch extends React.Component {
 	constructor(props) {
     super(props);
     this.state = { address: '' };
-    //const { cookies } = props;
+  }
+
+  componentWillMount() {
+  	const { cookies } = this.props
+  	var latLng = cookies.get('latLng')
+
+  	if (latLng != null) {
+  		this.setState({
+        redirect: true
+      })
+  	}
   }
 
   handleChange = address => {
@@ -28,17 +35,19 @@ class RestaurantSearch extends React.Component {
     geocodeByAddress(address)
       .then(results => getLatLng(results[0]))
       .then(latLng => {
-      	console.log('Success', latLng)
-  	    //actions.setLocation(latLng);
-  	     const { cookies } = this.props;
-
+  	    const { cookies } = this.props;
     		cookies.set('latLng', latLng, { path: '/' });
+    		cookies.set('address', address, { path: '/'});
+    		window.location.reload();
       })
       .catch(error => console.error('Error', error));
   };
 
 
 	render(){
+		if (this.state.redirect === true) {
+      return <Redirect to={{pathname: '/restaurants'}} />
+		}
 		return(
 			<div className='home-container'>
 				<div className="row row-search">

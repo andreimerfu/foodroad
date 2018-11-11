@@ -116,8 +116,6 @@ export const fetchRestaurants = (restaurants) => {
 
 
 export const getRestaurants = (latLng) => {
-  //var confirm_success_url = "http://localhost:3001/login";
-
   return dispatch => {
     return axios.get('api/v1/restaurants', {
         params: {

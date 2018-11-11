@@ -5,10 +5,10 @@ import { RestaurantCard } from './RestaurantCard';
 import { withCookies, Cookies } from 'react-cookie';
 import { instanceOf } from 'prop-types';
 
- class RestaurantIndex extends React.Component {
-    static propTypes = {
-      cookies: instanceOf(Cookies).isRequired
-    };
+class RestaurantIndex extends React.Component {
+  static propTypes = {
+    cookies: instanceOf(Cookies).isRequired
+  };
 
   constructor(props) {
     super(props);
@@ -16,10 +16,9 @@ import { instanceOf } from 'prop-types';
     this.state = {
       latLng: cookies.get('latLng')
     };
-
   }
 
-renderRentals(){
+  renderRentals(){
     return this.props.restaurants.map((restaurant,i) => {
       return(
           <RestaurantCard key={i}
@@ -28,13 +27,11 @@ renderRentals(){
     } )
   }
 
- componentWillMount() {
-
+  componentWillMount() {
     this.props.dispatch(actions.getRestaurants(this.state.latLng));
   }
 
   render(){
-
     return(
       <section id='restaurant-index'>
         <h1 className='page-title'> Good food is Good mood </h1>
@@ -51,4 +48,5 @@ function mapStateToProps(state) {
     restaurants: state.restaurants.data
   }
 }
- export default withCookies(connect(mapStateToProps)(RestaurantIndex))
+
+export default withCookies(connect(mapStateToProps)(RestaurantIndex))
