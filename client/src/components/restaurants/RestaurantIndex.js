@@ -2,12 +2,24 @@ import React from 'react';
 import * as actions from '../../actions';
 import { connect } from 'react-redux';
 import { RestaurantCard } from './RestaurantCard';
+import { withCookies, Cookies } from 'react-cookie';
+import { instanceOf } from 'prop-types';
 
  class RestaurantIndex extends React.Component {
+    static propTypes = {
+      cookies: instanceOf(Cookies).isRequired
+    };
 
+  constructor(props) {
+    super(props);
+    const { cookies } = props;
+    this.state = {
+      latLng: cookies.get('latLng')
+    };
+
+  }
 
 renderRentals(){
-
     return this.props.restaurants.map((restaurant,i) => {
       return(
           <RestaurantCard key={i}
@@ -17,7 +29,8 @@ renderRentals(){
   }
 
  componentWillMount() {
-    this.props.dispatch(actions.fetchRestaurants());
+
+    this.props.dispatch(actions.getRestaurants(this.state.latLng));
   }
 
   render(){
@@ -38,4 +51,4 @@ function mapStateToProps(state) {
     restaurants: state.restaurants.data
   }
 }
- export default connect(mapStateToProps)(RestaurantIndex)
+ export default withCookies(connect(mapStateToProps)(RestaurantIndex))

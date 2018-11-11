@@ -3,12 +3,21 @@ import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng,
 } from 'react-places-autocomplete';
+//import * as actions from '../../actions';
+import { instanceOf } from 'prop-types';
+
+import { withCookies, Cookies } from 'react-cookie';
 
 
-export class RestaurantSearch extends React.Component {
+class RestaurantSearch extends React.Component {
+	static propTypes = {
+    cookies: instanceOf(Cookies).isRequired
+  };
+
 	constructor(props) {
     super(props);
     this.state = { address: '' };
+    //const { cookies } = props;
   }
 
   handleChange = address => {
@@ -18,7 +27,13 @@ export class RestaurantSearch extends React.Component {
   handleSelect = address => {
     geocodeByAddress(address)
       .then(results => getLatLng(results[0]))
-      .then(latLng => console.log('Success', latLng))
+      .then(latLng => {
+      	console.log('Success', latLng)
+  	    //actions.setLocation(latLng);
+  	     const { cookies } = this.props;
+
+    		cookies.set('latLng', latLng, { path: '/' });
+      })
       .catch(error => console.error('Error', error));
   };
 
@@ -77,3 +92,4 @@ export class RestaurantSearch extends React.Component {
 		)
 	}
 }
+export default withCookies(RestaurantSearch);
