@@ -1,6 +1,13 @@
+# frozen_string_literal: true
+
 class Api::V1::RestaurantsController < ActionController::API
-	def index
-		restaurants = Restaurant.find_nearest_restaurants(params[:lat], params[:lng])
-		render json: restaurants, status: :ok
-	end
+  def index
+    restaurants = Restaurant.find_nearest_restaurants(params[:lat], params[:lng])
+    render jsonapi: restaurants, status: :ok
+  end
+
+  def show
+    restaurant = Restaurant.find(params[:id])
+    render jsonapi: restaurant, status: :ok
+  end
 end

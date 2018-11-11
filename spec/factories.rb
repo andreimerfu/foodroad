@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :restaurant do
     name { Faker::Company.name }
@@ -7,7 +9,6 @@ FactoryBot.define do
 
   factory :user do
     email { Faker::Internet.email }
-    password { "password123" }
+    password { 'password123' }
   end
-
 end
