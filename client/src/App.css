@@ -72,6 +72,7 @@
     .card .card-body .card-text-km {
       color: #484848; }
 
+<<<<<<< HEAD
 /*
     DEMO STYLE
 */
@@ -223,6 +224,10 @@ a.article:hover {
     width: calc(100% - 250px); }
   #sidebarCollapse span {
     display: none; } }
+=======
+.food-search {
+  margin-top: 20px; }
+>>>>>>> b29b29442f4ac8e0c6ffd478ecac94e5328cc77e
 
 body {
   font-family: "Raleway", sans-serif; }
