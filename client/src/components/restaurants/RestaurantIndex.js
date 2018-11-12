@@ -5,6 +5,7 @@ import { RestaurantCard } from './RestaurantCard';
 import { withCookies, Cookies } from 'react-cookie';
 import { instanceOf } from 'prop-types';
 
+
 class RestaurantIndex extends React.Component {
   static propTypes = {
     cookies: instanceOf(Cookies).isRequired
@@ -34,7 +35,17 @@ class RestaurantIndex extends React.Component {
   render(){
     return(
       <section id='restaurant-index'>
-        <h1 className='page-title'> Good food is Good mood </h1>
+        <div className="row food-search">
+          <div className="col-lg-12 search-input">
+            <form className="card card-sm">
+              <div className="card-body row no-gutters align-items-center">
+                  <div className="col">
+                      <input className="form-control form-control-lg form-control-borderless" type="search" placeholder="Search restaurants, food or other shit" />
+                  </div>
+              </div>
+            </form>
+          </div>
+        </div>
           <div className='row'>
             {this.renderRentals()}
           </div>

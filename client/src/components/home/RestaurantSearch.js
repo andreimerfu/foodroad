@@ -1,10 +1,9 @@
 import React from 'react';
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
 import { instanceOf } from 'prop-types';
-
 import { withCookies, Cookies } from 'react-cookie';
 import { Redirect } from 'react-router-dom';
-
+import { LocationInput } from '../shared/form/LocationInput';
 
 class RestaurantSearch extends React.Component {
 	static propTypes = {
@@ -43,7 +42,6 @@ class RestaurantSearch extends React.Component {
       .catch(error => console.error('Error', error));
   };
 
-
 	render(){
 		if (this.state.redirect === true) {
       return <Redirect to={{pathname: '/restaurants'}} />
@@ -57,38 +55,7 @@ class RestaurantSearch extends React.Component {
 			        onChange={this.handleChange}
 			        onSelect={this.handleSelect}
 			      >
-			        {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
-			          <div>
-			            <input
-			              {...getInputProps({
-			                placeholder: 'Search location ...',
-			                className: 'location-search-input form-control input-lg',
-			              })}
-			            />
-			            <div className="autocomplete-dropdown-container">
-			              {loading && <div>Loading...</div>}
-			              {suggestions.map(suggestion => {
-			                const className = suggestion.active
-			                  ? 'suggestion-item--active'
-			                  : 'suggestion-item';
-			                // inline style for demonstration purpose
-			                const style = suggestion.active
-			                  ? { backgroundColor: '#fafafa', cursor: 'pointer', margin: '5px' }
-			                  : { backgroundColor: '#ffffff', cursor: 'pointer', margin: '5px' };
-			                return (
-			                  <div
-			                    {...getSuggestionItemProps(suggestion, {
-			                      className,
-			                      style,
-			                    })}
-			                  >
-			                    <span>{suggestion.description}</span>
-			                  </div>
-			                );
-			              })}
-			            </div>
-			          </div>
-			        )}
+			        {LocationInput}
 			      </PlacesAutocomplete>
 			    </div>
 			    <div className="col-lg-4">
