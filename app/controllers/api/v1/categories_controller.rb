@@ -8,6 +8,15 @@ class Api::V1::CategoriesController < ApplicationController
     render json: categories, status: :ok
   end
 
+  def create
+    category = Category.new(categories_params)
+    if category.save
+      render json: category, status: :created
+    else
+      render json: category.errors, status: :unprocessable_entity
+    end
+  end
+
   def update
     category = Category.update(categories_params)
     render json: category, status: :ok

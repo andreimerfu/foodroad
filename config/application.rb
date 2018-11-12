@@ -35,5 +35,6 @@ module FoodRoad
     config.api_only = true
     config.middleware.use ActionDispatch::Flash
     Geokit.default_units = :kms
+    config.autoload_paths += %W[#{config.root}/lib]
   end
 end
