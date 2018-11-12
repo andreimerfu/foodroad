@@ -22,11 +22,15 @@ ActiveRecord::Schema.define(version: 2018_11_12_072529) do
   end
 
   create_table "products", force: :cascade do |t|
+    t.bigint "restaurant_id"
+    t.bigint "category_id"
     t.string "name", null: false
     t.float "price", null: false
     t.text "description", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_products_on_category_id"
+    t.index ["restaurant_id"], name: "index_products_on_restaurant_id"
   end
 
   create_table "restaurants", force: :cascade do |t|
