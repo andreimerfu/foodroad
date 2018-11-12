@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Restaurant < ApplicationRecord
+  has_many :products, dependent: :destroy
+
   def self.find_nearest_restaurants(lat, lng)
     restaurants = Restaurant.all
     current_location = [lat.to_f, lng.to_f]
