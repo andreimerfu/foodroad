@@ -35,20 +35,12 @@ class RestaurantIndex extends React.Component {
   render(){
     return(
       <section id='restaurant-index'>
-        <div className="row food-search">
-          <div className="col-lg-12 search-input">
-            <form className="card card-sm">
-              <div className="card-body row no-gutters align-items-center">
-                  <div className="col">
-                      <input className="form-control form-control-lg form-control-borderless" type="search" placeholder="Search restaurants, food or other shit" />
-                  </div>
-              </div>
-            </form>
-          </div>
+        <div className="col-lg-8 food-search">
+          <input className="form-control form-control-lg form-control-borderless" type="search" placeholder="Search restaurants, food or other shit" />
         </div>
-          <div className='row'>
+        <div className='row restaurant-row'>
             {this.renderRentals()}
-          </div>
+        </div>
       </section>
     )
   }

@@ -2,6 +2,7 @@
   padding: 0.5rem;
   background: #fff;
   position: fixed;
+  top:0;
   z-index: 999;
   width:100%;
   border: none;
@@ -11,6 +12,14 @@
 
   .navbar-brand {
     font-family: $logo-font;
+  }
+
+  .dropdown-toggle-split {
+  	width: 70px;
+  }
+
+  .fa-user-circle {
+  	padding-right: 20px;
   }
 
 }
