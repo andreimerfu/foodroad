@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   end
 
   enum role: [:user, :admin, :restaurant, :courier]
-  after_initialize :set_default_role, :if => :new_record?
+  after_initialize :set_default_role, if: :new_record?
 
   def set_default_role
     self.role ||= :user
