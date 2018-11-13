@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Modules
   module Authenticate
     def is_authenticated_as(role)

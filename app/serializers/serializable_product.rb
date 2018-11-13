@@ -12,5 +12,4 @@ class SerializableProduct < JSONAPI::Serializable::Resource
   meta do
     { featured: true }
   end
-
 end

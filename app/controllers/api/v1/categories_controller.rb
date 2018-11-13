@@ -4,7 +4,7 @@ class Api::V1::CategoriesController < ApplicationController
   before_action -> { is_authenticated_as(:restaurant) }, only: [:create, :update, :destroy]
 
   def index
-    categories = Category.all
+    categories = Queries::CategoriesQuery.new(params[:restaurant_id]).call
     render jsonapi: categories, status: :ok
   end
 

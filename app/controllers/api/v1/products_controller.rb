@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Api::V1::ProductsController < ApplicationController
   # before_action -> { is_authenticated_as(:restaurant) }, only: [:create, :update, :destroy]
   def index
