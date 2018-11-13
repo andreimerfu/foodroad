@@ -50,6 +50,10 @@ class Login extends React.Component {
                   </Alert>
               }
               <LoginForm submitCb={this.loginUser} errors={errors}/>
+             {/* <div className='row'>
+                <Link className='btn btn-outline-danger' to='/googleLogin'>Google</Link>
+                <Link className='btn btn-outline-primary' to='/facebookLogin'>Facebook</Link>
+              </div>*/}
               <div className='row auth-row'>
                 <p className='span-12'> Don't have an account? </p>
                 <Link className='btn btn-outline-info auth-btn' to='/register'>Register</Link>
