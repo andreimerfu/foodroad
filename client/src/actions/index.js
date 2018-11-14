@@ -115,12 +115,13 @@ export const fetchRestaurants = (restaurants) => {
 }
 
 
-export const getRestaurants = (latLng) => {
+export const getRestaurants = (latLng, search) => {
   return dispatch => {
     return axios.get('api/v1/restaurants', {
         params: {
           lat: latLng.lat,
-          lng: latLng.lng
+          lng: latLng.lng,
+          search: search
         }
       })
       .then(res => {
