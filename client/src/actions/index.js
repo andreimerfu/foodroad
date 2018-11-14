@@ -5,7 +5,9 @@ import { LOGIN_SUCCESS,
          LOGIN_FAILURE,
          REGISTER_FAILURE,
          LOGOUT,
-         FETCH_RESTAURANTS
+         FETCH_RESTAURANTS,
+         FETCH_RESTAURANT_BY_ID_SUCCESS,
+         FETCH_RESTAURANT_BY_ID_INIT
        } from './types';
 
 //_________________________________________________________________
@@ -114,6 +116,14 @@ export const fetchRestaurants = (restaurants) => {
   }
 }
 
+ const fetchRestaurantByIdSuccess = (restaurant) => {
+  return {
+    type: FETCH_RESTAURANT_BY_ID_SUCCESS,
+    restaurant
+  }
+};
+
+
 
 export const getRestaurants = (latLng, search) => {
   return dispatch => {
@@ -126,12 +136,25 @@ export const getRestaurants = (latLng, search) => {
       })
       .then(res => {
         dispatch(fetchRestaurants(res.data.data));
-
       })
       .catch(error => {
         console.log("error");
         console.log(error);
       })
+  }
+}
+
+export const fetchRestaurantById = (restaurantId) => {
+  return dispatch => {
+    axios.get('/api/v1/categories', {
+      params: {
+        restaurant_id: restaurantId
+      }
+    }).then((restaurant) => {
+      dispatch(fetchRestaurantByIdSuccess(restaurant.data.data));
+    }).catch(error => {
+      console.log("eroare mare")
+    })
   }
 }
 

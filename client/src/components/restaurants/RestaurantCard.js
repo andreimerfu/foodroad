@@ -7,7 +7,7 @@ export function RestaurantCard(props) {
   const restaurant = props.restaurant.attributes;
   return(
     <div className='col-ms-3 col-xs-6'>
-      <Link className='restaurant-detail-link' to={`/index/${restaurant._id}`}>
+      <Link className='restaurant-detail-link' to={`/menu/${props.restaurant.id}`}>
        {/* <div className='card'>
           <img className='card-img-top' src={restaurant.image} alt='Card cap'/>
           <div className='card-body'>
