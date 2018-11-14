@@ -10,4 +10,12 @@ class Restaurant < ApplicationRecord
     current_location = [lat.to_f, lng.to_f]
     nearest_restaurants(current_location, restaurants)
   end
+
+  scope :search, -> (q) do
+  	joins(:products, :categories)
+    .where('restaurants.name ILIKE :search
+           OR products.name ILIKE :search
+           OR categories.name ILIKE :search',
+    search: "%#{q.to_s.downcase}%")
+  end
 end
