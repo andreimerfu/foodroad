@@ -8,6 +8,7 @@ import { LOGIN_SUCCESS,
          FETCH_RESTAURANTS,
          FETCH_RESTAURANT_CATEGORIES_SUCCESS,
          FETCH_RESTAURANT_BY_ID_INIT,
+         FETCH_RESTAURANT_PRODUCTS_SUCCESS,
          GET_RESTAURANT_INFO_SUCCESS
        } from './types';
 
@@ -131,6 +132,13 @@ const getRestaurantInfoSuccess = (restaurant) => {
   }
 }
 
+const fetchRestaurantProductsSuccess = (products) => {
+  return {
+    type: FETCH_RESTAURANT_PRODUCTS_SUCCESS,
+    products
+  }
+}
+
 export const getRestaurants = (latLng, search) => {
   return dispatch => {
     return axios.get('api/v1/restaurants', {
@@ -156,6 +164,16 @@ export const fetchRestaurantCategories = (restaurantId) => {
       dispatch(fetchRestaurantCategoriesSuccess(response.data.data));
     }).catch(error => {
       console.log("eroare mare")
+    })
+  }
+}
+
+export const fetchRestaurantProducts = (id) => {
+  return dispatch => {
+    axios.get(`/api/v1/restaurants/${id}/products`).then((response) => {
+      dispatch(fetchRestaurantProductsSuccess(response.data.data));
+    }).catch(error => {
+      console.log("Error fetchRestaurantProducts action");
     })
   }
 }
