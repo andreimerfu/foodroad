@@ -6,10 +6,10 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :restaurants, only: [:index, :show] do
-        resources :products do
-        end
+        resources :products, module: :restaurants
+        resources :categories, only: [:index, :create, :update, :destroy], module: :restaurants
       end
-      resources :categories, only: [:index, :create, :update, :destroy]
+      resources :categories
     end
   end
 end
