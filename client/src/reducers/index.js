@@ -3,7 +3,7 @@ import thunk from 'redux-thunk';
 import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
 import { reducer as formReducer } from 'redux-form';
 import { authReducer } from './auth-reducer';
-import { restaurantReducer, selectedRestaurantReducer } from './restaurant-reducer';
+import { restaurantReducer, restaurantCategoriesReducer } from './restaurant-reducer';
 
 
 export const init = () => {
@@ -11,7 +11,7 @@ export const init = () => {
     form: formReducer,
     auth: authReducer,
     restaurants: restaurantReducer,
-    restaurant: selectedRestaurantReducer
+    categories: restaurantCategoriesReducer
   });
 
   const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

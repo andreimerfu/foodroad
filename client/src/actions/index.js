@@ -6,8 +6,9 @@ import { LOGIN_SUCCESS,
          REGISTER_FAILURE,
          LOGOUT,
          FETCH_RESTAURANTS,
-         FETCH_RESTAURANT_BY_ID_SUCCESS,
-         FETCH_RESTAURANT_BY_ID_INIT
+         FETCH_RESTAURANT_CATEGORIES_SUCCESS,
+         FETCH_RESTAURANT_BY_ID_INIT,
+         GET_RESTAURANT_INFO_SUCCESS
        } from './types';
 
 //_________________________________________________________________
@@ -116,14 +117,19 @@ export const fetchRestaurants = (restaurants) => {
   }
 }
 
- const fetchRestaurantByIdSuccess = (restaurant) => {
+ const fetchRestaurantCategoriesSuccess = (categories) => {
   return {
-    type: FETCH_RESTAURANT_BY_ID_SUCCESS,
-    restaurant
+    type: FETCH_RESTAURANT_CATEGORIES_SUCCESS,
+    categories
   }
 };
 
-
+const getRestaurantInfoSuccess = (restaurant) => {
+  return {
+    type: GET_RESTAURANT_INFO_SUCCESS,
+    restaurant
+  }
+}
 
 export const getRestaurants = (latLng, search) => {
   return dispatch => {
@@ -144,17 +150,22 @@ export const getRestaurants = (latLng, search) => {
   }
 }
 
-export const fetchRestaurantById = (restaurantId) => {
+export const fetchRestaurantCategories = (restaurantId) => {
   return dispatch => {
-    axios.get('/api/v1/categories', {
-      params: {
-        restaurant_id: restaurantId
-      }
-    }).then((restaurant) => {
-      dispatch(fetchRestaurantByIdSuccess(restaurant.data.data));
+    axios.get(`/api/v1/restaurants/${restaurantId}/categories`).then((response) => {
+      dispatch(fetchRestaurantCategoriesSuccess(response.data.data));
     }).catch(error => {
       console.log("eroare mare")
     })
   }
 }
 
+export const getRestaurantInfo = (id) => {
+  return dispatch => {
+    axios.get(`/api/v1/restaurants/${id}`).then((response) => {
+      dispatch(getRestaurantInfoSuccess(response.data.data));
+    }).catch(error => {
+      console.log("Eroare getRestaurantInfo");
+    })
+  }
+}

@@ -1,6 +1,7 @@
 import { FETCH_RESTAURANTS,
-				 FETCH_RESTAURANT_BY_ID_SUCCESS,
-         FETCH_RESTAURANT_BY_ID_INIT 
+				 FETCH_RESTAURANT_CATEGORIES_SUCCESS,
+         FETCH_RESTAURANT_BY_ID_INIT,
+         GET_RESTAURANT_INFO_SUCCESS
        } from '../actions/types';
 
 const INITIAL_STATE = {
@@ -8,31 +9,27 @@ const INITIAL_STATE = {
     data: []
   },
 
-  restaurant: {
+  categories: {
     data: []
   }
-
 }
 
 export const restaurantReducer = (state = INITIAL_STATE.restaurants, action) => {
   switch(action.type) {
     case FETCH_RESTAURANTS:
       return Object.assign({}, state, {data: action.restaurants});
+    case GET_RESTAURANT_INFO_SUCCESS:
+      return Object.assign({}, state, {data: action.restaurant});
      default:
       return state;
   }
 }
 
 
-export const selectedRestaurantReducer = (state = INITIAL_STATE.restaurant, action) => {
+export const restaurantCategoriesReducer = (state = INITIAL_STATE.categories, action) => {
   switch(action.type) {
-    // case FETCH_RESTAURANT_BY_ID_INIT:
-    //   return {...state, data: {} };
-    case FETCH_RESTAURANT_BY_ID_SUCCESS:
-      return Object.assign({}, state, {data: action.restaurant});
-      // debugger;
-      // return {...state, data: action.restaurant}
-
+    case FETCH_RESTAURANT_CATEGORIES_SUCCESS:
+      return Object.assign({}, state, {data: action.categories});
     default:
       return state;
   }
