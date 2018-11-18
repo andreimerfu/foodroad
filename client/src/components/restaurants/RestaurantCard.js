@@ -20,7 +20,7 @@ export function RestaurantCard(props) {
         <div className='card'>
           <img className='card-img-top' src={restaurant.image} alt='Card cap'/>
           <div className='card-body'>
-            <h4 className='card-title'>{restaurant.name}</h4>
+            <div className='card-title'>{restaurant.name}</div>
             <p className='card-text-km'>{restaurant.address}</p>
             <p className='card-text-km'> Livreaza in: {restaurant.delivery_time} minute</p>
             <p className='card-text-rate'>&#183; <span className='card-daily-rate'>{restaurant.min_order} RON </span> Comanda minima &#183; </p>
