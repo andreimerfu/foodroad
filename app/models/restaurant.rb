@@ -1,23 +1,28 @@
 # frozen_string_literal: true
 
 class Restaurant < ApplicationRecord
+  has_many :products
+  has_many :categories, through: :products
+  include Modules::Geolocation
+
+  enum approval_status: [:rejected, :in_progress, :approved]
+  after_initialize :set_default_status, if: :new_record?
+
+  def set_default_status
+    self.approval_status ||= :in_progress
+  end
+
   def self.find_nearest_restaurants(lat, lng)
     restaurants = Restaurant.all
     current_location = [lat.to_f, lng.to_f]
-    nearest_restaurants = []
-
-    restaurants.each do |restaurant|
-      destination = [restaurant.lat, restaurant.lng]
-      if self.distance_between_2_points(current_location, destination) <= restaurant.delivery_zone
-        nearest_restaurants << restaurant
-      end
-    end
-    nearest_restaurants
+    nearest_restaurants(current_location, restaurants)
   end
 
-  def self.distance_between_2_points(source, destination)
-    source_location = Geokit::LatLng.new(source.first, source.last)
-    destination_location = Geokit::LatLng.new(destination.first, destination.last)
-    source_location.distance_to(destination_location.ll)
+  scope :search, -> (q) do
+  	joins(:products, :categories)
+    .where('restaurants.name ILIKE :search
+           OR products.name ILIKE :search
+           OR categories.name ILIKE :search',
+    search: "%#{q.to_s.downcase}%")
   end
 end

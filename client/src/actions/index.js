@@ -5,7 +5,11 @@ import { LOGIN_SUCCESS,
          LOGIN_FAILURE,
          REGISTER_FAILURE,
          LOGOUT,
-         FETCH_RESTAURANTS
+         FETCH_RESTAURANTS,
+         FETCH_RESTAURANT_CATEGORIES_SUCCESS,
+         FETCH_RESTAURANT_BY_ID_INIT,
+         FETCH_RESTAURANT_PRODUCTS_SUCCESS,
+         GET_RESTAURANT_INFO_SUCCESS
        } from './types';
 
 //_________________________________________________________________
@@ -114,18 +118,38 @@ export const fetchRestaurants = (restaurants) => {
   }
 }
 
+ const fetchRestaurantCategoriesSuccess = (categories) => {
+  return {
+    type: FETCH_RESTAURANT_CATEGORIES_SUCCESS,
+    categories
+  }
+};
 
-export const getRestaurants = (latLng) => {
+const getRestaurantInfoSuccess = (restaurant) => {
+  return {
+    type: GET_RESTAURANT_INFO_SUCCESS,
+    restaurant
+  }
+}
+
+const fetchRestaurantProductsSuccess = (products) => {
+  return {
+    type: FETCH_RESTAURANT_PRODUCTS_SUCCESS,
+    products
+  }
+}
+
+export const getRestaurants = (latLng, search) => {
   return dispatch => {
     return axios.get('api/v1/restaurants', {
         params: {
           lat: latLng.lat,
-          lng: latLng.lng
+          lng: latLng.lng,
+          search: search
         }
       })
       .then(res => {
         dispatch(fetchRestaurants(res.data.data));
-
       })
       .catch(error => {
         console.log("error");
@@ -134,3 +158,32 @@ export const getRestaurants = (latLng) => {
   }
 }
 
+export const fetchRestaurantCategories = (restaurantId) => {
+  return dispatch => {
+    axios.get(`/api/v1/restaurants/${restaurantId}/categories`).then((response) => {
+      dispatch(fetchRestaurantCategoriesSuccess(response.data.data));
+    }).catch(error => {
+      console.log("eroare mare")
+    })
+  }
+}
+
+export const fetchRestaurantProducts = (id) => {
+  return dispatch => {
+    axios.get(`/api/v1/restaurants/${id}/products`).then((response) => {
+      dispatch(fetchRestaurantProductsSuccess(response.data.data));
+    }).catch(error => {
+      console.log("Error fetchRestaurantProducts action");
+    })
+  }
+}
+
+export const getRestaurantInfo = (id) => {
+  return dispatch => {
+    axios.get(`/api/v1/restaurants/${id}`).then((response) => {
+      dispatch(getRestaurantInfoSuccess(response.data.data));
+    }).catch(error => {
+      console.log("Eroare getRestaurantInfo");
+    })
+  }
+}

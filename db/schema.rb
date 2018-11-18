@@ -10,10 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_11_142017) do
+ActiveRecord::Schema.define(version: 2018_11_18_171335) do
 
   # These are extensions that must be enabled in order to support this database
+  enable_extension "pg_trgm"
   enable_extension "plpgsql"
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "trgm_idx_categories_name", opclass: :gin_trgm_ops, using: :gin
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.bigint "restaurant_id"
+    t.bigint "category_id"
+    t.string "name", null: false
+    t.float "price", null: false
+    t.text "description", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_products_on_category_id"
+    t.index ["name"], name: "trgm_idx_products_name", opclass: :gin_trgm_ops, using: :gin
+    t.index ["restaurant_id"], name: "index_products_on_restaurant_id"
+  end
 
   create_table "restaurants", force: :cascade do |t|
     t.string "name", null: false
@@ -26,6 +47,11 @@ ActiveRecord::Schema.define(version: 2018_11_11_142017) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "image"
+    t.string "manager_name", null: false
+    t.string "manager_email", null: false
+    t.string "manager_phone", null: false
+    t.integer "approval_status", null: false
+    t.index ["name"], name: "trgm_idx_restaurants_name", opclass: :gin_trgm_ops, using: :gin
   end
 
   create_table "users", force: :cascade do |t|

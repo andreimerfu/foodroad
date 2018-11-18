@@ -28,6 +28,11 @@ class RestaurantIndex extends React.Component {
     } )
   }
 
+  getRestaurantsBySearch(e) {
+    this.props.dispatch(actions.getRestaurants(this.state.latLng, e.target.value))
+    this.renderRentals()
+  }
+
   componentWillMount() {
     this.props.dispatch(actions.getRestaurants(this.state.latLng));
   }
@@ -36,7 +41,7 @@ class RestaurantIndex extends React.Component {
     return(
       <section id='restaurant-index'>
         <div className="col-lg-8 food-search">
-          <input className="form-control form-control-lg form-control-borderless" type="search" placeholder="Search restaurants, food or other shit" />
+          <input className="form-control form-control-lg form-control-borderless"  onChange={(e) => {this.getRestaurantsBySearch(e) }} placeholder="Search restaurants, food or other shit" />
         </div>
         <div className='row restaurant-row'>
             {this.renderRentals()}
