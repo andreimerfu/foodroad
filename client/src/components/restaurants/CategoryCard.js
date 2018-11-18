@@ -10,19 +10,35 @@ export function CategoryCard(props) {
       <div>
        <div className="line"></div>
         <h2>{product.category.name}</h2>
-        <h4>{product.name}</h4>
-        <p>{product.description}</p>
-        <p>{product.price.toString()}</p>
-        <button className="btn btn-primary">Buy</button>
+          <div className="row">
+            <div className="col md-6">
+              <h4>{product.name}</h4>
+              <p>{product.description}</p>
+            </div>
+          <div className="col md-4">
+            <p>{product.price} LEI</p>
+          </div>
+          <div className="col md-2">
+            <button className="btn btn-primary">Buy</button>
+          </div>
+        </div>
       </div>
     )
   } else {
     return (
       <div>
-        <h4>{product.name}</h4>
-        <p>{product.description}</p>
-        <p>{product.price}</p>
-        <button className="btn btn-primary">Buy</button>
+        <div className="row">
+          <div className="col md-6">
+            <h4>{product.name}</h4>
+            <p>{product.description}</p>
+          </div>
+          <div className="col md-4">
+            <p>{product.price} LEI</p>
+          </div>
+          <div className="col md-2">
+            <button className="btn btn-primary">Buy</button>
+          </div>
+        </div>
       </div>
     )
   }
