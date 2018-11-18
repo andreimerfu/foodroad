@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_18_171335) do
+ActiveRecord::Schema.define(version: 2018_11_18_193722) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 2018_11_18_171335) do
     t.text "description", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "image", default: "https://placehold.it/300x300.png"
     t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["name"], name: "trgm_idx_products_name", opclass: :gin_trgm_ops, using: :gin
     t.index ["restaurant_id"], name: "index_products_on_restaurant_id"
