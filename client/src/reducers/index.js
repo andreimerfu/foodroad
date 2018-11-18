@@ -3,14 +3,17 @@ import thunk from 'redux-thunk';
 import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
 import { reducer as formReducer } from 'redux-form';
 import { authReducer } from './auth-reducer';
-import { restaurantReducer } from './restaurant-reducer';
+import { restaurantReducer, restaurantCategoriesReducer, productsReducer, restaurantInfoReducer } from './restaurant-reducer';
 
 
 export const init = () => {
   const reducer = combineReducers({
     form: formReducer,
     auth: authReducer,
-    restaurants: restaurantReducer
+    restaurants: restaurantReducer,
+    categories: restaurantCategoriesReducer,
+    products: productsReducer,
+    restaurant: restaurantInfoReducer
   });
 
   const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

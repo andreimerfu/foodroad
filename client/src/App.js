@@ -6,9 +6,9 @@ import { CookiesProvider } from 'react-cookie';
 import { BrowserRouter, Route} from 'react-router-dom';
 import Login  from './components/login/Login';
 import Register from './components/register/Register';
-import  RestaurantSearch  from './components/home/RestaurantSearch';
-import  RestaurantIndex  from './components/restaurants/RestaurantIndex';
-import  {RestaurantMenu}  from './components/restaurants/RestaurantMenu';
+import RestaurantSearch  from './components/home/RestaurantSearch';
+import RestaurantIndex  from './components/restaurants/RestaurantIndex';
+import RestaurantMenu  from './components/restaurants/RestaurantMenu';
 
 import './App.css';
 import * as actions from './actions';
@@ -42,7 +42,7 @@ class App extends Component {
                   <Route exact path='/login' component={Login} />
                   <Route exact path='/register' component={Register} />
                   <Route exact path='/restaurants' component={RestaurantIndex}/>
-                  <Route exact path='/menu' component={RestaurantMenu}/>
+                  <Route exact path='/menu/:id' component={RestaurantMenu}/>
                 </div>
             </div>
           </BrowserRouter>

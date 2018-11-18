@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 FactoryBot.define do
+  factory :product do
+  end
+  factory :category do
+  end
   factory :restaurant do
     name { Faker::Company.name }
     address { Faker::Address.street_address }
