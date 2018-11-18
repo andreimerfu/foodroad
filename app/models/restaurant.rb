@@ -18,6 +18,11 @@ class Restaurant < ApplicationRecord
     nearest_restaurants(current_location, restaurants)
   end
 
+  RESTAURANT_PARAMS = [
+    :name, :address, :delivery_zone, :min_order, :delivery_time,
+    :image, :manager_name, :manager_email, :manager_phone
+  ].freeze
+
   scope :search, -> (q) do
   	joins(:products, :categories)
     .where('restaurants.name ILIKE :search
