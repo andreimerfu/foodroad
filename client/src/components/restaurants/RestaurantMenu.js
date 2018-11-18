@@ -40,9 +40,11 @@ class RestaurantMenu extends React.Component {
   }
 
   renderRestaurantName(restaurant) {
-    return(
-        <h3>{restaurant.attributes.name}</h3>
-      )
+    if (Object.keys(restaurant).length > 0) {
+      return(
+          <h3>{restaurant.attributes.name}</h3>
+        )
+    }
   }
 
   render(){
@@ -50,7 +52,7 @@ class RestaurantMenu extends React.Component {
     const restaurant = this.props.restaurant;
     const products = this.props.products;
 
-    if (categories.length > 0 && Object.keys(restaurant).length === 5) {
+    if (categories.length > 0 && Object.keys(restaurant).length > 0) {
       return(
         <section id='restaurant-menu'>
         <div className="wrapper">
@@ -90,7 +92,7 @@ class RestaurantMenu extends React.Component {
 function mapStateToProps(state) {
   return {
     categories: state.categories.data,
-    restaurant: state.restaurants.data,
+    restaurant: state.restaurant.data,
     products: state.products.data
   }
 }

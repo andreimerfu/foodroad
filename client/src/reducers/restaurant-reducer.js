@@ -16,6 +16,10 @@ const INITIAL_STATE = {
 
   products: {
     data: []
+  },
+
+  restaurant: {
+    data: {}
   }
 }
 
@@ -23,9 +27,16 @@ export const restaurantReducer = (state = INITIAL_STATE.restaurants, action) => 
   switch(action.type) {
     case FETCH_RESTAURANTS:
       return Object.assign({}, state, {data: action.restaurants});
+     default:
+      return state;
+  }
+}
+
+export const restaurantInfoReducer = (state = INITIAL_STATE.restaurant, action) => {
+  switch(action.type) {
     case GET_RESTAURANT_INFO_SUCCESS:
       return Object.assign({}, state, {data: action.restaurant});
-     default:
+    default:
       return state;
   }
 }
