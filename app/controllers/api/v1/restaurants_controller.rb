@@ -3,9 +3,12 @@
 class Api::V1::RestaurantsController < ApplicationController
   def index
   	if params[:search].present?
-	    restaurants = Restaurant.search(params[:search]).find_nearest_restaurants(params[:lat], params[:lng])
+	    restaurants = Restaurant.approved_filter
+                              .search(params[:search])
+                              .find_nearest_restaurants(params[:lat], params[:lng])
   	else
-  		restaurants = Restaurant.find_nearest_restaurants(params[:lat], params[:lng])
+  		restaurants = Restaurant.approved_filter
+                              .find_nearest_restaurants(params[:lat], params[:lng])
   	end
     render jsonapi: restaurants, status: :ok
   end
@@ -17,20 +20,20 @@ class Api::V1::RestaurantsController < ApplicationController
 
   def create
     manager = create_manager(params)
-    unless manager
-      head 422
+
+    unless manager.errors.messages.empty?
+      render jsonapi_errors: manager.errors, status: :unprocessable_entity
+      return
     end
 
-    restaurant = Restaurant.new(restaurants_params)
-    restaurant.manager_email = manager.email
-    restaurant.manager_id = manager.id
+    restaurant = create_restaurant(manager)
 
     if restaurant.valid?
       restaurant.save
       render jsonapi: restaurant, status: :created
     else
       manager.destroy
-      head 422
+      render jsonapi_errors: restaurant.errors, status: :unprocessable_entity
     end
   end
 
@@ -51,6 +54,16 @@ class Api::V1::RestaurantsController < ApplicationController
         manager.skip_confirmation!
       end
 
-      manager.save ? manager : nil
+      manager.save
+      manager
+    end
+
+    def create_restaurant(manager)
+      restaurant = Restaurant.new(restaurants_params)
+
+      restaurant.manager_email = manager.email
+      restaurant.manager_id = manager.id
+
+      restaurant
     end
 end
