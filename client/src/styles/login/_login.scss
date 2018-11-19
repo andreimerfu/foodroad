@@ -1,24 +1,16 @@
-.bnb-form {
-  padding-top: 98px;
+.img-register {
+	width: 70%;
+  height: 90%;
+}
 
-  .submit-btn {
-  	margin: 0 auto;
-  	width: 30%;
-  }
+.auth-row {
+ 	 margin: 0 auto;
+  
+	  .auth-text {
+	    margin-left: auto;
+	  }
 
-  .auth-row {
-    padding: 15px;
-    margin: 0 auto;
-  }
-
-  .span-12 {
-    margin-top: 7px;
-    margin-left: auto;
-    margin-bottom: 7px;
-  }
-
-  .auth-btn {
-  	margin-right: auto;
-    margin-left: 10px;
-  }
+	  .auth-btn {
+	  	margin-right: auto;
+	  }
 }

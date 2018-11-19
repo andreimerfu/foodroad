@@ -13,21 +13,21 @@ const LoginForm = props => {
       <Field
         name="email"
         type="email"
-        label='Email'
-        className='form-control'
+        label='Email address'
+        className='form-control border-0 shadow'
         component={AuthInput}
       />
       <Field
         name="password"
         type="password"
         label='Password'
-        className='form-control'
+        className='form-control border-0 shadow text-violet'
         component={AuthInput}
       />
-      <div className='form-row'>
-      <button className='btn btn-success submit-btn' type="submit" disabled={ pristine || submitting }>
-        Submit
-      </button>
+      <div>
+        <button className='btn btn-primary shadow px-5 my-4' type="submit" disabled={ pristine || submitting }>
+          Log In
+        </button>
       </div>
     </form>
     </div>
