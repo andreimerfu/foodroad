@@ -34,6 +34,7 @@ gem 'devise_token_auth'
 gem 'jsonapi-rails'
 gem 'pagy'
 gem 'geokit'
+gem 'faker'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -41,7 +42,6 @@ group :development, :test do
   gem 'pry-rails'
   gem 'pry-byebug'
   gem 'factory_bot_rails'
-  gem 'faker'
   gem 'rspec-rails'
 end
 
