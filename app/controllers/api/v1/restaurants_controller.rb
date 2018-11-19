@@ -16,16 +16,41 @@ class Api::V1::RestaurantsController < ApplicationController
   end
 
   def create
+    manager = create_manager(params)
+    unless manager
+      head 422
+    end
+
     restaurant = Restaurant.new(restaurants_params)
-    if restaurant.save
+    restaurant.manager_email = manager.email
+    restaurant.manager_id = manager.id
+
+    if restaurant.valid?
+      restaurant.save
       render jsonapi: restaurant, status: :created
     else
-      render jsonapi_errors: restaurant.error, status: :unprocessable_entity
+      manager.destroy
+      head 422
     end
   end
 
   private
     def restaurants_params
       params.fetch(:restaurant, {}).permit(Restaurant::RESTAURANT_PARAMS)
+    end
+
+    def managers_params
+      params.permit(:email, :password, :password_confirmation)
+    end
+
+    def create_manager(params)
+      manager = User.new(managers_params)
+
+      if manager
+        manager.set_role(:restaurant)
+        manager.skip_confirmation!
+      end
+
+      manager.save ? manager : nil
     end
 end

@@ -3,6 +3,9 @@
 class Restaurant < ApplicationRecord
   has_many :products
   has_many :categories, through: :products
+
+  validates :cui, presence: true, length: 7..8
+
   include Modules::Geolocation
 
   enum approval_status: [:rejected, :in_progress, :approved]
@@ -20,7 +23,7 @@ class Restaurant < ApplicationRecord
 
   RESTAURANT_PARAMS = [
     :name, :address, :delivery_zone, :min_order, :delivery_time,
-    :image, :manager_name, :manager_email, :manager_phone
+    :image, :manager_name, :manager_email, :manager_phone, :cui
   ].freeze
 
   scope :search, -> (q) do
