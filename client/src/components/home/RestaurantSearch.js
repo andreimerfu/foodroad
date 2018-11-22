@@ -48,7 +48,7 @@ class RestaurantSearch extends React.Component {
 		}
 		return(
       <section id="search-address">
-      <div class="container">
+      <div class="container search-address">
       <h1 class="hero-heading mb-0 text-primary text-uppercase">Find your restaurants</h1>
         <div class="row align-items-center py-5">
           <div class="col-lg-6">

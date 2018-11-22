@@ -29,6 +29,9 @@
   .auth-row .auth-btn {
     margin-right: auto; }
 
+.search-address {
+  height: 678px; }
+
 .row-search {
   position: absolute;
   top: 50%;
@@ -153,7 +156,7 @@
 #sidebar {
   width: 250px;
   position: fixed;
-  margin-top: 68px;
+  margin-top: 39px;
   left: 0;
   height: 100vh;
   z-index: 999;
@@ -221,12 +224,11 @@ a.article:hover {
     CONTENT STYLE
 ----------------------------------------------------- */
 #content {
-  width: calc(100% - 250px);
-  padding: 40px;
   min-height: 100vh;
   transition: all 0.3s;
   top: 0;
-  right: 0; }
+  right: 0;
+  margin-left: 400px; }
 
 #content.active {
   width: 100%; }
@@ -244,7 +246,9 @@ a.article:hover {
   #content.active {
     width: calc(100% - 250px); }
   #sidebarCollapse span {
-    display: none; } }
+    display: none; }
+  #content {
+    margin-left: 0px; } }
 
 footer.main-footer {
   background: #fafafa;
