@@ -23,6 +23,7 @@ FactoryBot.define do
     lng { 26.102538399999958 }
     lat { 44.4267674 }
     image { Faker::Placeholdit.image }
+    cui { Faker::Number.number(8) }
   end
 
   factory :user do
