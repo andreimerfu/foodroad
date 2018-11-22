@@ -13,7 +13,9 @@ const RegisterForm = props => {
         name="email"
         type="email"
         label='Email address'
+        placeholder="hhhhs"
         className='form-control border-0 shadow'
+
         component={AuthInput}
       />
       <Field
@@ -30,9 +32,44 @@ const RegisterForm = props => {
         className='form-control border-0 shadow text-violet'
         component={AuthInput}
       />
+      <Field
+        name="name"
+        type="text"
+        label='Restaurant Name'
+        className='form-control border-0 shadow'
+        component={AuthInput}
+      />
+      <Field
+        name="name"
+        type="text"
+        label='Address'
+        className='form-control border-0 shadow'
+        component={AuthInput}
+      />
+       <Field
+        name="manager_name"
+        type="text"
+        label='Manager name'
+        className='form-control border-0 shadow'
+        component={AuthInput}
+      />
+       <Field
+        name="manager_phone"
+        type="text"
+        label='Phone'
+        className='form-control border-0 shadow'
+        component={AuthInput}
+      />
+      <Field
+        name="cui"
+        type="text"
+        label='C.U.I'
+        className='form-control border-0 shadow'
+        component={AuthInput}
+      />
       <div>
       <button className='btn btn-primary shadow px-5 my-4' type="submit" disabled={pristine || submitting}>
-        Sign up
+        Submit
       </button>
       </div>
     </form>

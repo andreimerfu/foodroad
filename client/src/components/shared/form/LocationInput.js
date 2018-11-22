@@ -10,7 +10,7 @@ export const LocationInput = ({
     <input
       {...getInputProps({
         placeholder: 'Search location ...',
-        className: 'location-search-input form-control input-lg',
+        className: 'location-search-input form-control form-control-search input-lg',
       })}
     />
     <div className="autocomplete-dropdown-container">

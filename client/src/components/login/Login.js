@@ -39,24 +39,31 @@ class Login extends React.Component {
 
     return (
       <section id="login">
-        <div className="bnb-form">
-          <div className="row justify-content-center">
-            <div className="col-md-4">
-              <h1>Login</h1>
-              {
-                 registerSuccess&&
-                 <Alert color="success" isOpen={this.state.visible} >
-                    Thanks for signing up. Please confirm your email!
-                  </Alert>
-              }
-              <LoginForm submitCb={this.loginUser} errors={errors}/>
-             {/* <div className='row'>
-                <Link className='btn btn-outline-danger' to='/googleLogin'>Google</Link>
-                <Link className='btn btn-outline-primary' to='/facebookLogin'>Facebook</Link>
-              </div>*/}
-              <div className='row auth-row'>
-                <p className='span-12'> Don't have an account? </p>
-                <Link className='btn btn-outline-info auth-btn' to='/register'>Register</Link>
+        <div class="page-holder d-flex align-items-center">
+            <div class="container">
+              <div class="row align-items-center py-5">
+                <div class="col-5 col-lg-7 mx-auto mb-5 mb-lg-0">
+
+                  <div class="pr-lg-5"><img src="../images/login.png" alt="" class="img-fluid img-login"></img></div>
+
+                </div>
+                <div class="col-lg-5 px-lg-4">
+
+                  <h1 class="text-base text-primary text-uppercase mb-4">Welcome back!</h1>
+                  <h2 class="mb-4">Welcome back!</h2>
+                  <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
+                  {
+                     registerSuccess&&
+                     <Alert color="success" isOpen={this.state.visible} >
+                        Thanks for signing up. Please confirm your email!
+                    </Alert>
+                  }
+                  <LoginForm submitCb={this.loginUser} errors={errors}/>
+                  <div class="row form-group mb-4 mx-0">
+                    <p class="text-muted mb-0 py-1"> Don't have an account? </p>
+                    <Link className='btn btn-outline-primary shadow px-5 ml-3' to='/register'>Sign up</Link>
+                  </div>
+
               </div>
             </div>
           </div>
