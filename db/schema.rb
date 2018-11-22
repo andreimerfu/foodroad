@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_19_171822) do
+ActiveRecord::Schema.define(version: 2018_11_22_210420) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 2018_11_19_171822) do
 
   create_table "restaurants", force: :cascade do |t|
     t.string "name", null: false
-    t.string "address", null: false
+    t.string "address", default: "", null: false
     t.integer "delivery_zone", default: 0
     t.integer "min_order", default: 0
     t.integer "delivery_time", default: 0

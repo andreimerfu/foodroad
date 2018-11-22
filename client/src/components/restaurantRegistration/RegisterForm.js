@@ -39,13 +39,13 @@ const RegisterForm = props => {
         className='form-control border-0 shadow'
         component={AuthInput}
       />
-      <Field
+      {/*<Field
         name="name"
         type="text"
         label='Address'
         className='form-control border-0 shadow'
         component={AuthInput}
-      />
+      />*/}
        <Field
         name="manager_name"
         type="text"
