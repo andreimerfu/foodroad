@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 FactoryBot.define do
+  factory :profile do
+    addresses { [] }
+    user { nil }
+  end
   factory :product do
     association :category
     association :restaurant
@@ -24,6 +28,7 @@ FactoryBot.define do
     lat { 44.4267674 }
     image { Faker::Placeholdit.image }
     cui { Faker::Number.number(8) }
+    approval_status { "approved" }
   end
 
   factory :user do

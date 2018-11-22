@@ -14,6 +14,9 @@ class User < ActiveRecord::Base
 
   enum role: [:user, :admin, :restaurant, :courier]
   after_initialize :set_default_role, if: :new_record?
+  after_create :create_profile!
+
+  has_one :profile
 
   def set_default_role
     self.role ||= :user

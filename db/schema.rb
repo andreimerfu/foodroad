@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_19_171822) do
+ActiveRecord::Schema.define(version: 2018_11_22_210420) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
@@ -37,9 +37,17 @@ ActiveRecord::Schema.define(version: 2018_11_19_171822) do
     t.index ["restaurant_id"], name: "index_products_on_restaurant_id"
   end
 
+  create_table "profiles", force: :cascade do |t|
+    t.json "addresses", default: [], array: true
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_profiles_on_user_id"
+  end
+
   create_table "restaurants", force: :cascade do |t|
     t.string "name", null: false
-    t.string "address", null: false
+    t.string "address", default: "", null: false
     t.integer "delivery_zone", default: 0
     t.integer "min_order", default: 0
     t.integer "delivery_time", default: 0
@@ -88,4 +96,5 @@ ActiveRecord::Schema.define(version: 2018_11_19_171822) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
+  add_foreign_key "profiles", "users"
 end

@@ -187,3 +187,15 @@ export const getRestaurantInfo = (id) => {
     })
   }
 }
+
+export const registerRestaurant = (restaurantData) => {
+  return dispatch => {
+    return axios.post('/api/v1/restaurants', {...restaurantData})
+      .then(res => {
+        console.log(res);
+      })
+      .catch(error => {
+        dispatch(registerFailure(error.response.data.errors.full_messages));
+      })
+    }
+}
