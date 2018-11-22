@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 FactoryBot.define do
+  factory :profile do
+    addresses { [] }
+    user { nil }
+  end
   factory :product do
     association :category
     association :restaurant
