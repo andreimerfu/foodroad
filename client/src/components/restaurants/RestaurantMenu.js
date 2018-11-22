@@ -2,7 +2,7 @@ import React from 'react';
 import * as actions from '../../actions';
 import { connect } from 'react-redux';
 import { CategoryCard } from './CategoryCard';
-
+import { RestaurantInfo } from './RestaurantInfo';
 
 class RestaurantMenu extends React.Component {
 
@@ -47,6 +47,12 @@ class RestaurantMenu extends React.Component {
     }
   }
 
+  renderRestaurantInfo(restaurant) {
+    return(
+      <RestaurantInfo restaurant={restaurant} />
+    )
+  }
+
   render(){
     const categories = this.props.categories;
     const restaurant = this.props.restaurant;
@@ -70,15 +76,20 @@ class RestaurantMenu extends React.Component {
                       <a href="" className="download">Recenzii</a>
                   </li>
                   <li>
-                      <a href="" className="article">Info</a>
+
+                      <a class="article" data-toggle="modal" data-target="#exampleModalCenter">
+                        Info
+                      </a>
                   </li>
               </ul>
           </nav>
 
           <div id="content">
-            {this.renderCategoriesWithProducts()}
+            { this.renderCategoriesWithProducts() }
           </div>
-      </div>
+
+          { this.renderRestaurantInfo(restaurant) }
+          </div>
       </section>
     )
     } else {

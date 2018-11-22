@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Header  from './components/header/Header';
+import { Footer } from './components/footer/Footer';
 import { Provider } from 'react-redux';
 import { CookiesProvider } from 'react-cookie';
 
@@ -9,6 +10,7 @@ import Register from './components/register/Register';
 import RestaurantSearch  from './components/home/RestaurantSearch';
 import RestaurantIndex  from './components/restaurants/RestaurantIndex';
 import RestaurantMenu  from './components/restaurants/RestaurantMenu';
+import RestaurantRegister  from './components/restaurantRegistration/RestaurantRegister';
 
 import './App.css';
 import * as actions from './actions';
@@ -43,7 +45,9 @@ class App extends Component {
                   <Route exact path='/register' component={Register} />
                   <Route exact path='/restaurants' component={RestaurantIndex}/>
                   <Route exact path='/menu/:id' component={RestaurantMenu}/>
+                  <Route exact path='/registerRestaurant' component={RestaurantRegister}/>
                 </div>
+              <Footer />
             </div>
           </BrowserRouter>
         </CookiesProvider>

@@ -1,18 +1,71 @@
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
 @import 'variables.scss';
 @import 'header/header.scss';
 @import 'login/login.scss';
 @import 'home/home.scss';
 @import 'restaurants/restaurants.scss';
-@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+@import 'footer/footer.scss';
+
+
 body {
   font-family: $font-raleway;
+  background: $main-color
 }
 
-// .container {
-// 	padding: 68px;
-// }
+p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1em;
+    font-weight: 300;
+    line-height: 1.7em;
+    color: #999;
+}
+
+h1,h2 {
+	margin-bottom: 0.5rem;
+  font-family: "Poppins", sans-serif;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+h1 {
+	font-size: 2.2rem;
+}
+
+h2 {
+	font-size: 1.8rem;
+}
+
+a,
+a:hover,
+a:focus {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.container {
+	margin-top: 30px;
+}
+
 .btn {
-    font-weight: bold;
-    border-radius: 22.5px;
+  font-weight: bold;
+  border-radius: 22.5px;
 }
 
+.form-control{
+	border-radius: 2.3rem;
+}
+
+.shadow {
+  -webkit-box-shadow: 0 0.125rem 0.8rem rgba(0, 0, 0, 0.1) !important;
+  box-shadow: 0 0.125rem 0.8rem rgba(0, 0, 0, 0.1) !important;
+}
+
+.text-violet {
+  color: #DF99CA !important;
+}
+
+.img-fluid {
+  width: 70%;
+  height: 90%;
+}

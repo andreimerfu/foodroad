@@ -47,24 +47,33 @@ class RestaurantSearch extends React.Component {
       return <Redirect to={{pathname: '/restaurants'}} />
 		}
 		return(
-			<div className='home-container'>
-				<div className="row row-search">
-			    <div className="col-lg-5 search-input">
-						 <PlacesAutocomplete
-			        value={this.state.address}
-			        onChange={this.handleChange}
-			        onSelect={this.handleSelect}
-			      >
-			        {LocationInput}
-			      </PlacesAutocomplete>
-			    </div>
-			    <div className="col-lg-4">
-            <button className="btn btn-info search-btn" type="button">
-							<i className="fas fa-search-location"></i>
-          	</button>
-	         </div>
-				</div>
+      <section id="search-address">
+      <div class="container search-address">
+      <h1 class="hero-heading mb-0 text-primary text-uppercase">Find your restaurants</h1>
+        <div class="row align-items-center py-5">
+          <div class="col-lg-6">
+            <div class="row">
+              <div class="col-lg-10">
+                <p class="lead text-muted mt-4 mb-4">Lorem ipsum dolor sit amet, consectetur. Eiusmod tempor incididunt.</p>
+              </div>
+            </div>
+            <form action="#" class="subscription-form">
+              <div class="form-group">
+                <PlacesAutocomplete
+                    value={this.state.address}
+                    onChange={this.handleChange}
+                    onSelect={this.handleSelect}
+                  >
+                  {LocationInput}
+                  </PlacesAutocomplete>
+                  <button type="submit" class="btn btn-primary">Get Started</button>
+              </div>
+            </form>
+          </div>
+          <div class="col-lg-6"><img src="" alt="" class=""></img></div>
+        </div>
       </div>
+    </section>
 		)
 	}
 }
