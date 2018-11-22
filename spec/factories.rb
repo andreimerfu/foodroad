@@ -2,7 +2,7 @@
 
 FactoryBot.define do
   factory :profile do
-    addresses { "" }
+    addresses { [] }
     user { nil }
   end
   factory :product do
