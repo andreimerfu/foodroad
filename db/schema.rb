@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_21_115840) do
+ActiveRecord::Schema.define(version: 2018_11_22_210420) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 2018_11_21_115840) do
 
   create_table "restaurants", force: :cascade do |t|
     t.string "name", null: false
-    t.string "address", null: false
+    t.string "address", default: "", null: false
     t.integer "delivery_zone", default: 0
     t.integer "min_order", default: 0
     t.integer "delivery_time", default: 0
@@ -60,6 +60,8 @@ ActiveRecord::Schema.define(version: 2018_11_21_115840) do
     t.string "manager_email", null: false
     t.string "manager_phone", null: false
     t.integer "approval_status", null: false
+    t.integer "manager_id", null: false
+    t.integer "cui", null: false
     t.index ["name"], name: "trgm_idx_restaurants_name", opclass: :gin_trgm_ops, using: :gin
   end
 

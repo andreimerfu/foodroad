@@ -2,5 +2,8 @@
 
 class ApplicationController < ActionController::API
   include DeviseTokenAuth::Concerns::SetUserByToken
-  include Modules::Authenticate
+
+  class << self
+    include Authenticate
+  end
 end

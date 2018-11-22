@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resource :profiles, only: [:show, :update, :destroy]
-      resources :restaurants, only: [:index, :show]
+      resources :restaurants, only: [:index, :show, :create]
       namespace :restaurants do
         resources :products, module: :restaurants
         resources :categories, only: [:index, :create, :update, :destroy], module: :restaurants

@@ -32,7 +32,7 @@ class Header extends React.Component  {
       )
     }
     return (
-        <Link className='btn btn-outline-info' to='/login'>Login <span className='sr-only'>(current)</span></Link>
+        <Link className='btn btn-outline-primary' to='/login'>Login <span className='sr-only'>(current)</span></Link>
     )
   }
 
