@@ -3,14 +3,14 @@
 RSpec.shared_context 'shared profiles', shared_context: :metadata do
   let(:update_params) {
     {
-      'addresses': [
+      addresses: [
         {
-          'address': 'Strada Academiei nr. 14',
-          'tag': 'Home'
+          address: 'Strada Academiei nr. 14',
+          tag: 'Home'
         },
         {
-          'address': 'Strada Vulturilor nr. 98A',
-          'tag': 'Work'
+          address: 'Strada Vulturilor nr. 98A',
+          tag: 'Work'
         }
       ]
     }
