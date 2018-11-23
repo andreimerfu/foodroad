@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
   after_initialize :set_default_role, if: :new_record?
   after_create :create_profile!
 
-  has_one :profile
+  has_one :profile, dependent: :destroy
 
   def set_default_role
     self.role ||= :user
