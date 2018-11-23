@@ -32,11 +32,11 @@ class Restaurant < ApplicationRecord
     :image, :manager_name, :manager_email, :manager_phone, :cui
   ].freeze
 
-  scope :search, -> (q) do
-  	joins(:products, :categories)
-    .where('restaurants.name ILIKE :search
-           OR products.name ILIKE :search
-           OR categories.name ILIKE :search',
-    search: "%#{q.to_s.downcase}%")
+  scope :search, -> (query) do
+    joins(:products, :categories)
+      .where('restaurants.name ILIKE :search
+              OR products.name ILIKE :search
+              OR categories.name ILIKE :search',
+             search: "%#{query}%")
   end
 end
