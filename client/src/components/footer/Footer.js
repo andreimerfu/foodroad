@@ -1,6 +1,6 @@
 
 import React from 'react';
-
+import { Link } from 'react-router-dom';
 
 export class Footer extends React.Component  {
 
@@ -15,8 +15,8 @@ export class Footer extends React.Component  {
           <div class="col-lg-3 mb-5 mb-lg-0">
             <h5 class="footer-heading">Site pages</h5>
             <ul class="list-unstyled">
-              <li> <a href="/registerRestaurant" class="footer-link">Become a partner restaurant</a></li>
-              
+              <li> <Link to="/registerRestaurant" class="footer-link">Become a partner restaurant</Link></li>
+
             </ul>
           </div>
           <div class="col-lg-3 mb-5 mb-lg-0">
