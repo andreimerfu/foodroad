@@ -22,7 +22,6 @@ describe 'Restaurant categories' do
     before do
       post api_v1_restaurants_path, params: restaurant_create_params, as: :json
       @restaurant_id = Restaurant.last.id
-      # TODO add auth headers or something
       post api_v1_restaurant_categories_path(@restaurant_id),
            headers: manager_headers,
            params: restaurant_categories_create_params,
