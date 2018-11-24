@@ -4,7 +4,7 @@ require 'rails_helper'
 require 'requests/shared_users'
 require 'requests/shared_profiles'
 
-describe 'Profiles' do
+describe 'Profiles', type: :request do
   include_context 'shared users'
   include_context 'shared profiles'
 

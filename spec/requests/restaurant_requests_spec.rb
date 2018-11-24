@@ -3,7 +3,7 @@
 require 'rails_helper'
 require 'requests/shared_restaurants'
 
-describe 'Restaurants' do
+describe 'Restaurants', type: :request do
   include_context 'shared restaurants'
 
   context 'authorized' do
