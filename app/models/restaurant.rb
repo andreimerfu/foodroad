@@ -6,7 +6,8 @@ class Restaurant < ApplicationRecord
 
   validates_presence_of :name, :address, :manager_name, :manager_email, :manager_phone
   validates_numericality_of :delivery_zone, :delivery_time, greater_than: 0, only_integer: true
-  validates_numericality_of :min_order, :lat, :lng, greater_than: 0
+  validates_numericality_of :lat, :lng, greater_than_or_equal_to: 0
+  validates_numericality_of :min_order, greater_than: 0
   validates :cui, presence: true, length: 7..8
 
   enum approval_status: [:rejected, :in_progress, :approved]
