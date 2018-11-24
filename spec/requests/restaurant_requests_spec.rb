@@ -8,7 +8,7 @@ describe 'Restaurants', type: :request do
 
   context 'authorized' do
     before do
-      post api_v1_restaurants_path, params: create_params, as: :json
+      post api_v1_restaurants_path, params: restaurant_create_params, as: :json
     end
 
     it '#create' do
@@ -39,7 +39,7 @@ describe 'Restaurants', type: :request do
 
   context 'invalid params' do
     it '#create' do
-      post api_v1_restaurants_path, params: invalid_create_params, as: :json
+      post api_v1_restaurants_path, params: invalid_restaurant_create_params, as: :json
       expect(response).to have_http_status(:unprocessable_entity)
     end
   end

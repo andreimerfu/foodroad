@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.shared_context 'shared profiles', shared_context: :metadata do
-  let(:update_params) {
+  let(:update_profile_params) {
     {
       addresses: [
         {

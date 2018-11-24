@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.shared_context 'shared restaurants', shared_context: :metadata do
-  let(:create_params) {
+  let(:restaurant_create_params) {
     {
       email: Faker::Internet.email,
       password: '12345678',
@@ -18,7 +18,7 @@ RSpec.shared_context 'shared restaurants', shared_context: :metadata do
     }
   }
 
-  let(:invalid_create_params) {
+  let(:invalid_restaurant_create_params) {
     {
       restauran: {}
     }

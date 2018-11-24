@@ -16,7 +16,7 @@ describe 'Profiles', type: :request do
 
     it '#update' do
       expect(user.profile.addresses).to be_empty
-      put api_v1_profiles_path, headers: headers, params: update_params, as: :json
+      put api_v1_profiles_path, headers: headers, params: update_profile_params, as: :json
       user.reload
       expect(response).to have_http_status(:ok)
       expect(user.profile.addresses.length).to eq(2)
@@ -30,7 +30,7 @@ describe 'Profiles', type: :request do
     end
 
     it '#update' do
-      put api_v1_profiles_path, params: update_params
+      put api_v1_profiles_path, params: update_profile_params
       expect(response).to have_http_status(:unauthorized)
     end
   end
