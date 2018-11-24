@@ -38,6 +38,11 @@ RSpec.shared_context 'shared restaurants', shared_context: :metadata do
       restauran: {}
     }
   }
+
+  let(:create_restaurant) {
+    post api_v1_restaurants_path, params: restaurant_create_params, as: :json
+    @restaurant_id = Restaurant.last.id
+  }
 end
 
 RSpec.configure do |rspec|

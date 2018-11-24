@@ -20,12 +20,12 @@ describe 'Restaurant categories' do
 
   context 'authorized' do
     before do
-      post api_v1_restaurants_path, params: restaurant_create_params, as: :json
-      @restaurant_id = Restaurant.last.id
+      create_restaurant
       post api_v1_restaurant_categories_path(@restaurant_id),
            headers: manager_headers,
            params: restaurant_categories_create_params,
            as: :json
+      @category = Category.last
     end
 
     it '#create' do
@@ -33,14 +33,13 @@ describe 'Restaurant categories' do
     end
 
     it '#update' do
-      category = Category.last
-      put api_v1_restaurant_category_path(@restaurant_id, category.id),
+      put api_v1_restaurant_category_path(@restaurant_id, @category.id),
           headers: manager_headers,
           params: restaurant_categories_update_params,
           as: :json
       expect(response).to have_http_status(:ok)
-      new_name = JSON.parse(response.body)["data"].first["attributes"]["name"]
-      expect(new_name).not_to match(category.name)
+      new_name = JSON.parse(response.body)['data'].first['attributes']['name']
+      expect(new_name).not_to match(@category.name)
     end
   end
 end

@@ -5,10 +5,6 @@ class SerializableProduct < JSONAPI::Serializable::Resource
 
   attributes :name, :price, :description, :category
 
-  link :self do
-    @url_helpers.api_v1_restaurant_path(@object.id)
-  end
-
   meta do
     { featured: true }
   end
