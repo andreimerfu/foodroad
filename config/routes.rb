@@ -1,6 +1,12 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  namespace :admin do
+    %i(restaurants categories products).each do |name|
+      resources name, only: %i(index show new create edit update destroy)
+    end
+  end
+
   mount_devise_token_auth_for 'User', at: 'auth'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   namespace :api do
