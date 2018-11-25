@@ -34,6 +34,8 @@ gem 'devise_token_auth'
 gem 'jsonapi-rails'
 gem 'pagy'
 gem 'geokit'
+gem 'administrate'
+gem 'administrate-field-active_storage'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

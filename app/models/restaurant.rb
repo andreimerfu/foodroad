@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
 class Restaurant < ApplicationRecord
-  has_many :products
+  has_many :products, dependent: :destroy
   has_many :categories, through: :products
+  has_many_attached :documents, dependent: :destroy
 
   validates_presence_of :name, :manager_name, :manager_email, :manager_phone
   validates_numericality_of :delivery_zone, :delivery_time, :min_order,
@@ -34,7 +35,8 @@ class Restaurant < ApplicationRecord
 
   RESTAURANT_PARAMS = [
     :name, :address, :delivery_zone, :min_order, :delivery_time,
-    :image, :manager_name, :manager_email, :manager_phone, :cui
+    :image, :manager_name, :manager_email, :manager_phone, :cui,
+    documents: []
   ].freeze
 
   scope :search, -> (query) do

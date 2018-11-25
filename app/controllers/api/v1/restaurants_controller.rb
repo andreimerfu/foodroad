@@ -37,6 +37,20 @@ class Api::V1::RestaurantsController < ApplicationController
     end
   end
 
+  def update
+    restaurant = Restaurant.find(params[:id])
+
+    if params[:documents].present?
+      restaurant.documents.attach(params[:documents])
+    end
+
+    if restaurant.update(restaurants_params)
+      render jsonapi: restaurant, status: :ok
+    else
+      render jsonapi_errors: restaurant.errors, status: :unprocessable_entity
+    end
+  end
+
   private
   def restaurants_params
     params.fetch(:restaurant, {}).permit(Restaurant::RESTAURANT_PARAMS)
