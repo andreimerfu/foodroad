@@ -50,7 +50,6 @@ class App extends Component {
                   <Route exact path='/restaurants' component={RestaurantIndex}/>
                   <Route exact path='/menu/:id' component={RestaurantMenu}/>
                   <Route exact path='/registerRestaurant' component={RestaurantRegister}/>
-                  <Route exact path='/homeRestaurant' component={RestaurantHome}/>
                   <Route exact path='/profile' component={UserProfile}/>
                   <Route exact path='/homeRestaurant' component={requireRestaurantLogin(RestaurantHome)}/>
                 </div>

@@ -10,7 +10,6 @@ class UserProfile extends React.Component {
     super()
   }
   componentWillMount() {
-    var uid =  localStorage.getItem('upk')
     this.props.dispatch(actions.getUserProfile());
   }
 

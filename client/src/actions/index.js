@@ -73,6 +73,7 @@ export const login = (userData) => {
         localStorage.setItem('client', res.headers['client']);
         localStorage.setItem('accessToken', res.headers['access-token']);
         localStorage.setItem('expiry', res.headers['expiry']);
+        localStorage.setItem('role', res.data.data.role);
         dispatch(loginSuccess())
       })
       .catch(error => {
@@ -89,7 +90,9 @@ export const logout = () => {
         'uid': localStorage.getItem('uid'),
         'client': localStorage.getItem('client'),
         'access-token': localStorage.getItem('accessToken'),
-        'expiry': localStorage.getItem('expiry')      }
+        'expiry': localStorage.getItem('expiry'),
+        'role': localStorage.getItem('role')
+      }
     })
     .then(res => {
       invalidateUser();
@@ -106,6 +109,7 @@ const invalidateUser = () => {
   localStorage.removeItem('client');
   localStorage.removeItem('accessToken');
   localStorage.removeItem('expiry');
+  localStorage.removeItem('role');
 }
 
 //_________________________________________________________________
@@ -223,3 +227,5 @@ export const getUserProfile = () => {
     })
   }
 }
+
+

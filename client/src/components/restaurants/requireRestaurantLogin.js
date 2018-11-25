@@ -8,20 +8,20 @@ export default function requireRestaurantLogin(Component) {
 
     componentWillMount() {
       //const {isAuth} = this.props.auth
-      if (!this.props.auth.isAuth) {
-
-       // console.log(isAuth);
+      const role = localStorage.getItem('role');
+      if (!this.props.auth.isAuth || role !== 'restaurant') {
         console.log('You need to login as a restaurant to see this page!');
         history.push('/login');
-      }
     }
+}
    
+
     componentWillUpdate(nextProps) {
-      if(!nextProps.auth.isAuth) {
+      const role = localStorage.getItem('role');
+      if(!nextProps.auth.isAuth || role !== 'restaurant') {
         history.push('/login');
       }
     }
-
     render() {
       return (
         <div>
@@ -36,8 +36,6 @@ export default function requireRestaurantLogin(Component) {
   }
 
   const mapStateToProps = (state) => ({
-   // token: state.auth.token,
-   // userName: state.auth.userName,
     auth: state.auth
   })
 
