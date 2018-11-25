@@ -9,7 +9,8 @@ import { LOGIN_SUCCESS,
          FETCH_RESTAURANT_CATEGORIES_SUCCESS,
          FETCH_RESTAURANT_BY_ID_INIT,
          FETCH_RESTAURANT_PRODUCTS_SUCCESS,
-         GET_RESTAURANT_INFO_SUCCESS
+         GET_RESTAURANT_INFO_SUCCESS,
+         FETCH_USER_PROFILE_SUCCESS
        } from './types';
 
 //_________________________________________________________________
@@ -88,8 +89,7 @@ export const logout = () => {
         'uid': localStorage.getItem('uid'),
         'client': localStorage.getItem('client'),
         'access-token': localStorage.getItem('accessToken'),
-        'expiry': localStorage.getItem('expiry')
-      }
+        'expiry': localStorage.getItem('expiry')      }
     })
     .then(res => {
       invalidateUser();
@@ -136,6 +136,13 @@ const fetchRestaurantProductsSuccess = (products) => {
   return {
     type: FETCH_RESTAURANT_PRODUCTS_SUCCESS,
     products
+  }
+}
+
+const fetchUserProfileSuccess = (profile) => {
+  return {
+    type: FETCH_USER_PROFILE_SUCCESS,
+    profile
   }
 }
 
@@ -198,4 +205,21 @@ export const registerRestaurant = (restaurantData) => {
         dispatch(registerFailure(error.response.data.errors.full_messages));
       })
     }
+}
+
+export const getUserProfile = () => {
+  return dispatch => {
+    return axios.get(`/api/v1/profiles`, {
+       headers: {
+        'uid': localStorage.getItem('uid'),
+        'client': localStorage.getItem('client'),
+        'access-token': localStorage.getItem('accessToken'),
+        'expiry': localStorage.getItem('expiry'),
+      }
+    }).then((response) => {
+      dispatch(fetchUserProfileSuccess(response.data.data));
+    }).catch(error => {
+      console.log("Error fetchUserProfileSuccess action");
+    })
+  }
 }

@@ -19,11 +19,11 @@ class Header extends React.Component  {
       return (
         <div className="btn-group">
           <button type="button" className="btn btn-info dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i className="far fa-user-circle"></i> 
+            <i className="far fa-user-circle"></i>
             <span className="sr-only">Toggle Dropdown</span>
           </button>
           <div className="dropdown-menu dropdown-menu-right">
-            <a className="dropdown-item" href="/">Profil</a>
+            <Link to="/profile" className="dropdown-item"> Profile </Link>
             <a className="dropdown-item" href="/">Istoric comenzi</a>
             <div className="dropdown-divider"></div>
             <a className='dropdown-item' onClick={this.handleLogout} > Logout </a>
