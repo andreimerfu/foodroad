@@ -101,7 +101,7 @@ class RestaurantDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how restaurants are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(restaurant)
-  #   "Restaurant ##{restaurant.id}"
-  # end
+  def display_resource(restaurant)
+    "Restaurant #{restaurant.name}"
+  end
 end
