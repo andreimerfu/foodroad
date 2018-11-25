@@ -20,12 +20,18 @@ module Admin
       Product.find(params[:id])
     end
 
-    def resource_class
-      Product
-    end
+    # def resource_class
+    #   Product
+    # end
 
     def scoped_resource
       Product
+    end
+
+    def resource_params
+      params.require(Product.model_name.param_key).
+        permit(dashboard.permitted_attributes).
+        transform_values { |v| read_param_value(v) }
     end
     # See https://administrate-prototype.herokuapp.com/customizing_controller_actions
     # for more information
