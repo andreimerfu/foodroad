@@ -44,6 +44,6 @@ class Api::V1::Restaurants::ProductsController < ApplicationController
 
   private
     def products_params
-      permit.params(:name, :price, :description)
+      params.permit(:name, :price, :description)
     end
 end

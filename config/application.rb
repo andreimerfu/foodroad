@@ -36,5 +36,12 @@ module FoodRoad
     config.middleware.use ActionDispatch::Flash
     Geokit.default_units = :kms
     config.autoload_paths += %W[#{config.root}/lib]
+
+    # Enable Flash, Cookies, MethodOverride for Administrate Gem
+    # config.middleware.use ActionDispatch::Flash
+    config.session_store :cookie_store
+    config.middleware.use ActionDispatch::Cookies
+    config.middleware.use ActionDispatch::Session::CookieStore, config.session_options
+    config.middleware.use ::Rack::MethodOverride
   end
 end

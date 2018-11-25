@@ -9,7 +9,8 @@ import { LOGIN_SUCCESS,
          FETCH_RESTAURANT_CATEGORIES_SUCCESS,
          FETCH_RESTAURANT_BY_ID_INIT,
          FETCH_RESTAURANT_PRODUCTS_SUCCESS,
-         GET_RESTAURANT_INFO_SUCCESS
+         GET_RESTAURANT_INFO_SUCCESS,
+         FETCH_USER_PROFILE_SUCCESS
        } from './types';
 
 //_________________________________________________________________
@@ -72,6 +73,7 @@ export const login = (userData) => {
         localStorage.setItem('client', res.headers['client']);
         localStorage.setItem('accessToken', res.headers['access-token']);
         localStorage.setItem('expiry', res.headers['expiry']);
+        localStorage.setItem('role', res.data.data.role);
         dispatch(loginSuccess())
       })
       .catch(error => {
@@ -88,7 +90,8 @@ export const logout = () => {
         'uid': localStorage.getItem('uid'),
         'client': localStorage.getItem('client'),
         'access-token': localStorage.getItem('accessToken'),
-        'expiry': localStorage.getItem('expiry')
+        'expiry': localStorage.getItem('expiry'),
+        'role': localStorage.getItem('role')
       }
     })
     .then(res => {
@@ -106,6 +109,7 @@ const invalidateUser = () => {
   localStorage.removeItem('client');
   localStorage.removeItem('accessToken');
   localStorage.removeItem('expiry');
+  localStorage.removeItem('role');
 }
 
 //_________________________________________________________________
@@ -136,6 +140,13 @@ const fetchRestaurantProductsSuccess = (products) => {
   return {
     type: FETCH_RESTAURANT_PRODUCTS_SUCCESS,
     products
+  }
+}
+
+const fetchUserProfileSuccess = (profile) => {
+  return {
+    type: FETCH_USER_PROFILE_SUCCESS,
+    profile
   }
 }
 
@@ -199,3 +210,22 @@ export const registerRestaurant = (restaurantData) => {
       })
     }
 }
+
+export const getUserProfile = () => {
+  return dispatch => {
+    return axios.get(`/api/v1/profiles`, {
+       headers: {
+        'uid': localStorage.getItem('uid'),
+        'client': localStorage.getItem('client'),
+        'access-token': localStorage.getItem('accessToken'),
+        'expiry': localStorage.getItem('expiry'),
+      }
+    }).then((response) => {
+      dispatch(fetchUserProfileSuccess(response.data.data));
+    }).catch(error => {
+      console.log("Error fetchUserProfileSuccess action");
+    })
+  }
+}
+
+

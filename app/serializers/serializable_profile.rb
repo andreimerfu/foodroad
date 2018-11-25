@@ -5,6 +5,10 @@ class SerializableProfile < JSONAPI::Serializable::Resource
 
   attributes :id, :addresses
 
+  attribute :role do
+    @object.user.role
+  end
+
   link :self do
     @url_helpers.api_v1_profiles_path
   end

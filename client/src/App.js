@@ -4,13 +4,17 @@ import { Footer } from './components/footer/Footer';
 import { Provider } from 'react-redux';
 import { CookiesProvider } from 'react-cookie';
 
-import { BrowserRouter, Route} from 'react-router-dom';
+import { Router, Route} from 'react-router-dom';
+import history from './history';
 import Login  from './components/login/Login';
 import Register from './components/register/Register';
 import RestaurantSearch  from './components/home/RestaurantSearch';
+import requireRestaurantLogin  from './components/restaurants/requireRestaurantLogin';
 import RestaurantIndex  from './components/restaurants/RestaurantIndex';
 import RestaurantMenu  from './components/restaurants/RestaurantMenu';
 import RestaurantRegister  from './components/restaurantRegistration/RestaurantRegister';
+import RestaurantHome from './components/restaurants/RestaurantHome';
+import UserProfile from './components/users/UserProfile';
 
 import './App.css';
 import * as actions from './actions';
@@ -36,7 +40,7 @@ class App extends Component {
     return (
       <Provider store={store}>
         <CookiesProvider>
-          <BrowserRouter>
+          <Router history={history}>
             <div className="App">
               <Header logout={this.logout}/>
                 <div className="container">
@@ -46,10 +50,12 @@ class App extends Component {
                   <Route exact path='/restaurants' component={RestaurantIndex}/>
                   <Route exact path='/menu/:id' component={RestaurantMenu}/>
                   <Route exact path='/registerRestaurant' component={RestaurantRegister}/>
+                  <Route exact path='/profile' component={UserProfile}/>
+                  <Route exact path='/homeRestaurant' component={requireRestaurantLogin(RestaurantHome)}/>
                 </div>
               <Footer />
             </div>
-          </BrowserRouter>
+          </Router>
         </CookiesProvider>
       </Provider>
     );
