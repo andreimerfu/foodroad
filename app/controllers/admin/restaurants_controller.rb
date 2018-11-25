@@ -13,9 +13,17 @@ module Admin
     # end
 
     # Define a custom finder by overriding the `find_resource` method:
-    # def find_resource(param)
-    #   Restaurant.find_by!(slug: param)
-    # end
+    def find_resource(param)
+      Restaurant.find(params[:id])
+    end
+
+    def resource_class
+      Restaurant
+    end
+
+    def scoped_resource
+      Restaurant
+    end
 
     # See https://administrate-prototype.herokuapp.com/customizing_controller_actions
     # for more information

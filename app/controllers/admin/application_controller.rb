@@ -10,17 +10,13 @@ module Admin
   class ApplicationController < Administrate::ApplicationController
     include DeviseTokenAuth::Concerns::SetUserByToken
     include Authenticate
-    before_action :authenticate_user!
-    before_action -> { is_authenticated_as(:admin) }
+    # before_action :authenticate_user!
+    # before_action -> { is_authenticated_as(:admin) }
 
     # Override this value to specify the number of elements to display at a time
     # on index pages. Defaults to 20.
     # def records_per_page
     #   params[:per_page] || 20
     # end
-
-    def scoped_resource
-      Restaurant.default_scoped
-    end
   end
 end

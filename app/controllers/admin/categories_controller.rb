@@ -16,7 +16,17 @@ module Admin
     # def find_resource(param)
     #   Category.find_by!(slug: param)
     # end
+    def find_resource(param)
+      Category.find(params[:id])
+    end
 
+    def resource_class
+      Category
+    end
+
+    def scoped_resource
+      Category
+    end
     # See https://administrate-prototype.herokuapp.com/customizing_controller_actions
     # for more information
   end
