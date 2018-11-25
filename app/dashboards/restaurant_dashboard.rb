@@ -12,6 +12,7 @@ class RestaurantDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     products: Field::HasMany,
     categories: Field::HasMany,
+    documents: Field::ActiveStorage.with_options(url_only: true),
     id: Field::Number,
     name: Field::String,
     address: Field::String,
@@ -39,6 +40,7 @@ class RestaurantDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = [
     :products,
     :categories,
+    :documents,
     :id,
     :name,
   ].freeze
@@ -48,6 +50,7 @@ class RestaurantDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = [
     :products,
     :categories,
+    :documents,
     :id,
     :name,
     :address,
@@ -73,6 +76,7 @@ class RestaurantDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = [
     :products,
     :categories,
+    :documents,
     :name,
     :address,
     :delivery_zone,
@@ -89,10 +93,15 @@ class RestaurantDashboard < Administrate::BaseDashboard
     :cui,
   ].freeze
 
+  # permitted for has_many_attached
+  def permitted_attributes
+    super + [documents: []]
+  end
+
   # Overwrite this method to customize how restaurants are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(restaurant)
-  #   "Restaurant ##{restaurant.id}"
-  # end
+  def display_resource(restaurant)
+    "Restaurant #{restaurant.name}"
+  end
 end

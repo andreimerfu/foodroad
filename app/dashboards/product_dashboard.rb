@@ -10,7 +10,7 @@ class ProductDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    restaurant: Field::BelongsTo,
+    # restaurant: Field::BelongsTo,
     category: Field::BelongsTo,
     id: Field::Number,
     name: Field::String,
@@ -27,7 +27,7 @@ class ProductDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    :restaurant,
+    # :restaurant,
     :category,
     :id,
     :name,
@@ -36,7 +36,7 @@ class ProductDashboard < Administrate::BaseDashboard
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
-    :restaurant,
+    # :restaurant,
     :category,
     :id,
     :name,
@@ -51,7 +51,7 @@ class ProductDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :restaurant,
+    # :restaurant,
     :category,
     :name,
     :price,
@@ -62,7 +62,7 @@ class ProductDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how products are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(product)
-  #   "Product ##{product.id}"
-  # end
+  def display_resource(product)
+    "Product #{product.name}"
+  end
 end

@@ -5,6 +5,8 @@ Rails.application.routes.draw do
     %i(restaurants categories products).each do |name|
       resources name, only: %i(index show new create edit update destroy)
     end
+
+    root to: 'restaurants#index'
   end
 
   mount_devise_token_auth_for 'User', at: 'auth'
