@@ -33,7 +33,7 @@ class RestaurantRegister extends React.Component {
     const { redirect } = this.state;
     const { errors } = this.props.auth;
     if( errors.length === 0 && redirect) {
-      return <Redirect to={{pathname: '/home', state: {registerSuccess: true  }}} />
+      return <Redirect to={{pathname: '/homeRestaurant', state: {registerSuccess: true  }}} />
     }
 
     return (
