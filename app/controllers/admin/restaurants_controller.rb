@@ -17,9 +17,9 @@ module Admin
       Restaurant.find(params[:id])
     end
 
-    def resource_class
-      Restaurant
-    end
+    # def resource_class
+    #   Restaurant
+    # end
 
     def scoped_resource
       Restaurant

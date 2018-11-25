@@ -6,6 +6,7 @@
 #
 # If you want to add pagination or other controller-level concerns,
 # you're free to overwrite the RESTful controller actions.
+
 module Admin
   class ApplicationController < Administrate::ApplicationController
     include DeviseTokenAuth::Concerns::SetUserByToken
