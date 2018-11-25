@@ -20,12 +20,18 @@ module Admin
       Category.find(params[:id])
     end
 
-    def resource_class
-      Category
-    end
+    # def resource_class
+    #   Category
+    # end
 
     def scoped_resource
       Category
+    end
+
+    def resource_params
+      params.require(Category.model_name.param_key).
+        permit(dashboard.permitted_attributes).
+        transform_values { |v| read_param_value(v) }
     end
     # See https://administrate-prototype.herokuapp.com/customizing_controller_actions
     # for more information
