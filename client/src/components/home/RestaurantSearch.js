@@ -47,33 +47,33 @@ class RestaurantSearch extends React.Component {
       return <Redirect to={{pathname: '/restaurants'}} />
 		}
 		return(
+      <div className="container-search">
       <section id="search-address">
-      <div class="container search-address">
-      <h1 class="hero-heading mb-0 text-primary text-uppercase">Find your restaurants</h1>
-        <div class="row align-items-center py-5">
-          <div class="col-lg-6">
-            <div class="row">
-              <div class="col-lg-10">
-                <p class="lead text-muted mt-4 mb-4">Lorem ipsum dolor sit amet, consectetur. Eiusmod tempor incididunt.</p>
+      <div class="search-address-image">
+      </div>
+      <div class="search-address py-5 ">
+        <div class="container-search text-center">
+          <h1 class="hero-heading mb-0 text-primary text-uppercase">Find your restaurants</h1>
+            <div class="row d-flex justify-content-center">
+              <div class="col-lg-6 ">
+                  <p class="lead text-muted mt-4 mb-4">Be hungry and try FoodRoad.</p>
+                  <form action="#" class="subscription-form">
+                    <div class="form-group">
+                      <PlacesAutocomplete
+                          value={this.state.address}
+                          onChange={this.handleChange}
+                          onSelect={this.handleSelect}
+                        >
+                        {LocationInput}
+                        </PlacesAutocomplete>
+                    </div>
+                  </form>
               </div>
             </div>
-            <form action="#" class="subscription-form">
-              <div class="form-group">
-                <PlacesAutocomplete
-                    value={this.state.address}
-                    onChange={this.handleChange}
-                    onSelect={this.handleSelect}
-                  >
-                  {LocationInput}
-                  </PlacesAutocomplete>
-                  <button type="submit" class="btn btn-primary">Get Started</button>
-              </div>
-            </form>
           </div>
-          <div class="col-lg-6"><img src="" alt="" class=""></img></div>
         </div>
-      </div>
     </section>
+    </div>
 		)
 	}
 }
