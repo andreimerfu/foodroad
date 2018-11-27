@@ -21,10 +21,6 @@ class UserProfile extends React.Component {
     this.props.dispatch(actions.getUserProfile());
   }
 
-  componentWillUpdate() {
-    this.props.dispatch(actions.getUserProfile());
-  }
-
   renderAddresses(addresses) {
     return addresses.map((address, i) => {
       return(
