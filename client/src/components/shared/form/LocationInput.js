@@ -21,8 +21,8 @@ export const LocationInput = ({
           : 'suggestion-item';
         // inline style for demonstration purpose
         const style = suggestion.active
-          ? { backgroundColor: '#fafafa', cursor: 'pointer', margin: '5px' }
-          : { backgroundColor: '#ffffff', cursor: 'pointer', margin: '5px' };
+          ? { backgroundColor: '#ffffff', cursor: 'pointer', margin: '5px' }
+          : { backgroundColor: '#f2f1f2', cursor: 'pointer', margin: '5px' };
         return (
           <div
             {...getSuggestionItemProps(suggestion, {

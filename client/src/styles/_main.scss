@@ -5,6 +5,7 @@
 @import 'home/home.scss';
 @import 'restaurants/restaurants.scss';
 @import 'footer/footer.scss';
+@import 'profile/profile.scss';
 
 
 body {
@@ -20,10 +21,10 @@ p {
     color: #999;
 }
 
-h1,h2 {
+h1,h2,h3,h4,h5,h6 {
 	margin-bottom: 0.5rem;
   font-family: "Poppins", sans-serif;
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1.2;
 }
 
@@ -54,6 +55,11 @@ a:focus {
 
 .form-control{
 	border-radius: 2.3rem;
+}
+
+.form-control-label {
+  font-size: .9rem;
+  color: #6c757d;
 }
 
 .shadow {

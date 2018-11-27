@@ -5,4 +5,4 @@ User.create(email: ENV['ADMIN_MAIL'], password: ENV['ADMIN_PASSWORD'], role: :ad
 admin = User.find_by(role: :admin)
 
 puts 'error' unless admin
-admin.confirm unless admin&.confirmed?
+admin&.confirm unless admin&.confirmed?
