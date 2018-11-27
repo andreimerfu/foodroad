@@ -276,6 +276,24 @@ footer.main-footer {
     footer.main-footer .copyrights .social-link:hover {
       color: #aaa; }
 
+.profile {
+  background-color: #fff;
+  border: none;
+  -webkit-box-shadow: 0 0.125rem 0.8rem rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0.125rem 0.8rem rgba(0, 0, 0, 0.1);
+  border-radius: 1rem; }
+
+.profile-body {
+  padding: 2rem !important; }
+
+.profile-header {
+  padding: 1.5rem 2rem;
+  background-color: #fff;
+  border-bottom: none;
+  -webkit-box-shadow: 0 0.125rem 0.8rem rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0.125rem 0.8rem rgba(0, 0, 0, 0.1);
+  border-radius: calc(1rem - 1px) calc(1rem - 1px) 0 0; }
+
 body {
   font-family: "Raleway", sans-serif;
   background: #fafafa; }
@@ -287,10 +305,10 @@ p {
   line-height: 1.7em;
   color: #999; }
 
-h1, h2 {
+h1, h2, h3, h4, h5, h6 {
   margin-bottom: 0.5rem;
   font-family: "Poppins", sans-serif;
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1.2; }
 
 h1 {
@@ -315,6 +333,10 @@ a:focus {
 
 .form-control {
   border-radius: 2.3rem; }
+
+.form-control-label {
+  font-size: .9rem;
+  color: #6c757d; }
 
 .shadow {
   -webkit-box-shadow: 0 0.125rem 0.8rem rgba(0, 0, 0, 0.1) !important;
