@@ -7,7 +7,7 @@
   "scripts": {
     "build": "cd client && npm install --verbose && npm run build --verbose && cd ..",
     "deploy": "cp -a client/build/. public/",
-    "postinstall": "npm run build && yarn run deploy && echo 'Client built!'"
+    "postinstall": "npm run build --verbose && npm run deploy --verbose && echo 'Client built!'"
   }
 }
 
