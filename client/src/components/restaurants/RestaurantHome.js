@@ -1,5 +1,6 @@
 import React from 'react';
 import { Line, Circle } from 'rc-progress';
+import { connect } from 'react-redux';
 
 class RestaurantHome extends React.Component {
 
@@ -10,9 +11,11 @@ class RestaurantHome extends React.Component {
     };
     this.increase = this.increase.bind(this);
     this.restart = this.restart.bind(this);
+    const uid = localStorage.getItem('uid')
   }
 
   componentDidMount() {
+    debugger;
     this.increase();
   }
 
@@ -36,17 +39,32 @@ class RestaurantHome extends React.Component {
 
   render() {
     return(
-      <div style={{ margin: "auto", width: 300}}>
+      <div style={{ margin: "auto", width: 400, "text-align": "center", "margin-top": "100px"}}>
        <Circle percent={this.state.percent} strokeWidth="4" strokeColor="#428bca" />
-        <div class="input-group">
-        <div class="custom-file">
+        <p>Step 1. Check CUI </p>
+        <button className="btn btn-primary">Check CUI</button>
+          <p>Step 2. Add documents </p>
+          <div class="custom-file">
           <input type="file" class="custom-file-input" id="inputGroupFile04"/>
           <label class="custom-file-label" for="inputGroupFile04">Choose file</label>
         </div>
-        </div>
+       <p>Step 3. Add restaurant info </p>
+       <button className="btn btn-primary">Complete Information</button>
+
+       <p>Step 4. Add restaurant menu </p>
+       <button className="btn btn-primary">Complete Menu</button>
       </div>
     )
   }
 }
 
-export default (RestaurantHome)
+function mapStateToProps(state) {
+  return {
+    restaurant: state.restaurant.data
+    // categories: state.categories.data,
+    // restaurant: state.restaurant.data,
+    // products: state.products.data
+  }
+}
+
+export default connect(mapStateToProps)(RestaurantHome)
