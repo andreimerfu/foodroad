@@ -228,4 +228,29 @@ export const getUserProfile = () => {
   }
 }
 
+export const addProfileAddress = (address, tag) => {
+  const valid_address = {
+    "addresses": [
+      {
+        "address": address,
+        "tag": tag
+      }
+    ]
+  }
+  return dispatch => {
+    return axios.put(`/api/v1/profiles`, valid_address, {
+      headers: {
+        'uid': localStorage.getItem('uid'),
+        'client': localStorage.getItem('client'),
+        'access-token': localStorage.getItem('accessToken'),
+        'expiry': localStorage.getItem('expiry'),
+        'token-type': 'Bearer',
+      }
+    }).then((response) => {
+      console.log("success");
+    }).catch(error => {
+      console.log("error add profile address");
+    })
+  }
+}
 
