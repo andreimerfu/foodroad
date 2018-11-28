@@ -111,10 +111,6 @@
           font-weight: 600;
           color: #20322a; }
 
-.food-search {
-  padding-top: 98px;
-  padding-bottom: 30px; }
-
 .nav-toggle {
   padding: 40px 10px;
   background: #fff;
@@ -138,15 +134,11 @@
 /* ---------------------------------------------------
     SIDEBAR STYLE
 ----------------------------------------------------- */
-.wrapper {
-  display: flex;
-  width: 100%; }
-
 #sidebar {
   width: 250px;
   position: fixed;
   left: 0;
-  height: 100vh;
+  height: calc(100vh-302px);
   z-index: 999;
   background: #7386D5;
   color: #fff;
