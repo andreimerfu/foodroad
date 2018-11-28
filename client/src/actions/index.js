@@ -199,6 +199,16 @@ export const getRestaurantInfo = (id) => {
   }
 }
 
+export const getRestaurantInfoByManager = (manager_id) => {
+  return dispatch => {
+    axios.get(`/api/v1/restaurants/find_by_manager/${manager_id}`).then((response) => {
+      dispatch(getRestaurantInfoSuccess(response.data.data));
+    }).catch(error => {
+      console.log("Error in getRestaurantInfoByManager");
+    })
+  }
+}
+
 export const registerRestaurant = (restaurantData) => {
   return dispatch => {
     return axios.post('/api/v1/restaurants', {...restaurantData})
@@ -253,4 +263,3 @@ export const addProfileAddress = (address, tag) => {
     })
   }
 }
-
