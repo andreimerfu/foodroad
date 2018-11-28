@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_25_092046) do
+ActiveRecord::Schema.define(version: 2018_11_27_132429) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
@@ -83,6 +83,7 @@ ActiveRecord::Schema.define(version: 2018_11_25_092046) do
     t.integer "approval_status", null: false
     t.integer "manager_id", null: false
     t.integer "cui", null: false
+    t.float "progress_value", default: 0.0
     t.index ["name"], name: "trgm_idx_restaurants_name", opclass: :gin_trgm_ops, using: :gin
   end
 

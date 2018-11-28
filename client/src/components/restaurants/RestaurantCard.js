@@ -17,13 +17,14 @@ export function RestaurantCard(props) {
             <p className='card-text-km'>{restaurant.km}</p>
           </div>
         </div>*/}
-        <div className='card'>
+        <div className='restaurant-card'>
           <img className='card-img-top' src={restaurant.image} alt='Card cap'/>
-          <div className='card-body'>
-            <div className='card-title'>{restaurant.name}</div>
-            <p className='card-text-km'>{restaurant.address}</p>
-            <p className='card-text-km'> Livreaza in: {restaurant.delivery_time} minute</p>
-            <p className='card-text-rate'>&#183; <span className='card-daily-rate'>{restaurant.min_order} RON </span> Comanda minima &#183; </p>
+          <div className='restaurant-card-body'>
+            <div className='restaurant-card-title'>{restaurant.name}</div>
+            <p className='restaurant-card-text'>{restaurant.address}</p>
+            <div class="restaurant-card-footer">
+              <p className='card-text-rate'><span className='card-daily-rate'>{restaurant.min_order} RON </span> Comanda minima </p>
+            </div>
           </div>
         </div>
       </Link>

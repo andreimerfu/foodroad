@@ -40,11 +40,14 @@ class RestaurantIndex extends React.Component {
   render(){
     return(
       <section id='restaurant-index'>
-        <div className="col-lg-8 food-search">
-          <input className="form-control form-control-lg form-control-borderless"  onChange={(e) => {this.getRestaurantsBySearch(e) }} placeholder="Search restaurants, food or other delicious things" />
-        </div>
-        <div className='row restaurant-row'>
-            {this.renderRentals()}
+        <div class="justify-content-center py-5">
+          <div className="col-lg-6 food-search py-5">
+            <input className="form-control form-control-lg form-control-borderless"  onChange={(e) => {this.getRestaurantsBySearch(e) }} placeholder="Search restaurants, food or other delicious things" />
+          </div> 
+          <div className='row card-container'>
+                {this.renderRentals()}
+          </div>
+          
         </div>
       </section>
     )

@@ -61,29 +61,26 @@ class RestaurantMenu extends React.Component {
     if (categories.length > 0 && Object.keys(restaurant).length > 0) {
       return(
         <section id='restaurant-menu'>
-        <div className="wrapper">
+        
           <nav id="sidebar">
               <div className="sidebar-header">
                   {this.renderRestaurantName(restaurant)}
               </div>
-
-              <ul className="list-unstyled components">
+              <ul className="components">
                   {this.renderCategories()}
               </ul>
-
               <ul className="list-unstyled CTAs">
                   <li>
-                      <a href="" className="download">Recenzii</a>
+                      <a href="" className="reviews">Recenzii</a>
                   </li>
                   <li>
-
                       <a class="article" data-toggle="modal" data-target="#exampleModalCenter">
                         Info
                       </a>
                   </li>
               </ul>
           </nav>
-
+          <div className="wrapper">
           <div id="content">
             { this.renderCategoriesWithProducts() }
           </div>

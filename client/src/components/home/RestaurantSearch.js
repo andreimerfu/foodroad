@@ -47,14 +47,11 @@ class RestaurantSearch extends React.Component {
       return <Redirect to={{pathname: '/restaurants'}} />
 		}
 		return(
-      <div className="container-search">
       <section id="search-address">
-      <div class="search-address-image">
-      </div>
-      <div class="search-address py-5 ">
-        <div class="container-search text-center">
-          <h1 class="hero-heading mb-0 text-primary text-uppercase">Find your restaurants</h1>
-            <div class="row d-flex justify-content-center">
+        <div class="search-address-image">
+        </div>
+        <div class="wrap py-5 text-center">
+            <div class="row d-flex justify-content-center py-5">
               <div class="col-lg-6 ">
                   <p class="lead text-muted mt-4 mb-4">Be hungry and try FoodRoad.</p>
                   <form action="#" class="subscription-form">
@@ -71,9 +68,7 @@ class RestaurantSearch extends React.Component {
               </div>
             </div>
           </div>
-        </div>
-    </section>
-    </div>
+      </section>
 		)
 	}
 }
