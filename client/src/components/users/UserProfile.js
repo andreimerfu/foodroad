@@ -11,9 +11,13 @@ class UserProfile extends React.Component {
     super();
     this.handleAddressChange = this.handleAddressChange.bind(this);
     this.handleTagChange = this.handleTagChange.bind(this);
+    this.handleNewPassword = this.handleNewPassword.bind(this);
+    this.handleNewPasswordConfirmation = this.handleNewPasswordConfirmation.bind(this);
      this.setState({
       address: "",
-      tag: ""
+      tag: "",
+      password: "",
+      confirmation: ""
     });
   }
 
@@ -42,6 +46,28 @@ class UserProfile extends React.Component {
       this.setState({
         tag: e.target.value
       });
+    }
+  }
+
+  handleNewPassword(e) {
+    if (e) {
+      this.setState({
+        password: e.target.value
+      });
+    }
+  }
+
+  handleNewPasswordConfirmation(e) {
+    if (e) {
+      this.setState({
+        confirmation: e.target.value
+      });
+    }
+  }
+
+  changePassword(e) {
+    if (e && this.state.password === this.state.confirmation) {
+      this.props.dispatch(actions.changePassword(this.state.password, this.state.confirmation));
     }
   }
 
@@ -128,18 +154,18 @@ class UserProfile extends React.Component {
                       <h6 class="text-uppercase mb-0">Change password</h6>
                     </div>
                     <div class="profile-body">
-                      <p>Lorem ipsum dolor sit amet consectetur.</p>
+                      <p>Change your password.</p>
                        <form class="form-inline">
                         <div class="form-group">
-                          <label class="form-control-label text-uppercase mr-3">Password</label>
-                          <input id="inlineFormInput" type="password" placeholder="" class="mr-3 form-control"></input>
+                          <label class="form-control-label text-uppercase mr-3">New password</label>
+                          <input id="inlineFormInput" type="password" placeholder="" class="mr-3 form-control" onChange={this.handleNewPassword}></input>
                         </div>
                         <div class="form-group">
-                          <label class="form-control-label text-uppercase mr-3">New Password</label><label for="inlineFormInputGroup" class="sr-only">Username</label>
-                          <input id="inlineFormInputGroup" type="password" placeholder="" class="mr-3 form-control"></input>
+                          <label class="form-control-label text-uppercase mr-3">New Password confirmation</label><label for="inlineFormInputGroup" class="sr-only">Username</label>
+                          <input id="inlineFormInputGroup" type="password" placeholder="" class="mr-3 form-control" onChange={this.handleNewPasswordConfirmation}></input>
                         </div>
                         <div class="form-group">
-                          <button class="btn btn-primary" >Submit</button>
+                          <button class="btn btn-primary" onClick={this.changePassword.bind(this)} >Submit</button>
                         </div>
                       </form>
                     </div>
@@ -159,7 +185,8 @@ class UserProfile extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    userProfile: state.userProfile.data
+    userProfile: state.userProfile.data,
+    passwordChanged: state.auth.passwordChanged
   }
 }
 

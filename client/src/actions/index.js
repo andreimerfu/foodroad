@@ -10,7 +10,8 @@ import { LOGIN_SUCCESS,
          FETCH_RESTAURANT_BY_ID_INIT,
          FETCH_RESTAURANT_PRODUCTS_SUCCESS,
          GET_RESTAURANT_INFO_SUCCESS,
-         FETCH_USER_PROFILE_SUCCESS
+         FETCH_USER_PROFILE_SUCCESS,
+         PASSWORD_CHANGED_SUCCESS
        } from './types';
 
 //_________________________________________________________________
@@ -39,6 +40,12 @@ const registerFailure = (errors) => {
   return {
     type: REGISTER_FAILURE,
     errors
+  }
+}
+
+const passwordChangedSuccess = () => {
+  return {
+    type: PASSWORD_CHANGED_SUCCESS
   }
 }
 
@@ -99,6 +106,28 @@ export const logout = () => {
       dispatch(logoutSuccess());
     })
     .catch(error => {
+      console.log(error);
+    })
+  }
+}
+
+export const changePassword = (password, password_confirmation) => {
+  return dispatch => {
+    return axios.put('/auth/password', {
+      password: password,
+      password_confirmation: password_confirmation
+    },
+    {
+      headers: {
+        'uid': localStorage.getItem('uid'),
+        'client': localStorage.getItem('client'),
+        'access-token': localStorage.getItem('accessToken'),
+        'expiry': localStorage.getItem('expiry'),
+        'Content-Type': 'application/json',
+      }
+    }).then(res => {
+      dispatch(passwordChangedSuccess());
+    }).catch(error => {
       console.log(error);
     })
   }

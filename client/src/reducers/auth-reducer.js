@@ -1,7 +1,8 @@
 import { LOGIN_SUCCESS,
          LOGIN_FAILURE,
          REGISTER_FAILURE,
-         LOGOUT
+         LOGOUT,
+         PASSWORD_CHANGED_SUCCESS
         } from '../actions/types';
 
 const INITIAL_STATE = {
@@ -10,9 +11,10 @@ const INITIAL_STATE = {
   accessToken: null,
   uid: null,
   expiry: null,
-  errors: []
-
+  errors: [],
+  changed_password: false
 }
+
 export const authReducer = (state = INITIAL_STATE, action) => {
   switch(action.type) {
     case LOGIN_SUCCESS:
@@ -30,6 +32,8 @@ export const authReducer = (state = INITIAL_STATE, action) => {
       return Object.assign({}, state, {errors: action.errors});
     case LOGOUT:
       return Object.assign({}, state, {isAuth: false});
+    case PASSWORD_CHANGED_SUCCESS:
+      return Object.assign({}, state, {changed_password: true});
     default:
       return state;
   }
