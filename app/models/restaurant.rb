@@ -11,7 +11,10 @@ class Restaurant < ApplicationRecord
   validates_numericality_of :lat, :lng,
                             greater_than_or_equal_to: 0, allow_nil: true
   validates :cui, presence: true, length: 7..8
-  validates :progress_value, presence: true, greater_than_or_equal_to: 0.0, less_than_or_equal_to: 100.0
+  validates :progress_value, numericality: {
+    greater_than_or_equal_to: 0,
+    less_than_or_equal_to: 100
+  }
 
   enum approval_status: [:rejected, :in_progress, :approved]
   after_initialize :set_default_status, if: :new_record?

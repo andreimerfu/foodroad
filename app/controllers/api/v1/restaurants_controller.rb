@@ -51,6 +51,15 @@ class Api::V1::RestaurantsController < ApplicationController
     end
   end
 
+  def find_by_manager
+    restaurant = Restaurant.find_by(manager_id: params[:manager_id])
+    if restaurant
+      render jsonapi: restaurant, status: :ok
+    else
+      render jsonapi_errors: restaurant.errors, status: :unprocessable_entity
+    end
+  end
+
   private
   def restaurants_params
     params.fetch(:restaurant, {}).permit(Restaurant::RESTAURANT_PARAMS)
