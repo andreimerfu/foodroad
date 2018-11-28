@@ -138,26 +138,20 @@
   width: 250px;
   position: fixed;
   left: 0;
-  height: calc(100vh-302px);
+  height: 100vh;
   z-index: 999;
-  background: #7386D5;
+  background: #305182;
   color: #fff;
   transition: all 0.3s; }
 
-#sidebar.active {
-  margin-left: -250px; }
-
 #sidebar .sidebar-header {
-  padding: 20px;
-  background: #6d7fcc; }
+  font-weight: 300 !important;
+  padding: 20px; }
 
 #sidebar ul.components {
-  padding: 20px 0;
+  padding: 10px;
+  list-style: none;
   border-bottom: 1px solid #47748b; }
-
-#sidebar ul p {
-  color: #fff;
-  padding: 10px; }
 
 #sidebar ul li a {
   padding: 10px;
@@ -165,21 +159,7 @@
   display: block; }
 
 #sidebar ul li a:hover {
-  color: #7386D5;
-  background: #fff; }
-
-#sidebar ul li.active > a,
-a[aria-expanded="true"] {
-  color: #fff;
-  background: #6d7fcc; }
-
-a[data-toggle="collapse"] {
-  position: relative; }
-
-ul ul a {
-  font-size: 0.9em !important;
-  padding-left: 30px !important;
-  background: #6d7fcc; }
+  background: #6a90c8; }
 
 ul.CTAs {
   padding: 20px; }
@@ -187,17 +167,16 @@ ul.CTAs {
 ul.CTAs a {
   text-align: center;
   font-size: 0.9em !important;
-  display: block;
   border-radius: 5px;
   margin-bottom: 5px; }
 
-a.download {
+a.reviews {
   background: #fff;
   color: #7386D5; }
 
 a.article,
 a.article:hover {
-  background: #6d7fcc !important;
+  background: #6a90c8 !important;
   color: #fff !important; }
 
 /* ---------------------------------------------------
@@ -289,7 +268,7 @@ p {
 h1, h2, h3, h4, h5, h6 {
   margin-bottom: 0.5rem;
   font-family: "Poppins", sans-serif;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 1.2; }
 
 h1 {
