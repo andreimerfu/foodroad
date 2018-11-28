@@ -32,9 +32,9 @@
     "build-css": "node-sass-chokidar ./src -o ./src",
     "watch-css": "npm run build-css && node-sass-chokidar ./src -o ./src --watch --recursive",
     "start-js": "react-scripts start",
-    "start": "npm -p watch-css & npm -p start-js",
+    "start": "npm run -p watch-css & npm run -p start-js",
     "build-js": "react-scripts build",
-    "build": "npm build-css & npm build-js",
+    "build": "npm run build-css & npm run build-js",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
