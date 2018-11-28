@@ -2,6 +2,8 @@ import React from 'react';
 import { Line, Circle } from 'rc-progress';
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
+import CircularProgressbar from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
 
 class RestaurantHome extends React.Component {
 
@@ -11,7 +13,7 @@ class RestaurantHome extends React.Component {
       percent: 0,
       color: "#428bca"
     };
-    this.increase = this.increase.bind(this);
+    // this.increase = this.increase.bind(this);
   }
 
   getRestaurantInfo(manager_id) {
@@ -24,30 +26,34 @@ class RestaurantHome extends React.Component {
     );
   }
 
-  componentDidMount() {
-    this.increase();
-  }
+  // componentDidMount() {
+  //   this.increase();
+  // }
 
-  increase() {
-    const percent = this.state.percent + 1;
-    //const percent = this.props.restaurant.attributes.progress_value;
-    if (percent >= 100) {
-      if (percent === 100) {
-        this.setState({color: "#4caf50"})
-      }
-      clearTimeout(this.tm);
-      return;
-    }
-    this.setState({ percent });
-    this.tm = setTimeout(this.increase, 10);
-  }
+  // increase() {
+  //   const percent = 0 + 1;
+  //   //const percent = this.props.restaurant.attributes.progress_value;
+  //   if (percent >= this.state.percent) {
+  //     if (percent === 100) {
+  //       this.setState({color: "#4caf50"})
+  //     }
+  //     clearTimeout(this.tm);
+  //     return;
+  //   }
+  //   this.setState({ percent });
+  //   this.tm = setTimeout(this.increase, 10);
+  // }
 
   render() {
     const restaurant = this.props.restaurant.attributes;
     if (restaurant && Object.keys(restaurant).length > 0) {
       return(
         <div style={{ margin: "auto", width: 400, "margin-top": "100px"}}>
-         <Circle percent={this.state.percent} strokeWidth="4" strokeColor={this.state.color} />
+         <CircularProgressbar
+            percentage={restaurant.progress_value}
+            text={(restaurant.progress_value) + " %"}
+            initialAnimation="true"
+          />
           <p>Step 1. Check CUI </p>
           <button className="btn btn-primary">Check CUI</button>
             <p>Step 2. Add documents </p>
@@ -60,7 +66,6 @@ class RestaurantHome extends React.Component {
 
          <p>Step 4. Add restaurant menu </p>
          <button className="btn btn-primary">Complete Menu</button>
-         <p> Progress value: {restaurant.progress_value} </p>
         </div>
       )
     } else {
