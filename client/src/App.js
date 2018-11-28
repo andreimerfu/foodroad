@@ -28,6 +28,10 @@ class App extends Component {
     this.checkAuthState();
   }
 
+  componentDidMount() {
+    document.title = "FoodRoad";
+  }
+
   checkAuthState() {
     store.dispatch(actions.checkAuthState());
   }
