@@ -13,7 +13,6 @@ class RestaurantHome extends React.Component {
       percent: 0,
       color: "#428bca"
     };
-    // this.increase = this.increase.bind(this);
   }
 
   getRestaurantInfo(manager_id) {
@@ -26,24 +25,6 @@ class RestaurantHome extends React.Component {
     );
   }
 
-  // componentDidMount() {
-  //   this.increase();
-  // }
-
-  // increase() {
-  //   const percent = 0 + 1;
-  //   //const percent = this.props.restaurant.attributes.progress_value;
-  //   if (percent >= this.state.percent) {
-  //     if (percent === 100) {
-  //       this.setState({color: "#4caf50"})
-  //     }
-  //     clearTimeout(this.tm);
-  //     return;
-  //   }
-  //   this.setState({ percent });
-  //   this.tm = setTimeout(this.increase, 10);
-  // }
-
   render() {
     const restaurant = this.props.restaurant.attributes;
     if (restaurant && Object.keys(restaurant).length > 0) {
@@ -54,8 +35,11 @@ class RestaurantHome extends React.Component {
             text={(restaurant.progress_value) + " %"}
             initialAnimation="true"
           />
-          <p>Step 1. Check CUI </p>
-          <button className="btn btn-primary">Check CUI</button>
+          <div className="d-flex justify-content-between">
+            <p>Step 1. Check CUI </p>
+            <span class="badge badge-success float-right">Verified</span>
+          </div>
+          <button className="btn btn-primary">Check CUI </button>
             <p>Step 2. Add documents </p>
             <div class="custom-file">
             <input type="file" class="custom-file-input" id="inputGroupFile04"/>

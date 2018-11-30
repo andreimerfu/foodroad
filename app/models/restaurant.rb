@@ -33,6 +33,10 @@ class Restaurant < ApplicationRecord
     end
   end
 
+  def cui_validation
+    Restaurant::Check_API.new(self).call
+  end
+
   def set_default_status
     self.approval_status ||= :in_progress
   end

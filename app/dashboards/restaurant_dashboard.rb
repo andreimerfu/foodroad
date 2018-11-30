@@ -30,6 +30,8 @@ class RestaurantDashboard < Administrate::BaseDashboard
     approval_status: Field::String.with_options(searchable: false),
     manager_id: Field::Number,
     cui: Field::Number,
+    progress_value: Field::Number,
+    validation_steps: Field::Text,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -68,6 +70,8 @@ class RestaurantDashboard < Administrate::BaseDashboard
     :approval_status,
     :manager_id,
     :cui,
+    :progress_value,
+    :validation_steps,
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -91,6 +95,8 @@ class RestaurantDashboard < Administrate::BaseDashboard
     :approval_status,
     :manager_id,
     :cui,
+    :progress_value,
+    :validation_steps,
   ].freeze
 
   # permitted for has_many_attached
