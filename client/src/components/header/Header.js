@@ -18,6 +18,7 @@ class Header extends React.Component  {
     if (isAuth) {
       return (
         <div className="btn-group">
+          <Link to='/cart' className="btn btn-danger"><i class="fas fa-cart-plus"></i></Link>
           <button type="button" className="btn btn-info dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i className="far fa-user-circle"></i>
             <span className="sr-only">Toggle Dropdown</span>
