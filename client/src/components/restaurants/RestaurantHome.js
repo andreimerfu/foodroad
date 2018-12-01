@@ -56,8 +56,8 @@ class RestaurantHome extends React.Component {
           />
           <div className="d-flex justify-content-between">
             <p>Step 1. Check CUI </p>
-            { this.renderVerifiedStatus(restaurant.validation_steps['cui'])}
           </div>
+          { this.renderVerifiedStatus(restaurant.validation_steps['cui'])}
           <button className="btn btn-primary" onClick={this.checkCuiAction}>Check CUI </button>
             <p>Step 2. Add documents </p>
             { this.renderVerifiedStatus(restaurant.validation_steps['documents'])}

@@ -37,6 +37,14 @@ class Restaurant < ApplicationRecord
     Restaurant::Check_API.new(self).call
   end
 
+  def progress_increment
+    self.progress_value += 100 / self.validation_steps.length
+  end
+
+  def progress_decrement
+    self.progress_value -= 100 / self.validation_steps.length
+  end
+
   def set_default_status
     self.approval_status ||= :in_progress
   end
