@@ -292,3 +292,21 @@ export const addProfileAddress = (address, tag) => {
     })
   }
 }
+
+export const checkCuiAction = (restaurant_id) => {
+  return dispatch => {
+    return axios.put(`/api/v1/restaurants/${restaurant_id}`, { check_cui: true },  {
+      headers: {
+        'uid': localStorage.getItem('uid'),
+        'client': localStorage.getItem('client'),
+        'access-token': localStorage.getItem('accessToken'),
+        'expiry': localStorage.getItem('expiry'),
+        'token-type': 'Bearer',
+      }
+    }).then((response) => {
+      console.log(response);
+    }).catch(error => {
+      console.log("error checkCuiAction");
+    })
+  }
+}

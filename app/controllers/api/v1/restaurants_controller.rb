@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Api::V1::RestaurantsController < ApplicationController
+  before_action -> { is_authenticated_as(:restaurant || :admin) }, only: [:update]
+
   def index
     if params[:search].present?
       restaurants = Restaurant.approved_filter
@@ -42,6 +44,10 @@ class Api::V1::RestaurantsController < ApplicationController
 
     if params[:documents].present?
       restaurant.documents.attach(params[:documents])
+    end
+
+    if params[:check_cui].present?
+      restaurant.cui_validation if restaurant
     end
 
     if restaurant.update(restaurants_params)

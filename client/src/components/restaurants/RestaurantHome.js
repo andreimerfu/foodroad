@@ -13,11 +13,29 @@ class RestaurantHome extends React.Component {
       percent: 0,
       color: "#428bca"
     };
-    // this.increase = this.increase.bind(this);
+    this.checkCuiAction = this.checkCuiAction.bind(this);
   }
 
   getRestaurantInfo(manager_id) {
     this.props.dispatch(actions.getRestaurantInfoByManager(manager_id));
+  }
+
+  checkCuiAction(e) {
+    if (e) {
+      this.props.dispatch(actions.checkCuiAction(this.props.restaurant.id));
+    }
+  }
+
+  renderVerifiedStatus(status) {
+    if (status == true) {
+      return (
+        <span class="badge badge-success float-right">Verified</span>
+      )
+    } else {
+      return (
+        <span class="badge badge-warning float-right">Pending</span>
+      )
+    }
   }
 
   componentWillMount() {
@@ -25,24 +43,6 @@ class RestaurantHome extends React.Component {
       data => this.getRestaurantInfo(this.props.profile.id)
     );
   }
-
-  // componentDidMount() {
-  //   this.increase();
-  // }
-
-  // increase() {
-  //   const percent = 0 + 1;
-  //   //const percent = this.props.restaurant.attributes.progress_value;
-  //   if (percent >= this.state.percent) {
-  //     if (percent === 100) {
-  //       this.setState({color: "#4caf50"})
-  //     }
-  //     clearTimeout(this.tm);
-  //     return;
-  //   }
-  //   this.setState({ percent });
-  //   this.tm = setTimeout(this.increase, 10);
-  // }
 
   render() {
     const restaurant = this.props.restaurant.attributes;
@@ -54,17 +54,24 @@ class RestaurantHome extends React.Component {
             text={(restaurant.progress_value) + " %"}
             initialAnimation="true"
           />
-          <p>Step 1. Check CUI </p>
-          <button className="btn btn-primary">Check CUI</button>
+          <div className="d-flex justify-content-between">
+            <p>Step 1. Check CUI </p>
+          </div>
+          { this.renderVerifiedStatus(restaurant.validation_steps['cui'])}
+          <button className="btn btn-primary" onClick={this.checkCuiAction}>Check CUI </button>
             <p>Step 2. Add documents </p>
+            { this.renderVerifiedStatus(restaurant.validation_steps['documents'])}
             <div class="custom-file">
             <input type="file" class="custom-file-input" id="inputGroupFile04"/>
             <label class="custom-file-label" for="inputGroupFile04">Choose file</label>
           </div>
          <p>Step 3. Add restaurant info </p>
+         { this.renderVerifiedStatus(restaurant.validation_steps['informations'])}
          <button className="btn btn-primary">Complete Information</button>
 
          <p>Step 4. Add restaurant menu </p>
+         { this.renderVerifiedStatus(restaurant.validation_steps['menu'])}
+
          <button className="btn btn-primary">Complete Menu</button>
         </div>
       )
