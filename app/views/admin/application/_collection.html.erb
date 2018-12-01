@@ -18,9 +18,6 @@ to display a collection of resources in an HTML table.
 [1]: http://www.rubydoc.info/gems/administrate/Administrate/Page/Collection
 %>
 
-<%= button_to('Destroy', admin_session_path(current_user.id),
-          method: "delete", data: { confirm: 'Are you sure?', disable_with: 'loading...' }) %>
-
 <table aria-labelledby="<%= table_title %>">
   <thead>
     <tr>
