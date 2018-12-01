@@ -13,10 +13,29 @@ class RestaurantHome extends React.Component {
       percent: 0,
       color: "#428bca"
     };
+    this.checkCuiAction = this.checkCuiAction.bind(this);
   }
 
   getRestaurantInfo(manager_id) {
     this.props.dispatch(actions.getRestaurantInfoByManager(manager_id));
+  }
+
+  checkCuiAction(e) {
+    if (e) {
+      this.props.dispatch(actions.checkCuiAction(this.props.restaurant.id));
+    }
+  }
+
+  renderVerifiedStatus(status) {
+    if (status == true) {
+      return (
+        <span class="badge badge-success float-right">Verified</span>
+      )
+    } else {
+      return (
+        <span class="badge badge-warning float-right">Pending</span>
+      )
+    }
   }
 
   componentWillMount() {
@@ -37,18 +56,22 @@ class RestaurantHome extends React.Component {
           />
           <div className="d-flex justify-content-between">
             <p>Step 1. Check CUI </p>
-            <span class="badge badge-success float-right">Verified</span>
+            { this.renderVerifiedStatus(restaurant.validation_steps['cui'])}
           </div>
-          <button className="btn btn-primary">Check CUI </button>
+          <button className="btn btn-primary" onClick={this.checkCuiAction}>Check CUI </button>
             <p>Step 2. Add documents </p>
+            { this.renderVerifiedStatus(restaurant.validation_steps['documents'])}
             <div class="custom-file">
             <input type="file" class="custom-file-input" id="inputGroupFile04"/>
             <label class="custom-file-label" for="inputGroupFile04">Choose file</label>
           </div>
          <p>Step 3. Add restaurant info </p>
+         { this.renderVerifiedStatus(restaurant.validation_steps['informations'])}
          <button className="btn btn-primary">Complete Information</button>
 
          <p>Step 4. Add restaurant menu </p>
+         { this.renderVerifiedStatus(restaurant.validation_steps['menu'])}
+
          <button className="btn btn-primary">Complete Menu</button>
         </div>
       )
