@@ -49,8 +49,7 @@ class Header extends React.Component  {
             <span className='navbar-toggler-icon'></span>
           </button>
           <form className="form-inline">
-                    <Link to='/cart' className="btn btn-danger"><i class="fas fa-cart-plus"></i></Link>
-
+            <Link to='/cart' className="btn btn-danger"><i style={{"margin-right": "5px"}}class="fas fa-cart-plus"></i>{this.props.cart.length}</Link>
             { this.renderAuthButtons() }
           </form>
         </div>
@@ -61,7 +60,8 @@ class Header extends React.Component  {
 
 function mapStateToProps(state) {
   return {
-    auth: state.auth
+    auth: state.auth,
+    cart: state.cart
   }
 }
 
