@@ -5,8 +5,12 @@ import {
   UPDATE_QUANTITY,
   SYNC_QUANTITY
 } from '../actions/types';
+import StateLoader from "./StateLoader"
 
 export const cartReducer = (state = [], action) => {
+  const stateLoader = new StateLoader();
+  state = stateLoader.loadState().cart;
+
   switch(action.type) {
     case "ADD_TO_CART": {
       return [

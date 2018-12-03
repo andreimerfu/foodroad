@@ -9,6 +9,9 @@ import { restaurantReducer, restaurantCategoriesReducer, productsReducer, restau
 import { userProfileReducer } from './user-reducer';
 import { cartReducer } from './cart-reducer';
 
+import StateLoader from "./StateLoader"
+
+
 export const init = () => {
   const reducer = combineReducers({
     form: formReducer,
@@ -21,9 +24,16 @@ export const init = () => {
     cart: cartReducer
   });
 
+  const stateLoader = new StateLoader();
+
   const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-  const store = createStore(reducer, composeEnhancers(applyMiddleware(thunk)));
-  persistStore(store);
+  //const store = createStore(reducer, composeEnhancers(applyMiddleware(thunk)));
+
+  const store = createStore(reducer, stateLoader, composeEnhancers(applyMiddleware(thunk)));
+
+  store.subscribe(() => {
+    stateLoader.saveState(store.getState());
+  });
   return store;
 }
