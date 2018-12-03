@@ -8,11 +8,13 @@ class Item extends React.Component {
     super(props);
   }
 
-  _addToCart = (price, productName, quantity) => {
+  _addToCart = (price, productName, description, quantity, restaurant) => {
     const itemDetails = {
       item: productName,
       quantity: quantity,
-      price: price
+      description: description,
+      price: price,
+      restaurant: restaurant
     }
 
     this.setState({
@@ -39,7 +41,7 @@ class Item extends React.Component {
           <p>{this.props.product.price} LEI</p>
         </div>
         <div className="col md-2">
-          <button onClick={() => {this._addToCart(this.props.product.price, this.props.product.name, 1)}} className="btn btn-primary">Buy</button>
+          <button onClick={() => {this._addToCart(this.props.product.price, this.props.product.name, this.props.product.description, 1, this.props.product.restaurant.id)}} className="btn btn-primary">Buy</button>
         </div>
       </div>
     )

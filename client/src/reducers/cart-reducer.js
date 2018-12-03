@@ -10,8 +10,15 @@ import StateLoader from "./StateLoader"
 export const cartReducer = (state = [], action) => {
   const stateLoader = new StateLoader();
   const serialState = stateLoader.loadState().cart;
+
   if (serialState) {
     state = serialState;
+  }
+
+  if (state.length > 0 && action.payload && action.payload.restaurant) {
+    if (state[0].restaurant !== action.payload.restaurant) {
+      state = []
+    }
   }
 
   switch(action.type) {
