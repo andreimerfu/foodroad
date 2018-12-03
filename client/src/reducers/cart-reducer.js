@@ -9,7 +9,10 @@ import StateLoader from "./StateLoader"
 
 export const cartReducer = (state = [], action) => {
   const stateLoader = new StateLoader();
-  state = stateLoader.loadState().cart;
+  const serialState = stateLoader.loadState().cart;
+  if (serialState) {
+    state = serialState;
+  }
 
   switch(action.type) {
     case "ADD_TO_CART": {
