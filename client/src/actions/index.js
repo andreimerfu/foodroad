@@ -11,7 +11,12 @@ import { LOGIN_SUCCESS,
          FETCH_RESTAURANT_PRODUCTS_SUCCESS,
          GET_RESTAURANT_INFO_SUCCESS,
          FETCH_USER_PROFILE_SUCCESS,
-         PASSWORD_CHANGED_SUCCESS
+         PASSWORD_CHANGED_SUCCESS,
+         ADD_TO_CART,
+         UPDATE_CART,
+         REMOVE_ITEM,
+         UPDATE_QUANTITY,
+         SYNC_QUANTITY
        } from './types';
 
 //_________________________________________________________________
@@ -308,5 +313,44 @@ export const checkCuiAction = (restaurant_id) => {
     }).catch(error => {
       console.log("error checkCuiAction");
     })
+  }
+}
+
+//===============================================
+//===========Shopping Cart actions===============
+//===============================================
+
+export function addToCart(payload) {
+  return {
+    type: ADD_TO_CART,
+    payload: payload
+  }
+}
+
+export function updateCart(payload) {
+  return {
+    type: UPDATE_CART,
+    payload: payload
+  }
+}
+
+export function removeItem(payload) {
+  return {
+    type: REMOVE_ITEM,
+    payload: payload
+  }
+}
+
+export function updateQuantity(payload) {
+  return {
+    type: UPDATE_QUANTITY,
+    payload: payload
+  }
+}
+
+export function syncQuantity(payload) {
+  return {
+    type: SYNC_QUANTITY,
+    payload: payload
   }
 }
