@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_30_113937) do
+ActiveRecord::Schema.define(version: 2018_12_08_105202) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
@@ -42,6 +42,21 @@ ActiveRecord::Schema.define(version: 2018_11_30_113937) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "trgm_idx_categories_name", opclass: :gin_trgm_ops, using: :gin
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.bigint "profile_id"
+    t.string "address"
+    t.float "total"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["profile_id"], name: "index_orders_on_profile_id"
+  end
+
+  create_table "orders_products", id: false, force: :cascade do |t|
+    t.bigint "order_id", null: false
+    t.bigint "product_id", null: false
+    t.index ["order_id", "product_id"], name: "index_orders_products_on_order_id_and_product_id"
   end
 
   create_table "products", force: :cascade do |t|
