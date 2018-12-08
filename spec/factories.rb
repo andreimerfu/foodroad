@@ -2,7 +2,8 @@
 
 FactoryBot.define do
   factory :order do
-    
+    association :product
+    association :profile
   end
   factory :profile do
     addresses { [] }
