@@ -24,7 +24,7 @@ class Header extends React.Component  {
           </button>
           <div className="dropdown-menu dropdown-menu-right">
             <Link to="/profile" className="dropdown-item"> Profile </Link>
-            <a className="dropdown-item" href="/">Istoric comenzi</a>
+            <Link to="/orders" className="dropdown-item">Istoric comenzi</Link>
             <div className="dropdown-divider"></div>
             <a className='dropdown-item' onClick={this.handleLogout} > Logout </a>
           </div>

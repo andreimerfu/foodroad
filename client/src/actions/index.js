@@ -16,7 +16,8 @@ import { LOGIN_SUCCESS,
          UPDATE_CART,
          REMOVE_ITEM,
          UPDATE_QUANTITY,
-         SYNC_QUANTITY
+         SYNC_QUANTITY,
+         HISTORY_ORDERS
        } from './types';
 
 //_________________________________________________________________
@@ -352,5 +353,33 @@ export function syncQuantity(payload) {
   return {
     type: SYNC_QUANTITY,
     payload: payload
+  }
+}
+
+//===============================================
+//===============Orders actions==================
+//===============================================
+
+export const fetchOrders = () => {
+  return dispatch => {
+    return axios.get(`/api/v1/profiles/orders`, {
+       headers: {
+        'uid': localStorage.getItem('uid'),
+        'client': localStorage.getItem('client'),
+        'access-token': localStorage.getItem('accessToken'),
+        'expiry': localStorage.getItem('expiry'),
+      }
+    }).then((response) => {
+      dispatch(fetchHistoryOrdersSuccess(response.data.data));
+    }).catch(error => {
+      console.log("Error in fetchOrders");
+    })
+  }
+}
+
+const fetchHistoryOrdersSuccess = (orders) => {
+  return {
+    type: HISTORY_ORDERS,
+    orders
   }
 }
