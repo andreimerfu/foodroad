@@ -17,6 +17,7 @@ import RestaurantHome from './components/restaurants/RestaurantHome';
 import UserProfile from './components/users/UserProfile';
 import Cart from './components/cart/Cart';
 import OrdersHistory from './components/users/OrdersHistory';
+import Checkout from './components/cart/Checkout';
 
 import './App.css';
 import * as actions from './actions';
@@ -60,6 +61,7 @@ class App extends Component {
                   <Route exact path='/homeRestaurant' component={requireRestaurantLogin(RestaurantHome)}/>
                   <Route exact path='/cart' component={Cart}/>
                   <Route exact path='/orders' component={OrdersHistory}/>
+                  <Route exact path='/checkout' component={Checkout}/>
                 </div>
               <Footer />
             </div>

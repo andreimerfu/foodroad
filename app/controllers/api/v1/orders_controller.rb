@@ -5,7 +5,14 @@ class Api::V1::OrdersController < ApplicationController
   before_action -> { is_authenticated_as(:restaurant) }, only: [:update]
 
   def create
-    order = Order.new(orders_params)
+    products = Product.find(params[:products].pluck(:id))
+
+    order = Order.new(total: params[:total],
+      payment_type: params[:payment_type],
+      address: params[:address],
+      observations: params[:observations],
+      products: products,
+      profile: current_user.profile )
 
     if order.save
       render jsonapi: order, status: :created
@@ -26,6 +33,6 @@ class Api::V1::OrdersController < ApplicationController
 
   private
   def orders_params
-    params.permit(:total, :address, :products)
+    params.permit(:total, :address, :payment_type)
   end
 end

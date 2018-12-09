@@ -1,4 +1,6 @@
-import { HISTORY_ORDERS } from '../actions/types';
+import { HISTORY_ORDERS ,
+         CHECKOUT_ORDER_SUCCESS
+       } from '../actions/types';
 
 const INITIAL_STATE = {
   orders: {

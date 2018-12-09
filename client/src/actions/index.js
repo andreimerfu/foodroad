@@ -1,5 +1,6 @@
 import axios from 'axios';
 import * as moment from 'moment';
+import StateLoader from "../reducers/StateLoader"
 
 import { LOGIN_SUCCESS,
          LOGIN_FAILURE,
@@ -17,7 +18,8 @@ import { LOGIN_SUCCESS,
          REMOVE_ITEM,
          UPDATE_QUANTITY,
          SYNC_QUANTITY,
-         HISTORY_ORDERS
+         HISTORY_ORDERS,
+         CHECKOUT_ORDER_SUCCESS
        } from './types';
 
 //_________________________________________________________________
@@ -381,5 +383,33 @@ const fetchHistoryOrdersSuccess = (orders) => {
   return {
     type: HISTORY_ORDERS,
     orders
+  }
+}
+
+const checkoutOrderSuccess = () => {
+  return {
+    type: CHECKOUT_ORDER_SUCCESS,
+  }
+}
+
+export const checkoutOrder = (cartDetails) => {
+  return dispatch => {
+    return axios.post(`/api/v1/orders`, cartDetails, {
+      headers: {
+        'uid': localStorage.getItem('uid'),
+        'client': localStorage.getItem('client'),
+        'access-token': localStorage.getItem('accessToken'),
+        'expiry': localStorage.getItem('expiry'),
+      }
+    }).then((response) => {
+      // refactor this please :)
+      const stateLoader = new StateLoader();
+      var serialState = stateLoader.loadState();
+      serialState.cart = []
+      stateLoader.saveState(serialState);
+      dispatch(checkoutOrderSuccess());
+    }).catch(error => {
+      console.log("Error in checkoutOrder");
+    })
   }
 }

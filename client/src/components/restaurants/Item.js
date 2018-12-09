@@ -8,8 +8,9 @@ class Item extends React.Component {
     super(props);
   }
 
-  _addToCart = (price, productName, description, quantity, restaurant) => {
+  _addToCart = (id, price, productName, description, quantity, restaurant) => {
     const itemDetails = {
+      id: id,
       item: productName,
       quantity: quantity,
       description: description,
@@ -41,7 +42,7 @@ class Item extends React.Component {
           <p>{this.props.product.price} LEI</p>
         </div>
         <div className="col md-2">
-          <button onClick={() => {this._addToCart(this.props.product.price, this.props.product.name, this.props.product.description, 1, this.props.product.restaurant.id)}} className="btn btn-primary">Buy</button>
+          <button onClick={() => {this._addToCart(this.props.product.id, this.props.product.price, this.props.product.name, this.props.product.description, 1, this.props.product.restaurant.id)}} className="btn btn-primary">Buy</button>
         </div>
       </div>
     )

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_08_121642) do
+ActiveRecord::Schema.define(version: 2018_12_09_120418) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
@@ -51,6 +51,8 @@ ActiveRecord::Schema.define(version: 2018_12_08_121642) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "status"
+    t.string "payment_type"
+    t.text "observations"
     t.index ["profile_id"], name: "index_orders_on_profile_id"
   end
 
