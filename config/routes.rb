@@ -8,11 +8,10 @@ Rails.application.routes.draw do
 
     root to: 'restaurants#index'
   end
-
   resources :admin_sessions, only: %i(new create destroy)
 
   mount_devise_token_auth_for 'User', at: 'auth'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
   namespace :api do
     namespace :v1 do
       resource :profiles, only: [:show, :update, :destroy]
@@ -22,6 +21,11 @@ Rails.application.routes.draw do
       end
       get '/restaurants/find_by_manager/:manager_id', to: 'restaurants#find_by_manager'
       resources :categories
+      resources :orders, only: [:create, :update]
+
+      resource :profiles do
+        resources :orders, only: [:index], module: :profiles
+      end
     end
   end
 end

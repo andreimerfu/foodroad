@@ -24,7 +24,7 @@ class Header extends React.Component  {
           </button>
           <div className="dropdown-menu dropdown-menu-right">
             <Link to="/profile" className="dropdown-item"> Profile </Link>
-            <a className="dropdown-item" href="/">Istoric comenzi</a>
+            <Link to="/orders" className="dropdown-item">Istoric comenzi</Link>
             <div className="dropdown-divider"></div>
             <a className='dropdown-item' onClick={this.handleLogout} > Logout </a>
           </div>
@@ -49,6 +49,7 @@ class Header extends React.Component  {
             <span className='navbar-toggler-icon'></span>
           </button>
           <form className="form-inline">
+            <Link to='/cart' className="btn btn-danger"><i style={{"margin-right": "5px"}}class="fas fa-cart-plus"></i>{this.props.cart.length}</Link>
             { this.renderAuthButtons() }
           </form>
         </div>
@@ -59,7 +60,8 @@ class Header extends React.Component  {
 
 function mapStateToProps(state) {
   return {
-    auth: state.auth
+    auth: state.auth,
+    cart: state.cart
   }
 }
 
