@@ -1,7 +1,7 @@
 .card-container {
     display: grid;
     padding: 1rem;
-    grid-template-columns: repeat(auto-fit, minmax(248px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
     grid-gap: 1rem;
 
     .restaurant-detail-link {
@@ -16,7 +16,8 @@
         border: 1px solid #f1f1f1;
         min-height: 320px;
         max-height: 348px;
-        max-width:265px;
+       // max-width:295px;
+       // margin: auto;
 
         .card-img-top {
             border-top-left-radius: 5px;
