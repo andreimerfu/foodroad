@@ -7,6 +7,7 @@
 @import 'restaurants/restaurants-menu.scss';
 @import 'footer/footer.scss';
 @import 'profile/profile.scss';
+@import 'restaurants/restaurant-crud.scss';
 @import 'cart/cart.scss';
 
 body {
@@ -50,7 +51,7 @@ a:focus {
 }
 
 .wrap {
-  height:678px;
+  min-height:678px;
 }
 
 .btn {
