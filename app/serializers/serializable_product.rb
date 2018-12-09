@@ -3,7 +3,7 @@
 class SerializableProduct < JSONAPI::Serializable::Resource
   type 'products'
 
-  attributes :id, :name, :price, :description, :category
+  attributes :id, :name, :price, :description, :category, :restaurant
 
   meta do
     { featured: true }
