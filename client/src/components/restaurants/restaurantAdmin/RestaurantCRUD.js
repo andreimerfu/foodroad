@@ -1,5 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import axios from 'axios';
+
 import CRUDTable, {
   Fields,
   Field,
@@ -10,18 +12,7 @@ import CRUDTable, {
 
 const DescriptionRenderer = ({ field }) => <textarea {...field} />;
 
-let tasks = [
-  {
-    id: 1,
-    title: "Create an example",
-    description: "Create an example of how to use the component"
-  },
-  {
-    id: 2,
-    title: "Improve",
-    description: "Improve the component!"
-  }
-];
+let tasks = [];
 
 const SORTERS = {
   NUMBER_ASCENDING: mapper => (a, b) => mapper(a) - mapper(b),
@@ -52,9 +43,11 @@ const getSorter = data => {
 let count = tasks.length;
 const service = {
   fetchItems: payload => {
-    let result = Array.from(tasks);
-    result = result.sort(getSorter(payload.sort));
-    return Promise.resolve(result);
+    let result = Array.from(payload.products);
+    //result = result.sort(getSorter(payload.products.sort));
+    var tasks = result;
+    debugger
+    return Promise.resolve(tasks);
   },
   create: task => {
     count += 1;
@@ -62,52 +55,103 @@ const service = {
       ...task,
       id: count
     });
+    debugger;
+    axios.post(`/api/v1/restaurants/9/products`, task, {
+      headers: {
+        'uid': localStorage.getItem('uid'),
+        'client': localStorage.getItem('client'),
+        'access-token': localStorage.getItem('accessToken'),
+        'expiry': localStorage.getItem('expiry'),
+        'Content-Type': 'application/json',
+      }
+    })
+    .then(res => {
+       
+      })
     return Promise.resolve(task);
   },
   update: data => {
-    const task = tasks.find(t => t.id === data.id);
-    task.title = data.title;
-    task.description = data.description;
-    return Promise.resolve(task);
+    // const task = tasks.find(t => t.id === data.id);
+    // task.title = data.title;
+    // task.description = data.description;
+
+     axios.put(`/api/v1/restaurants/9/products/${data.id}`, {
+      name: data.name,
+      description: data.description,
+      price: data.price
+     }, {
+      headers: {
+        'uid': localStorage.getItem('uid'),
+        'client': localStorage.getItem('client'),
+        'access-token': localStorage.getItem('accessToken'),
+        'expiry': localStorage.getItem('expiry'),
+        'Content-Type': 'application/json',
+      }
+    })
+    .then(res => {
+       
+    })
+
+    return Promise.resolve(data);
   },
   delete: data => {
-    const task = tasks.find(t => t.id === data.id);
-    tasks = tasks.filter(t => t.id !== task.id);
-    return Promise.resolve(task);
+    // const task = tasks.find(t => t.id === data.id);
+    // tasks = tasks.filter(t => t.id !== task.id);
+
+
+    axios.delete(`/api/v1/restaurants/9/products/${data.id}`, {
+      headers: {
+        'uid': localStorage.getItem('uid'),
+        'client': localStorage.getItem('client'),
+        'access-token': localStorage.getItem('accessToken'),
+        'expiry': localStorage.getItem('expiry'),
+        'Content-Type': 'application/json',
+      }
+    })
+    .then(res => {
+       
+    })
+
+    return Promise.resolve(data);
   }
 };
 
 
-export const RestaurantCRUD = () => (
+export const RestaurantCRUD = (products) => (
 
   <div class="crud-panel">
     <CRUDTable
-      caption="Produse"
-      fetchItems={payload => service.fetchItems(payload)}
+      caption="Tasks"
+      fetchItems={payload => service.fetchItems(products)}
     >
       <Fields>
         <Field name="id" label="Id" hideInCreateForm />
-        <Field name="title" label="Title" placeholder="Title" />
+        <Field name="name" label="Name" placeholder="Name" />
         <Field
           name="description"
           label="Description"
           render={DescriptionRenderer}
         />
+        <Field name="price" label="Price" placeholder="Price" />
       </Fields>
       <CreateForm
         title="Task Creation"
         message="Create a new task!"
-        trigger="Adauga produse"
+        trigger="Create Task"
         onSubmit={task => service.create(task)}
         submitText="Create"
         validate={values => {
           const errors = {};
-          if (!values.title) {
-            errors.title = "Please, provide task's title";
+          if (!values.name) {
+            errors.name = "Please, provide task's title";
           }
 
           if (!values.description) {
             errors.description = "Please, provide task's description";
+          }
+
+          if (!values.price) {
+            errors.price = "Please, provide task's price";
           }
 
           return errors;
@@ -127,12 +171,16 @@ export const RestaurantCRUD = () => (
             errors.id = "Please, provide id";
           }
 
-          if (!values.title) {
-            errors.title = "Please, provide task's title";
+          if (!values.name) {
+            errors.name = "Please, provide task's title";
           }
 
           if (!values.description) {
             errors.description = "Please, provide task's description";
+          }
+
+          if (!values.price) {
+            errors.price = "Please, provide task's price";
           }
 
           return errors;
