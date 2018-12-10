@@ -2,6 +2,7 @@
 
 class Profile < ApplicationRecord
   belongs_to :user, dependent: :destroy
+  has_many :orders
 
   validate :valid_addresses
 
