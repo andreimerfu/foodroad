@@ -1,5 +1,6 @@
 
 import React from 'react';
+import Item from './Item';
 
 export function CategoryCard(props) {
   const product = props.product.attributes;
@@ -10,35 +11,13 @@ export function CategoryCard(props) {
       <div>
        <div className="line"></div>
         <h2>{product.category.name}</h2>
-          <div className="row">
-            <div className="col md-6">
-              <h4>{product.name}</h4>
-              <p>{product.description}</p>
-            </div>
-          <div className="col md-4">
-            <p>{product.price} LEI</p>
-          </div>
-          <div className="col md-2">
-            <button className="btn btn-primary">Buy</button>
-          </div>
-        </div>
+        <Item product={product}/>
       </div>
     )
   } else {
     return (
       <div>
-        <div className="row">
-          <div className="col md-6">
-            <h4>{product.name}</h4>
-            <p>{product.description}</p>
-          </div>
-          <div className="col md-4">
-            <p>{product.price} LEI</p>
-          </div>
-          <div className="col md-2">
-            <button className="btn btn-primary">Buy</button>
-          </div>
-        </div>
+      <Item product={product}/>
       </div>
     )
   }

@@ -7,7 +7,8 @@
 @import 'restaurants/restaurants-menu.scss';
 @import 'footer/footer.scss';
 @import 'profile/profile.scss';
-
+@import 'restaurants/restaurant-crud.scss';
+@import 'cart/cart.scss';
 
 body {
   font-family: $font-raleway;
@@ -50,7 +51,7 @@ a:focus {
 }
 
 .wrap {
-  height:678px;
+  min-height:678px;
 }
 
 .btn {
@@ -79,4 +80,15 @@ a:focus {
 .img-fluid {
   width: 70%;
   height: 90%;
+}
+
+.spinner-container {
+  min-height: 680px;
+  padding-top: 280px;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.css-15s48b{
+  margin: auto;
 }

@@ -1,5 +1,6 @@
 import axios from 'axios';
 import * as moment from 'moment';
+import StateLoader from "../reducers/StateLoader"
 
 import { LOGIN_SUCCESS,
          LOGIN_FAILURE,
@@ -11,7 +12,14 @@ import { LOGIN_SUCCESS,
          FETCH_RESTAURANT_PRODUCTS_SUCCESS,
          GET_RESTAURANT_INFO_SUCCESS,
          FETCH_USER_PROFILE_SUCCESS,
-         PASSWORD_CHANGED_SUCCESS
+         PASSWORD_CHANGED_SUCCESS,
+         ADD_TO_CART,
+         UPDATE_CART,
+         REMOVE_ITEM,
+         UPDATE_QUANTITY,
+         SYNC_QUANTITY,
+         HISTORY_ORDERS,
+         CHECKOUT_ORDER_SUCCESS
        } from './types';
 
 //_________________________________________________________________
@@ -307,6 +315,101 @@ export const checkCuiAction = (restaurant_id) => {
       console.log(response);
     }).catch(error => {
       console.log("error checkCuiAction");
+    })
+  }
+}
+
+//===============================================
+//===========Shopping Cart actions===============
+//===============================================
+
+export function addToCart(payload) {
+  return {
+    type: ADD_TO_CART,
+    payload: payload
+  }
+}
+
+export function updateCart(payload) {
+  return {
+    type: UPDATE_CART,
+    payload: payload
+  }
+}
+
+export function removeItem(payload) {
+  return {
+    type: REMOVE_ITEM,
+    payload: payload
+  }
+}
+
+export function updateQuantity(payload) {
+  return {
+    type: UPDATE_QUANTITY,
+    payload: payload
+  }
+}
+
+export function syncQuantity(payload) {
+  return {
+    type: SYNC_QUANTITY,
+    payload: payload
+  }
+}
+
+//===============================================
+//===============Orders actions==================
+//===============================================
+
+export const fetchOrders = () => {
+  return dispatch => {
+    return axios.get(`/api/v1/profiles/orders`, {
+       headers: {
+        'uid': localStorage.getItem('uid'),
+        'client': localStorage.getItem('client'),
+        'access-token': localStorage.getItem('accessToken'),
+        'expiry': localStorage.getItem('expiry'),
+      }
+    }).then((response) => {
+      dispatch(fetchHistoryOrdersSuccess(response.data.data));
+    }).catch(error => {
+      console.log("Error in fetchOrders");
+    })
+  }
+}
+
+const fetchHistoryOrdersSuccess = (orders) => {
+  return {
+    type: HISTORY_ORDERS,
+    orders
+  }
+}
+
+const checkoutOrderSuccess = () => {
+  return {
+    type: CHECKOUT_ORDER_SUCCESS,
+  }
+}
+
+export const checkoutOrder = (cartDetails) => {
+  return dispatch => {
+    return axios.post(`/api/v1/orders`, cartDetails, {
+      headers: {
+        'uid': localStorage.getItem('uid'),
+        'client': localStorage.getItem('client'),
+        'access-token': localStorage.getItem('accessToken'),
+        'expiry': localStorage.getItem('expiry'),
+      }
+    }).then((response) => {
+      // refactor this please :)
+      const stateLoader = new StateLoader();
+      var serialState = stateLoader.loadState();
+      serialState.cart = []
+      stateLoader.saveState(serialState);
+      dispatch(checkoutOrderSuccess());
+    }).catch(error => {
+      console.log("Error in checkoutOrder");
     })
   }
 }

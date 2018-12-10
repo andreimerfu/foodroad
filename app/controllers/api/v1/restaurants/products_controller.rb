@@ -17,7 +17,10 @@ class Api::V1::Restaurants::ProductsController < ApplicationController
 
   def create
     product = Product.new(products_params)
-    if product
+    product.restaurant = Restaurant.find_by(manager_id: current_user.id) if product
+    product.category = Category.first
+    
+    if product.save
       render jsonapi: product, status: :created
     else
       render jsonapi_errors: product.errors, status: :unprocessable_entity
@@ -26,7 +29,7 @@ class Api::V1::Restaurants::ProductsController < ApplicationController
 
   def update
     product = Product.find_by(id: params[:id], restaurant_id: params[:restaurant_id])
-    if product.update
+    if product.update(products_params)
       render jsonapi: product, status: :ok
     else
       render jsonapi_errors: product.errors, status: :unprocessable_entity
