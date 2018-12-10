@@ -40,3 +40,10 @@ footer.main-footer {
     }
   }
 }
+
+@media screen and (max-width: 600px) {
+    .footer-logo {
+      width: 3.5rem !important;
+      margin: auto;
+    }
+  }

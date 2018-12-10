@@ -32,10 +32,13 @@ class Login extends React.Component {
     const { isAuth, errors } = this.props.auth;
     //location.state is undefined if register is not true so registerSuccess is false in this case
     const { registerSuccess } = this.props.location.state || false;
-
-    if (isAuth) {
+    const role = localStorage.getItem('role');
+    if (isAuth && role === 'user') {
       return <Redirect to={{pathname: '/'}} />
+    } else if( isAuth && role === 'restaurant') {
+      return <Redirect to={{pathname: '/homeRestaurant'}} />
     }
+    
 
     return (
       <section id="login">

@@ -18,10 +18,17 @@ class Header extends React.Component  {
     if (isAuth) {
       return (
         <div className="btn-group">
+          <Link to='/cart' className="btn btn-danger"><i style={{"margin-right": "5px"}}class="fas fa-cart-plus"></i>{this.props.cart.length}</Link>
+
           <button type="button" className="btn btn-info dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i className="far fa-user-circle"></i>
             <span className="sr-only">Toggle Dropdown</span>
           </button>
+          {
+          // <button className='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation'>
+          //   <span className='navbar-toggler-icon'></span>
+          // </button>
+          }
           <div className="dropdown-menu dropdown-menu-right">
             <Link to="/profile" className="dropdown-item"> Profile </Link>
             <a className="dropdown-item" href="/">Istoric comenzi</a>
@@ -45,9 +52,6 @@ class Header extends React.Component  {
             <img src='../images/logo.jpg' width='40' height='42'  alt=''/>
             Road
           </a>
-          <button className='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation'>
-            <span className='navbar-toggler-icon'></span>
-          </button>
           <form className="form-inline">
             { this.renderAuthButtons() }
           </form>

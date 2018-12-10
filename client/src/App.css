@@ -235,6 +235,11 @@ footer.main-footer {
     footer.main-footer .copyrights .social-link:hover {
       color: #aaa; }
 
+@media screen and (max-width: 600px) {
+  .footer-logo {
+    width: 3.5rem !important;
+    margin: auto; } }
+
 .profile {
   background-color: #fff;
   border: none;
