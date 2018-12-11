@@ -46,7 +46,6 @@ const service = {
     let result = Array.from(payload.products);
     //result = result.sort(getSorter(payload.products.sort));
     var tasks = result;
-    debugger
     return Promise.resolve(tasks);
   },
   create: task => {
@@ -55,41 +54,58 @@ const service = {
       ...task,
       id: count
     });
-    debugger;
-    axios.post(`/api/v1/restaurants/9/products`, task, {
+
+    axios.get(`/api/v1/get_restaurant_id`, {
       headers: {
         'uid': localStorage.getItem('uid'),
         'client': localStorage.getItem('client'),
         'access-token': localStorage.getItem('accessToken'),
         'expiry': localStorage.getItem('expiry'),
-        'Content-Type': 'application/json',
       }
-    })
-    .then(res => {
-       
+    }).then(res => {
+      axios.post(`/api/v1/restaurants/9/products`, task, {
+        headers: {
+          'uid': localStorage.getItem('uid'),
+          'client': localStorage.getItem('client'),
+          'access-token': localStorage.getItem('accessToken'),
+          'expiry': localStorage.getItem('expiry'),
+          'Content-Type': 'application/json',
+        }
       })
+      .then(res => {
+
+        })
+    })
     return Promise.resolve(task);
   },
   update: data => {
     // const task = tasks.find(t => t.id === data.id);
     // task.title = data.title;
     // task.description = data.description;
-
-     axios.put(`/api/v1/restaurants/9/products/${data.id}`, {
-      name: data.name,
-      description: data.description,
-      price: data.price
-     }, {
+    axios.get(`/api/v1/get_restaurant_id`, {
       headers: {
         'uid': localStorage.getItem('uid'),
         'client': localStorage.getItem('client'),
         'access-token': localStorage.getItem('accessToken'),
         'expiry': localStorage.getItem('expiry'),
-        'Content-Type': 'application/json',
       }
-    })
-    .then(res => {
-       
+    }).then(res => {
+       axios.put(`/api/v1/restaurants/9/products/${data.id}`, {
+        name: data.name,
+        description: data.description,
+        price: data.price
+       }, {
+        headers: {
+          'uid': localStorage.getItem('uid'),
+          'client': localStorage.getItem('client'),
+          'access-token': localStorage.getItem('accessToken'),
+          'expiry': localStorage.getItem('expiry'),
+          'Content-Type': 'application/json',
+        }
+      })
+      .then(res => {
+
+      })
     })
 
     return Promise.resolve(data);
@@ -98,18 +114,26 @@ const service = {
     // const task = tasks.find(t => t.id === data.id);
     // tasks = tasks.filter(t => t.id !== task.id);
 
-
-    axios.delete(`/api/v1/restaurants/9/products/${data.id}`, {
+    axios.get(`/api/v1/get_restaurant_id`, {
       headers: {
         'uid': localStorage.getItem('uid'),
         'client': localStorage.getItem('client'),
         'access-token': localStorage.getItem('accessToken'),
         'expiry': localStorage.getItem('expiry'),
-        'Content-Type': 'application/json',
       }
-    })
-    .then(res => {
-       
+    }).then(res => {
+      axios.delete(`/api/v1/restaurants/9/products/${data.id}`, {
+        headers: {
+          'uid': localStorage.getItem('uid'),
+          'client': localStorage.getItem('client'),
+          'access-token': localStorage.getItem('accessToken'),
+          'expiry': localStorage.getItem('expiry'),
+          'Content-Type': 'application/json',
+        }
+      })
+      .then(res => {
+
+      })
     })
 
     return Promise.resolve(data);

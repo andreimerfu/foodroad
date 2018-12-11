@@ -15,7 +15,7 @@ import RestaurantMenu  from './components/restaurants/RestaurantMenu';
 import RestaurantRegister  from './components/restaurantRegistration/RestaurantRegister';
 import RestaurantHome from './components/restaurants/RestaurantHome';
 import UserProfile from './components/users/UserProfile';
-import { Rest } from './components/restaurants/restaurantAdmin/Rest';
+import Rest from './components/restaurants/restaurantAdmin/Rest';
 import Cart from './components/cart/Cart';
 import OrdersHistory from './components/users/OrdersHistory';
 import Checkout from './components/cart/Checkout';
