@@ -92,3 +92,17 @@ a:focus {
 .css-15s48b{
   margin: auto;
 }
+
+/*-------------------------------------------*\
+    Media Queries 
+\*-------------------------------------------*/
+    /**
+     * 
+     *  Ipad Pro 
+     * 
+     */
+@media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) {
+  .wrap {
+    min-height: 928px;
+  }
+}
