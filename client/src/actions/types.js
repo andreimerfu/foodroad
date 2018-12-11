@@ -1,9 +1,16 @@
+/** *
+		* AUTH
+    */
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAILURE = 'LOGIN_FAILURE';
+export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
 export const REGISTER_FAILURE = 'REGISTER_FAILURE';
 export const LOGOUT = 'LOGOUT';
 export const PASSWORD_CHANGED_SUCCESS = 'PASSWORD_CHANGED_SUCCESS';
-//___________________________________________________
+export const PASSWORD_CHANGED_FAILURE = 'PASSWORD_CHANGED_FAILURE';
+/** *
+		* RESTAURANTS
+    */
 
 export const FETCH_RESTAURANTS = 'FETCH_RESTAURANTS';
 export const FETCH_RESTAURANT_CATEGORIES_SUCCESS = 'FETCH_RESTAURANT_CATEGORIES_SUCCESS';

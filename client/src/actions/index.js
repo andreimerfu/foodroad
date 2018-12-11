@@ -4,15 +4,17 @@ import StateLoader from "../reducers/StateLoader"
 
 import { LOGIN_SUCCESS,
          LOGIN_FAILURE,
+         REGISTER_SUCCESS,
          REGISTER_FAILURE,
          LOGOUT,
+         PASSWORD_CHANGED_SUCCESS,
+         PASSWORD_CHANGED_FAILURE,
          FETCH_RESTAURANTS,
          FETCH_RESTAURANT_CATEGORIES_SUCCESS,
          FETCH_RESTAURANT_BY_ID_INIT,
          FETCH_RESTAURANT_PRODUCTS_SUCCESS,
          GET_RESTAURANT_INFO_SUCCESS,
          FETCH_USER_PROFILE_SUCCESS,
-         PASSWORD_CHANGED_SUCCESS,
          ADD_TO_CART,
          UPDATE_CART,
          REMOVE_ITEM,
@@ -22,8 +24,14 @@ import { LOGIN_SUCCESS,
          CHECKOUT_ORDER_SUCCESS
        } from './types';
 
-//_________________________________________________________________
-// AUTH ACTIONS
+/*-------------------------------------------*\
+    Auth 
+\*-------------------------------------------*/
+    /**
+     * 
+     *  CONSTS 
+     * 
+     */
 
 const loginSuccess = () => {
   return {
@@ -51,18 +59,37 @@ const registerFailure = (errors) => {
   }
 }
 
+const registerSuccess = () => {
+  return {
+    type: REGISTER_SUCCESS
+  }
+}
+
 const passwordChangedSuccess = () => {
   return {
     type: PASSWORD_CHANGED_SUCCESS
   }
 }
 
+const passwordChangedFailure = (errors) => {
+  return {
+    type: PASSWORD_CHANGED_FAILURE,
+    errors
+  }
+}
+
+/**
+     * 
+     *  Actions 
+     * 
+     */
+
 export const register = (userData) => {
   var confirm_success_url = window.location.href + "login";
   return dispatch => {
     return axios.post('/auth', {...userData, confirm_success_url})
       .then(res => {
-
+        dispatch(registerSuccess());
       })
       .catch(error => {
         dispatch(registerFailure(error.response.data.errors.full_messages));
@@ -133,10 +160,10 @@ export const changePassword = (password, password_confirmation) => {
         'expiry': localStorage.getItem('expiry'),
         'Content-Type': 'application/json',
       }
-    }).then(res => {
+    }).then((response) => {
       dispatch(passwordChangedSuccess());
     }).catch(error => {
-      console.log(error);
+      dispatch(passwordChangedFailure(error.response.data.errors.full_messages));
     })
   }
 }
@@ -180,12 +207,6 @@ const fetchRestaurantProductsSuccess = (products) => {
   }
 }
 
-const fetchUserProfileSuccess = (profile) => {
-  return {
-    type: FETCH_USER_PROFILE_SUCCESS,
-    profile
-  }
-}
 
 export const getRestaurants = (latLng, search) => {
   return dispatch => {
@@ -258,6 +279,22 @@ export const registerRestaurant = (restaurantData) => {
     }
 }
 
+/*-------------------------------------------*\
+    User profile 
+\*-------------------------------------------*/
+    /**
+     * 
+     *  User info
+     * 
+     */
+
+const fetchUserProfileSuccess = (profile) => {
+  return {
+    type: FETCH_USER_PROFILE_SUCCESS,
+    profile
+  }
+}
+
 export const getUserProfile = () => {
   return dispatch => {
     return axios.get(`/api/v1/profiles`, {
@@ -300,6 +337,15 @@ export const addProfileAddress = (address, tag) => {
     })
   }
 }
+
+/*-------------------------------------------*\
+    
+\*-------------------------------------------*/
+    /**
+     * 
+     * 
+     * 
+     */
 
 export const checkCuiAction = (restaurant_id) => {
   return dispatch => {
