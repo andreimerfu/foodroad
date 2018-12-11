@@ -66,6 +66,13 @@ class Api::V1::RestaurantsController < ApplicationController
     end
   end
 
+  def get_restaurant_id
+    restaurant = Restaurant.find_by(manager_id: current_user.id)
+
+    render json: restaurant.id, status: :ok
+  end
+
+
   private
   def restaurants_params
     params.fetch(:restaurant, {}).permit(Restaurant::RESTAURANT_PARAMS)
