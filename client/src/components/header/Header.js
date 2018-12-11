@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { Link, withRouter, Redirect  } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 class Header extends React.Component  {
@@ -13,9 +13,7 @@ class Header extends React.Component  {
     this.props.logout();
   }
 
-  renderAuthButtons() {
-    const { isAuth } = this.props.auth;
-    const role = localStorage.getItem('role');
+  renderAuthButtons(role, isAuth) {
 
     if (isAuth && role === 'user') {
       return (
@@ -59,20 +57,39 @@ class Header extends React.Component  {
   }
 
   render() {
+    const role = localStorage.getItem('role');
+    const { isAuth } = this.props.auth;
+    if (isAuth && role === 'restaurant') {
+      return (
+        <nav className='navbar navbar-expand-lg navbar-light bg-light'>
+          <div className='container-fluid'>
+            <a className='navbar-brand d-inline-block align-top' href='homeRestaurant'>
+              Food
+              <img src='../images/logo.jpg' width='40' height='42'  alt=''/>
+              Road
+            </a>
+            <form className="form-inline">
+              { this.renderAuthButtons(role, isAuth) }
+            </form>
+          </div>
+        </nav>
+      )
+  } else {
     return (
-      <nav className='navbar navbar-expand-lg navbar-light bg-light'>
-        <div className='container-fluid'>
-          <a className='navbar-brand d-inline-block align-top' href='/'>
-            Food
-            <img src='../images/logo.jpg' width='40' height='42'  alt=''/>
-            Road
-          </a>
-          <form className="form-inline">
-            { this.renderAuthButtons() }
-          </form>
-        </div>
-      </nav>
-    )
+        <nav className='navbar navbar-expand-lg navbar-light bg-light'>
+          <div className='container-fluid'>
+            <a className='navbar-brand d-inline-block align-top' href='/'>
+              Food
+              <img src='../images/logo.jpg' width='40' height='42'  alt=''/>
+              Road
+            </a>
+            <form className="form-inline">
+              { this.renderAuthButtons(role, isAuth) }
+            </form>
+          </div>
+        </nav>
+      )
+  }
   }
 }
 
