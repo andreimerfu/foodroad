@@ -15,7 +15,9 @@ class Header extends React.Component  {
 
   renderAuthButtons() {
     const { isAuth } = this.props.auth;
-    if (isAuth) {
+    const role = localStorage.getItem('role');
+
+    if (isAuth && role === 'user') {
       return (
         <div className="btn-group">
           <Link to='/cart' className="btn btn-danger"><i style={{"margin-right": "5px"}}class="fas fa-cart-plus"></i>{this.props.cart.length}</Link>
@@ -24,14 +26,27 @@ class Header extends React.Component  {
             <i className="far fa-user-circle"></i>
             <span className="sr-only">Toggle Dropdown</span>
           </button>
-          {
-          // <button className='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation'>
-          //   <span className='navbar-toggler-icon'></span>
-          // </button>
-          }
+         
           <div className="dropdown-menu dropdown-menu-right">
             <Link to="/profile" className="dropdown-item"> Profile </Link>
             <Link to="/orders" className="dropdown-item">Istoric comenzi</Link>
+            <div className="dropdown-divider"></div>
+            <a className='dropdown-item' onClick={this.handleLogout} > Logout </a>
+          </div>
+        </div>
+      )
+    } else if (isAuth && role === 'restaurant') {
+      return (
+        <div className="btn-group">
+
+          <button type="button" className="btn btn-info dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i className="far fa-user-circle"></i>
+            <span className="sr-only">Toggle Dropdown</span>
+          </button>
+         
+          <div className="dropdown-menu dropdown-menu-right">
+            <Link to="/profile" className="dropdown-item"> Profile </Link>
+            <Link to="/restaurantAdmin" className="dropdown-item">Admin page</Link>
             <div className="dropdown-divider"></div>
             <a className='dropdown-item' onClick={this.handleLogout} > Logout </a>
           </div>
@@ -53,7 +68,6 @@ class Header extends React.Component  {
             Road
           </a>
           <form className="form-inline">
-            <Link to='/cart' className="btn btn-danger"><i style={{"margin-right": "5px"}}class="fas fa-cart-plus"></i>{this.props.cart.length}</Link>
             { this.renderAuthButtons() }
           </form>
         </div>
