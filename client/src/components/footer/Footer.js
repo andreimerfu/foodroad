@@ -8,10 +8,11 @@ export class Footer extends React.Component  {
     return (
       <footer class="main-footer shadow">
       <div class="container">
+        <div class="col-lg-3 mb-5 mb-lg-0 pb-5">
+            <div class="footer-logo"><img src="../images/footer.png" alt="..." class="img-fluid"></img></div>
+        </div>
         <div class="row pt-5 justify-content-center">
-          <div class="col-lg-3 mb-5 mb-lg-0">
-            <div class="footer-logo"><img src="../images/logo.jpg" alt="..." class="img-fluid"></img></div>
-          </div>
+          
           <div class="col-lg-3 mb-5 mb-lg-0 text-center text-sm-right">
             <h5 class="footer-heading">Site pages</h5>
             <ul class="list-unstyled">
