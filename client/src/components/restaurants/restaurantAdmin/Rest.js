@@ -14,7 +14,7 @@ export class Rest extends React.Component {
         const products = res.data.data;
         this.setState({ products });
       })
-  }
+  	}
 
 	render() {
 		if (this.state.products.length > 0) {
