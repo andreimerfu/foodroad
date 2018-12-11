@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Redirect, Link } from 'react-router-dom';
 import { AddressCard } from './AddressCard';
+import { ResErrors } from '../shared/form/ResErrors';
 
 import * as actions from '../../actions';
 
@@ -14,6 +15,7 @@ class UserProfile extends React.Component {
     this.handleTagChange = this.handleTagChange.bind(this);
     this.handleNewPassword = this.handleNewPassword.bind(this);
     this.handleNewPasswordConfirmation = this.handleNewPasswordConfirmation.bind(this);
+    this.addNewAddress = this.addNewAddress.bind(this);
      this.setState({
       address: "",
       tag: "",
@@ -80,6 +82,7 @@ class UserProfile extends React.Component {
 
   render() {
     const userProfile = this.props.userProfile.attributes;
+    const errors = this.props.auth;
     if (userProfile && Object.keys(userProfile).length > 0) {
       return (
         <section id="profile">
@@ -95,7 +98,7 @@ class UserProfile extends React.Component {
                       <form class="form">
                         <div class="form-group">
                           <label class="form-control-label text-uppercase mr-3">New email</label>
-                          <input id="inlineFormInput" type="password" placeholder="" class="mr-3 form-control"></input>
+                          <input id="" type="password" placeholder="" class="mr-3 form-control"></input>
                         </div>
                         <div class="form-group">
                           <button class="btn btn-primary">Submit</button>
@@ -109,6 +112,7 @@ class UserProfile extends React.Component {
                     <div class="profile-header">
                       <h6 class="text-uppercase mb-0">Change password</h6>
                     </div>
+                    <ResErrors errors={errors} />
                     <div class="profile-body">
                       <p>Change your password.</p>
                       <form class="form">
@@ -155,7 +159,7 @@ class UserProfile extends React.Component {
                             </div>
                             <div class="modal-footer">
                               <button type="button" data-dismiss="modal" class="btn btn-secondary">Close</button>
-                              <button type="button" onClick={this.addNewAddress.bind(this)} class="btn btn-primary" data-dismiss="modal">Save changes</button>
+                              <button type="button" onClick={this.addNewAddress} class="btn btn-primary" data-dismiss="modal">Save changes</button>
                             </div>
                           </div>
                         </div>
@@ -177,8 +181,9 @@ class UserProfile extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    userProfile: state.userProfile.data,
-    passwordChanged: state.auth.passwordChanged
+    auth : state.auth,
+    userProfile: state.userProfile.data
+    //passwordChanged: state.auth.passwordChanged
   }
 }
 
