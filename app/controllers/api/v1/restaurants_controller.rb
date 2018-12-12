@@ -44,6 +44,7 @@ class Api::V1::RestaurantsController < ApplicationController
 
     if params[:documents].present?
       restaurant.documents.attach(params[:documents])
+      restaurant.check_step_validation('documents')
     end
 
     if params[:check_cui].present?
@@ -65,6 +66,13 @@ class Api::V1::RestaurantsController < ApplicationController
       render jsonapi_errors: restaurant.errors, status: :unprocessable_entity
     end
   end
+
+  def get_restaurant_id
+    restaurant = Restaurant.find_by(manager_id: current_user.id)
+
+    render json: restaurant.id, status: :ok
+  end
+
 
   private
   def restaurants_params

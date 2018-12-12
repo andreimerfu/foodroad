@@ -32,15 +32,18 @@ class Login extends React.Component {
     const { isAuth, errors } = this.props.auth;
     //location.state is undefined if register is not true so registerSuccess is false in this case
     const { registerSuccess } = this.props.location.state || false;
-
-    if (isAuth) {
+    const role = localStorage.getItem('role');
+    if (isAuth && role === 'user') {
       return <Redirect to={{pathname: '/'}} />
+    } else if( isAuth && role === 'restaurant') {
+      return <Redirect to={{pathname: '/homeRestaurant'}} />
     }
+    
 
     return (
       <section id="login">
         <div class="page-holder d-flex align-items-center">
-            <div class="container">
+            <div class="wrap">
               <div class="row align-items-center py-5">
                 <div class="col-5 col-lg-7 mx-auto mb-5 mb-lg-0">
 
@@ -49,9 +52,9 @@ class Login extends React.Component {
                 </div>
                 <div class="col-lg-5 px-lg-4">
 
-                  <h1 class="text-base text-primary text-uppercase mb-4">Welcome back!</h1>
+                  <h1 class="text-base text-primary text-uppercase mb-4">Food Delivery</h1>
                   <h2 class="mb-4">Welcome back!</h2>
-                  <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
+                  <p class="text-muted">Don’t feel like cooking tonight? Then let us deliver your favourite meals </p>
                   {
                      registerSuccess&&
                      <Alert color="success" isOpen={this.state.visible} >

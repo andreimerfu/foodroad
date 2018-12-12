@@ -53,7 +53,8 @@ class RestaurantSearch extends React.Component {
         <div class="wrap py-5 text-center">
             <div class="row d-flex justify-content-center py-5">
               <div class="col-lg-6 ">
-                  <p class="lead text-muted mt-4 mb-4">Be hungry and try FoodRoad.</p>
+              <img src="../images/login.png" alt="" class="img-fluid img-home"></img>
+              <p class="lead text-muted mt-4 mb-4">Hungry? Then why don’t you treat yourself tonight to one of our delicious takeaways – order now from FoodRoad</p>
                   <form action="#" class="subscription-form">
                     <div class="form-group">
                       <PlacesAutocomplete

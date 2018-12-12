@@ -2,9 +2,13 @@ footer.main-footer {
   background: $main-color;
   padding-bottom: 0;
   width:100%;
+  position: relative;
+  bottom: 0;
 
   .footer-logo {
-    width: 7.5rem;
+    position: absolute;
+    top: 20px;
+    width: 14.5rem;
   }
 
   .footer-heading {
@@ -40,3 +44,14 @@ footer.main-footer {
     }
   }
 }
+
+@media screen and (max-width: 600px) {
+    .footer-logo {
+      width: 7.5rem !important;
+      //margin: auto;
+      left:0;
+right:0;
+margin-left:auto;
+margin-right:auto;
+    }
+  }
