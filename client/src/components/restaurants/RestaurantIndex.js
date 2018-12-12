@@ -40,7 +40,7 @@ class RestaurantIndex extends React.Component {
 
   render(){
     const restaurants = this.props.restaurants;
-    if (Object.keys(restaurants).length > 0) {
+    if (restaurants && Object.keys(restaurants).length >= 0) {
       return(
         <section id='restaurant-index'>
           <div class="justify-content-center py-5">

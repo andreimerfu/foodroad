@@ -145,7 +145,7 @@ export const RestaurantCRUD = (products) => (
 
   <div class="crud-panel">
     <CRUDTable
-      caption="Tasks"
+      caption="Products"
       fetchItems={payload => service.fetchItems(products)}
     >
       <Fields>

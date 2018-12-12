@@ -26,7 +26,7 @@ class Cart extends React.Component {
     const sum = subTotals.reduce((a, b) => a + b, 0).toFixed(2);
 
     return(
-      <div class="container">
+      <div class="wrap">
         {itemsList.length !== 0 ? (
           <table id="cart" class="table table-hover table-condensed">
             <thead>
@@ -56,8 +56,10 @@ class Cart extends React.Component {
             </tfoot>
           </table>
         ) : (
-          <div className="row">
-          <h3>Oops! Your cart is empty!</h3>
+          <div className="row justify-content-center">
+
+        
+          <img src='../images/cart1.png'  alt='' class='img-fluid'/>
           </div>
         )}
 
