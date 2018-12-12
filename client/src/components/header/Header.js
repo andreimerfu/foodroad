@@ -14,25 +14,8 @@ class Header extends React.Component  {
   }
 
   renderAuthButtons(role, isAuth) {
-    if (isAuth) {
-      return (
-       <div className="btn-group">
-          <Link to='/cart' className="btn btn-danger"><i style={{"margin-right": "5px"}}class="fas fa-cart-plus"></i>{this.props.cart.length}</Link>
 
-          <button type="button" className="btn btn-info dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i className="far fa-user-circle"></i>
-            <span className="sr-only">Toggle Dropdown</span>
-          </button>
-         
-          <div className="dropdown-menu dropdown-menu-right">
-            <Link to="/profile" className="dropdown-item"> Profile </Link>
-            <Link to="/orders" className="dropdown-item">Istoric comenzi</Link>
-            <div className="dropdown-divider"></div>
-            <a className='dropdown-item' onClick={this.handleLogout} > Logout </a>
-          </div>
-        </div>
-      )
-    } else if (isAuth && role === 'restaurant') {
+    if (isAuth && role === 'restaurant') {
       return (
 
          <div className="btn-group">
@@ -50,7 +33,25 @@ class Header extends React.Component  {
           </div>
         </div>
       )
-    } 
+    } else if (isAuth) {
+      return (
+       <div className="btn-group">
+          <Link to='/cart' className="btn btn-danger"><i style={{"margin-right": "5px"}}class="fas fa-cart-plus"></i>{this.props.cart.length}</Link>
+
+          <button type="button" className="btn btn-info dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i className="far fa-user-circle"></i>
+            <span className="sr-only">Toggle Dropdown</span>
+          </button>
+         
+          <div className="dropdown-menu dropdown-menu-right">
+            <Link to="/profile" className="dropdown-item"> Profile </Link>
+            <Link to="/orders" className="dropdown-item">Istoric comenzi</Link>
+            <div className="dropdown-divider"></div>
+            <a className='dropdown-item' onClick={this.handleLogout} > Logout </a>
+          </div>
+        </div>
+      )
+    }
     return (
         <Link className='btn btn-outline-primary' to='/login'>Login <span className='sr-only'>(current)</span></Link>
     )
