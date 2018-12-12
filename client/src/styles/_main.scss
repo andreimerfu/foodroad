@@ -52,6 +52,7 @@ a:focus {
 
 .wrap {
   min-height:678px;
+  margin-top: 68px;
 }
 
 .btn {
@@ -77,11 +78,6 @@ a:focus {
   color: #DF99CA !important;
 }
 
-.img-fluid {
-  width: 70%;
-  height: 90%;
-}
-
 .spinner-container {
   min-height: 680px;
   padding-top: 280px;
@@ -91,4 +87,18 @@ a:focus {
 
 .css-15s48b{
   margin: auto;
+}
+
+/*-------------------------------------------*\
+    Media Queries 
+\*-------------------------------------------*/
+    /**
+     * 
+     *  Ipad Pro 
+     * 
+     */
+@media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) {
+  .wrap {
+    min-height: 928px;
+  }
 }

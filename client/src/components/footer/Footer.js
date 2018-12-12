@@ -8,18 +8,19 @@ export class Footer extends React.Component  {
     return (
       <footer class="main-footer shadow">
       <div class="container">
-        <div class="row pt-5">
-          <div class="col-lg-3 mb-5 mb-lg-0">
-            <div class="footer-logo"><img src="../images/logo.jpg" alt="..." class="img-fluid"></img></div>
-          </div>
-          <div class="col-lg-3 mb-5 mb-lg-0">
+        <div class="col-lg-3 mb-5 mb-lg-0 pb-5">
+            <div class="footer-logo"><img src="../images/footer.png" alt="..." class="img-fluid"></img></div>
+        </div>
+        <div class="row pt-5 justify-content-center">
+          
+          <div class="col-lg-3 mb-5 mb-lg-0 text-center text-sm-right">
             <h5 class="footer-heading">Site pages</h5>
             <ul class="list-unstyled">
               <li> <Link to="/registerRestaurant" class="footer-link">Become a partner restaurant</Link></li>
 
             </ul>
           </div>
-          <div class="col-lg-3 mb-5 mb-lg-0">
+          <div class="col-lg-3 mb-5 mb-lg-0 text-center text-sm-right">
             <h5 class="footer-heading">Resources</h5>
             <ul class="list-unstyled">
               <li> <a href="/" class="footer-link ">Home</a></li>
@@ -33,7 +34,7 @@ export class Footer extends React.Component  {
       <div class="copyrights">
         <div class="container">
           <div class="row mb-1">
-            <div class="col-lg-6 text-center text-lg-left ">
+            <div class="col-lg-6 text-center text-lg-left">
               <p class="copyrights-text mb-3 mb-lg-0">&copy; All rights reserved. FoodRoad.co. </p>
             </div>
             <div class="col-lg-6 text-center text-lg-right">
