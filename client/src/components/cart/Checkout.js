@@ -31,7 +31,7 @@ class Checkout extends React.Component {
       return <Redirect to={{pathname: '/'}} />
     } else {
       return(
-        <div className="row">
+        <div className="row py-5">
           <div className="col col-md-6">
             <CheckoutForm submitCb={this.checkout} errors={errors} />
           </div>

@@ -191,7 +191,7 @@ a.article:hover {
   transition: all 0.3s;
   top: 0;
   right: 0;
-  margin-left: 400px; }
+  margin-left: 100px; }
 
 #content.active {
   width: 100%; }

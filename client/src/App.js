@@ -59,7 +59,7 @@ class App extends Component {
                   <Route exact path='/registerRestaurant' component={RestaurantRegister}/>
                   <Route exact path='/profile' component={UserProfile}/>
                   <Route exact path='/homeRestaurant' component={requireRestaurantLogin(RestaurantHome)}/>
-                  <Route exact path='/restaurantAdmin' component={Rest}/>
+                  <Route exact path='/restaurantAdmin' component={requireRestaurantLogin(Rest)}/>
                   <Route exact path='/cart' component={Cart}/>
                   <Route exact path='/orders' component={OrdersHistory}/>
                   <Route exact path='/checkout' component={Checkout}/>

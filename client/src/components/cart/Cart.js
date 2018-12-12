@@ -28,6 +28,7 @@ class Cart extends React.Component {
     return(
       <div class="wrap">
         {itemsList.length !== 0 ? (
+          <div class="py-5">
           <table id="cart" class="table table-hover table-condensed">
             <thead>
               <tr>
@@ -55,8 +56,10 @@ class Cart extends React.Component {
               </tr>
             </tfoot>
           </table>
+
+          </div>
         ) : (
-          <div className="row justify-content-center">
+          <div className="row justify-content-center py-5">
 
         
           <img src='../images/cart1.png'  alt='' class='img-fluid'/>
