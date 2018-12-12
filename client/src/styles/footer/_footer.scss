@@ -1,0 +1,57 @@
+footer.main-footer {
+  background: $main-color;
+  padding-bottom: 0;
+  width:100%;
+  position: relative;
+  bottom: 0;
+
+  .footer-logo {
+    position: absolute;
+    top: 20px;
+    width: 14.5rem;
+  }
+
+  .footer-heading {
+    margin-bottom: 1.25rem;
+    font-weight: 600;
+  }
+
+  .footer-link {
+      font-size: 0.9rem;
+      font-weight: 300;
+      margin: 0.3rem 0;
+  }
+
+  .footer-link:hover, .footer-link:focus {
+    color:#DF99CA;
+  }
+
+  .copyrights {
+    margin-top: 2rem;
+
+    .copyrights-text {
+      font-weight: 300;
+      font-size: 0.9rem;
+    }
+    .social-link {
+      padding-top: 16px;
+      font-size: 20px;
+      margin: 0 0.625rem;
+    }
+
+    .social-link:hover {
+      color: #aaa;
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+    .footer-logo {
+      width: 7.5rem !important;
+      //margin: auto;
+      left:0;
+right:0;
+margin-left:auto;
+margin-right:auto;
+    }
+  }

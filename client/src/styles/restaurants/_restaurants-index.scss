@@ -1,0 +1,70 @@
+.card-container {
+    display: grid;
+    padding: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    grid-gap: 1rem;
+
+    .restaurant-detail-link {
+      &:hover {
+        text-decoration: none;
+      }
+    }
+
+    .restaurant-card {
+        display: grid;
+        border-radius: 6px;
+        border: 1px solid #f1f1f1;
+        min-height: 320px;
+        max-height: 348px;
+       // max-width:295px;
+       // margin: auto;
+
+        .card-img-top {
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            width: 100%;
+            height: 170px;
+            overflow: hidden;
+            // background-size: contain;
+            // background-position: center;
+            // background-repeat: no-repeat;
+        }
+        .restaurant-card-body {
+    
+            max-width: 1200px; 
+            min-height: 75px;
+            box-sizing: border-box;
+            display: block;
+            position: relative;
+            padding: 20px 15px 15px;
+
+            .restaurant-card-title {
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                margin:0;
+                font-weight: 600;
+                color: $main-black-color;
+                width: 230px;
+            }
+
+            .restaurant-card-text {
+                color: $light-gray-color;
+                font-size: 16px;
+            } 
+            .restaurant-card-footer {
+                padding-top: 10px;
+                font-size: 16px;
+                border-top: 1px solid #eff2f4;
+            }
+            .card-text-rate {
+                margin:0;
+                color: $light-gray-color;
+                .card-daily-rate {
+                   font-weight: 600;
+                   color: $main-black-color;
+                }
+            }
+        }
+    }
+}
