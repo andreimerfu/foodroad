@@ -19,8 +19,9 @@ class Api::V1::Restaurants::ProductsController < ApplicationController
     product = Product.new(products_params)
     product.restaurant = Restaurant.find_by(manager_id: current_user.id) if product
     product.category = Category.first
-    
+
     if product.save
+      product.restaurant.check_step_validation('menu')
       render jsonapi: product, status: :created
     else
       render jsonapi_errors: product.errors, status: :unprocessable_entity

@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import * as actions from '../../actions';
 import CircularProgressbar from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
+import { Link } from 'react-router-dom';
 
 class RestaurantHome extends React.Component {
 
@@ -72,7 +73,7 @@ class RestaurantHome extends React.Component {
          <p>Step 4. Add restaurant menu </p>
          { this.renderVerifiedStatus(restaurant.validation_steps['menu'])}
 
-         <button className="btn btn-primary">Complete Menu</button>
+         <Link to="/restaurantAdmin" className="btn btn-primary">Complete Menu</Link>
         </div>
       )
     } else {

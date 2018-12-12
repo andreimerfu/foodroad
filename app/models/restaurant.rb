@@ -33,6 +33,14 @@ class Restaurant < ApplicationRecord
     end
   end
 
+  def check_step_validation(step)
+    if validation_steps.dig(step) == false
+      validation_steps[step] = true
+      progress_increment
+      self.save
+    end
+  end
+
   def cui_validation
     Restaurant::Check_API.new(self).call
   end
