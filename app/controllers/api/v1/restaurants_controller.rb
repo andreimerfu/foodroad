@@ -44,6 +44,7 @@ class Api::V1::RestaurantsController < ApplicationController
 
     if params[:documents].present?
       restaurant.documents.attach(params[:documents])
+      restaurant.check_step_validation('documents')
     end
 
     if params[:check_cui].present?
