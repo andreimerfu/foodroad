@@ -8,7 +8,7 @@ import { authReducer } from './auth-reducer';
 import { restaurantReducer, restaurantCategoriesReducer, productsReducer, restaurantInfoReducer } from './restaurant-reducer';
 import { userProfileReducer } from './user-reducer';
 import { cartReducer } from './cart-reducer';
-import { historyOrdersReducer } from './order-reducer';
+import { historyOrdersReducer, activeOrdersReducer } from './order-reducer';
 
 import StateLoader from "./StateLoader"
 
@@ -23,7 +23,8 @@ export const init = () => {
     restaurant: restaurantInfoReducer,
     userProfile: userProfileReducer,
     cart: cartReducer,
-    orders: historyOrdersReducer
+    orders: historyOrdersReducer,
+    activeOrders: activeOrdersReducer
   });
 
   const stateLoader = new StateLoader();

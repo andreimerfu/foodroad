@@ -18,6 +18,7 @@ Rails.application.routes.draw do
       resources :restaurants do
         resources :products, module: :restaurants
         resources :categories, only: [:index, :create, :update, :destroy], module: :restaurants
+        resources :orders, only: [:index], module: :restaurants
       end
       get '/restaurants/find_by_manager/:manager_id', to: 'restaurants#find_by_manager'
       get 'get_restaurant_id', to: 'restaurants#get_restaurant_id'
