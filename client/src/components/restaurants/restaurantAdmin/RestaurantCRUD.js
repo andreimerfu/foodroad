@@ -157,6 +157,7 @@ export const RestaurantCRUD = (products) => (
           render={DescriptionRenderer}
         />
         <Field name="price" label="Price" placeholder="Price" />
+        <Field name="image" label="Image" placeholder="Image url"/>
       </Fields>
       <CreateForm
         title="Task Creation"

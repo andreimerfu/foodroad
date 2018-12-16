@@ -5,6 +5,7 @@ import * as actions from '../../actions';
 import CircularProgressbar from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import { Link } from 'react-router-dom';
+import {RingLoader} from "react-spinners";
 
 class RestaurantHome extends React.Component {
 
@@ -15,6 +16,7 @@ class RestaurantHome extends React.Component {
       color: "#428bca"
     };
     this.checkCuiAction = this.checkCuiAction.bind(this);
+    this.handleAddDocumentsEvent = this.handleAddDocumentsEvent.bind(this);
   }
 
   getRestaurantInfo(manager_id) {
@@ -36,6 +38,21 @@ class RestaurantHome extends React.Component {
       return (
         <span class="badge badge-warning float-right">Pending</span>
       )
+    }
+  }
+
+  handleAddDocumentsEvent(e) {
+    if (e) {
+      const formData = new FormData();
+      formData.append('documents', e.target.files[0]);
+
+      const config = {
+        headers: {
+          'content-type': 'multipart/form-data'
+        }
+      };
+
+      this.props.dispatch(actions.updateRestaurantInfo(this.props.restaurant.id, formData, config));
     }
   }
 
@@ -63,12 +80,12 @@ class RestaurantHome extends React.Component {
             <p>Step 2. Add documents </p>
             { this.renderVerifiedStatus(restaurant.validation_steps['documents'])}
             <div class="custom-file">
-            <input type="file" class="custom-file-input" id="inputGroupFile04"/>
+            <input type="file" class="custom-file-input" id="inputGroupFile04" onChange={this.handleAddDocumentsEvent}/>
             <label class="custom-file-label" for="inputGroupFile04">Choose file</label>
           </div>
          <p>Step 3. Add restaurant info </p>
          { this.renderVerifiedStatus(restaurant.validation_steps['informations'])}
-         <button className="btn btn-primary">Complete Information</button>
+          <Link to="/restaurantInfo" className="btn btn-primary">Complete Information</Link>
 
          <p>Step 4. Add restaurant menu </p>
          { this.renderVerifiedStatus(restaurant.validation_steps['menu'])}
@@ -78,7 +95,12 @@ class RestaurantHome extends React.Component {
       )
     } else {
       return (
-        <p> Loading... </p>
+          <RingLoader
+              sizeUnit={"px"}
+              size={100}
+              color={'#123abc'}
+              loading={true}
+          />
       )
     }
   }

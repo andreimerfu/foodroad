@@ -19,6 +19,7 @@ import Rest from './components/restaurants/restaurantAdmin/Rest';
 import Cart from './components/cart/Cart';
 import OrdersHistory from './components/users/OrdersHistory';
 import Checkout from './components/cart/Checkout';
+import RestaurantInfoEdit from './components/restaurants/RestaurantInfoEdit';
 import './App.css';
 import * as actions from './actions';
 
@@ -63,6 +64,7 @@ class App extends Component {
                   <Route exact path='/cart' component={Cart}/>
                   <Route exact path='/orders' component={OrdersHistory}/>
                   <Route exact path='/checkout' component={Checkout}/>
+                  <Route exact path='/restaurantInfo' component={RestaurantInfoEdit} />
                 </div>
               <Footer />
             </div>
