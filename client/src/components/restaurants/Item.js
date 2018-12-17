@@ -33,21 +33,21 @@ class Item extends React.Component {
 
   render() {
     return (
-      <div className="row">
+      <div class="d-block d-md-flex menu-food-item">
         <div className="col md-2">
-          <img src={this.props.product.image} alt="Smiley face" height="300" width="300"/>
-        </div>
-        <div className="col md-6">
-          <h4>{this.props.product.name}</h4>
-          <p>{this.props.product.description}</p>
-        </div>
-        <div className="col md-1">
-          <p>{this.props.product.price} LEI</p>
-        </div>
-        <div className="col md-1">
-          <button onClick={() => {this._addToCart(this.props.product.id, this.props.product.price, this.props.product.name, this.props.product.description, 1, this.props.product.restaurant.id)}} className="btn btn-primary">Buy</button>
-        </div>
-      </div>
+             <img src={this.props.product.image} alt="Smiley face" height="150" width="180"/>
+           </div>
+          <div class="text">
+            <h4>{this.props.product.name}</h4>
+            <p>{this.props.product.description}</p>
+          </div>
+          <div class="price my-auto">
+            <strong className="price">{this.props.product.price} RON</strong>
+          </div>
+          <div className="col md-1 my-auto">
+             <button onClick={() => {this._addToCart(this.props.product.id, this.props.product.price, this.props.product.name, this.props.product.description, 1, this.props.product.restaurant.id)}} className="btn btn-primary"><i class="fas fa-shopping-bag"></i></button>
+          </div>
+        </div> 
     )
   }
 }
