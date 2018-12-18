@@ -33,6 +33,16 @@ class Item extends React.Component {
   };
 
   render() {
+    const { isAuth } = this.props.auth;
+    let buttonCheck;
+    if (isAuth) {
+      buttonCheck = (
+        <div className="col md-1 my-auto">
+             <button onClick={() => {this._addToCart(this.props.product.id, this.props.product.image, this.props.product.price, this.props.product.name, this.props.product.description, 1, this.props.product.restaurant.id)}} className="btn btn-primary"><i class="fas fa-shopping-bag"></i></button>
+        </div>
+      )
+    }
+
     return (
       <div class="d-block d-md-flex menu-food-item">
         <div className="col md-2">
@@ -45,9 +55,7 @@ class Item extends React.Component {
           <div class="price my-auto">
             <strong className="price">{this.props.product.price} RON</strong>
           </div>
-          <div className="col md-1 my-auto">
-             <button onClick={() => {this._addToCart(this.props.product.id, this.props.product.image, this.props.product.price, this.props.product.name, this.props.product.description, 1, this.props.product.restaurant.id)}} className="btn btn-primary"><i class="fas fa-shopping-bag"></i></button>
-          </div>
+          {buttonCheck}
         </div> 
     )
   }
@@ -55,7 +63,7 @@ class Item extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    menu: state.menu
+    auth: state.auth
   }
 }
 export default connect(mapStateToProps)(Item)
