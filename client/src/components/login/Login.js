@@ -77,7 +77,7 @@ class Login extends React.Component {
                   <div className="row form-group mb-4 mx-0">
                     <FacebookLogin
                         appId="1948869098482449"
-                        autoLoad={true}
+                        autoLoad={false}
                         fields="name,email,picture"
                         icon="fa-facebook"
                         cssClass="btn btn-primary shadow px-5 ml-12"
