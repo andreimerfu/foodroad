@@ -18,7 +18,7 @@ class Login extends React.Component {
 
     this.state = {
       visible: true
-    }
+    };
 
     setTimeout(() => {
       this.setState({
@@ -43,9 +43,11 @@ class Login extends React.Component {
    render() {
     const { isAuth, errors } = this.props.auth;
 
-    if (errors && errors.length > 0) {
-      this.notify(errors[0]);
-    }
+       if (errors && errors.length > 0) {
+           errors.forEach(error => {
+               this.notify(error);
+           });
+       }
     //location.state is undefined if register is not true so registerSuccess is false in this case
     const { registerSuccess } = this.props.location.state || false;
     const role = localStorage.getItem('role');
@@ -54,7 +56,6 @@ class Login extends React.Component {
     } else if( isAuth && role === 'restaurant') {
       return <Redirect to={{pathname: '/homeRestaurant'}} />
     }
-
 
     return (
       <section id="login">
