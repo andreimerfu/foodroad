@@ -3,15 +3,7 @@ import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { AuthInput } from '../shared/form/AuthInput';
 import { ResErrors } from '../shared/form/ResErrors';
-import { required, minLength4 } from '../shared/form/validators';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-
-
-function notify(errors) { 
-  console.log(errors);
-  toast.error(errors)
-}
+import { required, minLength8 } from '../shared/form/validators';
 
 
 const LoginForm = props => {
@@ -19,7 +11,6 @@ const LoginForm = props => {
 
   return (
    <div>
-   <ResErrors errors={errors} />
     <form onSubmit={handleSubmit(submitCb)}>
       <Field
         name="email"
@@ -38,10 +29,9 @@ const LoginForm = props => {
         validate={[required, minLength8]}
       />
       <div>
-        <button className='btn btn-primary shadow px-5 my-4' onClick={notify(errors)} type="submit" disabled={!valid || pristine || submitting }>
+        <button className='btn btn-primary shadow px-5 my-4' type="submit" disabled={!valid || pristine || submitting }>
           Log In
         </button>
-        <ToastContainer />
       </div>
     </form>
     </div>
