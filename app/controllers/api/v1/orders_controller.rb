@@ -6,7 +6,6 @@ class Api::V1::OrdersController < ApplicationController
 
   def create
     products = Product.find(params[:products].pluck(:id))
-    restaurant = products.first.restaurant
 
     restaurant = products.first.restaurant
 
