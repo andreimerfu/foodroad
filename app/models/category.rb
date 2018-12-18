@@ -7,6 +7,6 @@ class Category < ApplicationRecord
   validates_presence_of :name
 
   BANNED_WORDS = [
-      :food, :cuisine, :dish
+      :food, :cuisine, :dish, :cup
   ].freeze
 end
