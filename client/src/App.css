@@ -651,6 +651,9 @@ footer.main-footer {
     font-size: 1.2em;
     margin-top: 37px; }
 
+.custom-file-label {
+  width: 90%; }
+
 .table > tbody > tr > td,
 .table > tfoot > tr > td {
   vertical-align: middle; }
