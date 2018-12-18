@@ -13,14 +13,14 @@ export class Footer extends React.Component  {
         </div>
         <div class="row pt-5 justify-content-center">
           
-          <div class="col-lg-3 mb-5 mb-lg-0 text-center text-sm-right">
+          <div class="col-lg-3 mb-5 mb-lg-0 text-center">
             <h5 class="footer-heading">Site pages</h5>
             <ul class="list-unstyled">
               <li> <Link to="/registerRestaurant" class="footer-link">Become a partner restaurant</Link></li>
 
             </ul>
           </div>
-          <div class="col-lg-3 mb-5 mb-lg-0 text-center text-sm-right">
+          <div class="col-lg-3 mb-5 mb-lg-0 text-center ">
             <h5 class="footer-heading">Resources</h5>
             <ul class="list-unstyled">
               <li> <a href="/" class="footer-link ">Home</a></li>

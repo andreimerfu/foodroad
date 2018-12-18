@@ -49,11 +49,11 @@ const service = {
     return Promise.resolve(tasks);
   },
   create: task => {
-    count += 1;
-    tasks.push({
-      ...task,
-      id: count
-    });
+    // count += 1;
+    // tasks.push({
+    //   ...task,
+    //   id: count
+    // });
 
     axios.get(`/api/v1/get_restaurant_id`, {
       headers: {
@@ -63,7 +63,12 @@ const service = {
         'expiry': localStorage.getItem('expiry'),
       }
     }).then(res => {
-      axios.post(`/api/v1/restaurants/9/products`, task, {
+      axios.post(`/api/v1/restaurants/${res.data}/products`, {
+          name: task.name,
+          description: task.description,
+          price: task.price,
+          image: task.image
+      }, {
         headers: {
           'uid': localStorage.getItem('uid'),
           'client': localStorage.getItem('client'),
@@ -75,7 +80,7 @@ const service = {
       .then(res => {
 
         })
-    })
+    });
     return Promise.resolve(task);
   },
   update: data => {
@@ -90,10 +95,11 @@ const service = {
         'expiry': localStorage.getItem('expiry'),
       }
     }).then(res => {
-       axios.put(`/api/v1/restaurants/9/products/${data.id}`, {
+       axios.put(`/api/v1/restaurants/${res.data}/products/${data.id}`, {
         name: data.name,
         description: data.description,
-        price: data.price
+        price: data.price,
+        image: data.image
        }, {
         headers: {
           'uid': localStorage.getItem('uid'),
@@ -106,7 +112,7 @@ const service = {
       .then(res => {
 
       })
-    })
+    });
 
     return Promise.resolve(data);
   },
@@ -122,7 +128,7 @@ const service = {
         'expiry': localStorage.getItem('expiry'),
       }
     }).then(res => {
-      axios.delete(`/api/v1/restaurants/9/products/${data.id}`, {
+      axios.delete(`/api/v1/restaurants/${res.data}/products/${data.id}`, {
         headers: {
           'uid': localStorage.getItem('uid'),
           'client': localStorage.getItem('client'),
@@ -157,6 +163,7 @@ export const RestaurantCRUD = (products) => (
           render={DescriptionRenderer}
         />
         <Field name="price" label="Price" placeholder="Price" />
+        <Field name="image" label="Image" placeholder="Image url"/>
       </Fields>
       <CreateForm
         title="Task Creation"
@@ -176,6 +183,10 @@ export const RestaurantCRUD = (products) => (
 
           if (!values.price) {
             errors.price = "Please, provide task's price";
+          }
+
+          if (!values.image) {
+              errors.image = "Please provide a image url";
           }
 
           return errors;
@@ -205,6 +216,10 @@ export const RestaurantCRUD = (products) => (
 
           if (!values.price) {
             errors.price = "Please, provide task's price";
+          }
+
+          if (!values.image) {
+              errors.image = "Please provide a image url";
           }
 
           return errors;
