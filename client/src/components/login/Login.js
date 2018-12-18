@@ -4,6 +4,7 @@ import * as actions from '../../actions';
 import { connect } from 'react-redux';
 import { Redirect, Link } from 'react-router-dom';
 import { Alert } from 'reactstrap';
+import FacebookLogin from 'react-facebook-login';
 
 class Login extends React.Component {
 
@@ -11,6 +12,7 @@ class Login extends React.Component {
     super();
 
     this.loginUser = this.loginUser.bind(this);
+    this.responseFacebook = this.responseFacebook.bind(this);
 
     this.state = {
       visible: true
@@ -27,6 +29,12 @@ class Login extends React.Component {
     this.props.dispatch(actions.login(userData));
   }
 
+  responseFacebook(response) {
+    if (Object.keys(response).length > 0) {
+      this.props.dispatch(actions.facebookLogin(response));
+    }
+  }
+
    render() {
 
     const { isAuth, errors } = this.props.auth;
@@ -38,7 +46,7 @@ class Login extends React.Component {
     } else if( isAuth && role === 'restaurant') {
       return <Redirect to={{pathname: '/homeRestaurant'}} />
     }
-    
+
 
     return (
       <section id="login">
@@ -65,6 +73,16 @@ class Login extends React.Component {
                   <div class="row form-group mb-4 mx-0">
                     <p class="text-muted mb-0 py-1"> Don't have an account? </p>
                     <Link className='btn btn-outline-primary shadow px-5 ml-3' to='/register'>Sign up</Link>
+                  </div>
+                  <div className="row form-group mb-4 mx-0">
+                    <FacebookLogin
+                        appId="1948869098482449"
+                        autoLoad={true}
+                        fields="name,email,picture"
+                        icon="fa-facebook"
+                        cssClass="btn btn-primary shadow px-5 ml-12"
+                        textButton=""
+                        callback={this.responseFacebook} />
                   </div>
 
               </div>

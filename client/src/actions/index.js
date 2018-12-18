@@ -500,3 +500,19 @@ export const checkoutOrder = (cartDetails) => {
     })
   }
 }
+
+export const facebookLogin = (response) => {
+  return dispatch => {
+    return axios.post(`/api/v1/auth/facebook_login`, response)
+      .then(res => {
+        localStorage.setItem('uid', res.headers['uid']);
+        localStorage.setItem('client', res.headers['client']);
+        localStorage.setItem('accessToken', res.headers['access-token']);
+        localStorage.setItem('expiry', res.headers['expiry']);
+        localStorage.setItem('role', res.data.data.attributes.role);
+        dispatch(loginSuccess())
+      }).catch(error => {
+        console.log("Error facebook login");
+      })
+  }
+}

@@ -26,7 +26,6 @@ class Cart extends React.Component {
   notify = () => toast.error("Add more products in your cart !");
 
   renderCheckoutButton(valid, min_order) {
-    debugger;
     if (valid) {
       return (
         <Link to='/checkout' className="btn btn-success btn-block">Checkout <i className="fa fa-angle-right"></i></Link>

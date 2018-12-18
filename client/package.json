@@ -20,6 +20,7 @@
     "react-cookie": "^3.0.4",
     "react-crud-table": "0.0.8",
     "react-dom": "^16.6.0",
+    "react-facebook-login": "^4.1.1",
     "react-google-maps": "^9.4.5",
     "react-places-autocomplete": "^7.2.0",
     "react-redux": "^5.0.7",
