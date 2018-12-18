@@ -14,7 +14,7 @@ class CartItem extends React.Component {
       <tr>
         <td data-th="Product">
           <div class="row">
-            <div class="col-sm-2 hidden-xs"><img src="http://placehold.it/100x100" alt="..." class="img-responsive" /></div>
+            <div class="col-sm-2 hidden-xs"><img src={this.props.item.image} alt="..." class="img-responsive" height="80" width="100"/></div>
             <div class="col-sm-10">
               <h4 class="nomargin">{this.props.item.item}</h4>
               <p>{this.props.item.description}</p>
@@ -36,7 +36,7 @@ class CartItem extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    itemsList: state.cart
+    menu: state.menu
   }
 }
 export default connect(mapStateToProps)(CartItem)
