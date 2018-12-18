@@ -18,7 +18,9 @@ class Cart extends React.Component {
   }
 
   componentDidMount() {
-    this.props.dispatch(actions.getRestaurantInfo(this.props.itemsList[0].restaurant));
+    if (this.props.itemsList.length > 0) {
+      this.props.dispatch(actions.getRestaurantInfo(this.props.itemsList[0].restaurant));
+    }
   }
 
   notify = () => toast.error("Add more products in your cart !");
