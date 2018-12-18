@@ -38,7 +38,7 @@ class Item extends React.Component {
     if (isAuth) {
       buttonCheck = (
         <div className="col md-1 my-auto">
-             <button onClick={() => {this._addToCart(this.props.product.id, this.props.product.image, this.props.product.price, this.props.product.name, this.props.product.description, 1, this.props.product.restaurant.id)}} className="btn btn-primary"><i class="fas fa-shopping-bag"></i></button>
+             <button onClick={() => {this._addToCart(this.props.product.id, this.props.product.image, this.props.product.price, this.props.product.name, this.props.product.description, 1, this.props.product.restaurant.id)}} className="btn btn btn-light"><i class="fas fa-shopping-bag"></i></button>
         </div>
       )
     }

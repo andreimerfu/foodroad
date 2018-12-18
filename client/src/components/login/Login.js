@@ -4,6 +4,9 @@ import * as actions from '../../actions';
 import { connect } from 'react-redux';
 import { Redirect, Link } from 'react-router-dom';
 import { Alert } from 'reactstrap';
+import FacebookLogin from 'react-facebook-login';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 class Login extends React.Component {
 
@@ -11,10 +14,11 @@ class Login extends React.Component {
     super();
 
     this.loginUser = this.loginUser.bind(this);
+    this.responseFacebook = this.responseFacebook.bind(this);
 
     this.state = {
       visible: true
-    }
+    };
 
     setTimeout(() => {
       this.setState({
@@ -27,9 +31,23 @@ class Login extends React.Component {
     this.props.dispatch(actions.login(userData));
   }
 
-   render() {
+  responseFacebook(response) {
+    if (Object.keys(response).length > 0) {
+      this.props.dispatch(actions.facebookLogin(response));
+    }
+  }
 
+  notify = (error) => toast.error(error);
+
+
+   render() {
     const { isAuth, errors } = this.props.auth;
+
+       if (errors && errors.length > 0) {
+           errors.forEach(error => {
+               this.notify(error);
+           });
+       }
     //location.state is undefined if register is not true so registerSuccess is false in this case
     const { registerSuccess } = this.props.location.state || false;
     const role = localStorage.getItem('role');
@@ -38,7 +56,6 @@ class Login extends React.Component {
     } else if( isAuth && role === 'restaurant') {
       return <Redirect to={{pathname: '/homeRestaurant'}} />
     }
-    
 
     return (
       <section id="login">
@@ -51,7 +68,7 @@ class Login extends React.Component {
 
                 </div>
                 <div class="col-lg-5 px-lg-4">
-
+                  <ToastContainer />
                   <h1 class="text-base text-primary text-uppercase mb-4">Food Delivery</h1>
                   <h2 class="mb-4">Welcome back!</h2>
                   <p class="text-muted">Don’t feel like cooking tonight? Then let us deliver your favourite meals </p>
@@ -62,10 +79,28 @@ class Login extends React.Component {
                     </Alert>
                   }
                   <LoginForm submitCb={this.loginUser} errors={errors}/>
-                  <div class="row form-group mb-4 mx-0">
+                  <div class="row form-group mx-0">
                     <p class="text-muted mb-0 py-1"> Don't have an account? </p>
-                    <Link className='btn btn-outline-primary shadow px-5 ml-3' to='/register'>Sign up</Link>
                   </div>
+
+                  <div class="row form-group mb-1 mx-0">
+                    <div>
+                      <Link className='btn btn-outline-primary shadow px-5 ml-3' to='/register'>Sign up</Link>
+                    </div>
+                    <p class="text-muted mb-0 ml-3 mr-3"> or </p>
+                    <div>
+                    <FacebookLogin
+                        appId="1948869098482449"
+                        autoLoad={false}
+                        fields="name,email,picture"
+                        icon="fa-facebook"
+                        cssClass="btn btn-primary shadow fb-btn"
+                        textButton=""
+                        callback={this.responseFacebook} />
+                    </div>
+                </div>
+                 
+                  
 
               </div>
             </div>

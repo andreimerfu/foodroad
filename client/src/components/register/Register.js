@@ -2,7 +2,8 @@ import React from 'react';
 import RegisterForm from './RegisterForm';
 import { connect } from 'react-redux';
 import { Redirect, Link } from 'react-router-dom';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import * as actions from '../../actions';
 
 class Register extends React.Component {
@@ -11,8 +12,8 @@ class Register extends React.Component {
     super();
 
     this.state = {
-      redirect: false
-    }
+      redirect: false,
+    };
 
     this.registerUser = this.registerUser.bind(this);
   }
@@ -20,23 +21,36 @@ class Register extends React.Component {
 
   registerUser(userData) {
     this.props.dispatch(actions.register(userData)).then(
-      registerd=> this.setState({redirect: true})
+      response => {
+        if (response) {
+          this.setState({redirect: true})
+        }
+      }
     );
   }
 
+  notify = (error) => toast.error(error);
+
+
   render() {
-
-
     const { redirect } = this.state;
     const { errors } = this.props.auth;
-    if( errors.length === 0 && redirect) {
+
+    if(errors && errors.length === 0 && redirect) {
       return <Redirect to={{pathname: '/login', state: {registerSuccess: true  }}} />
+    }
+
+    if (errors && errors.length > 0) {
+      errors.forEach(error => {
+        this.notify(error);
+      });
     }
 
     return (
       <section id="register">
         <div class="page-holder d-flex align-items-center">
-            <div class="container">
+          <ToastContainer />
+          <div class="container">
               <div class="row align-items-center py-5">
                 <div class="col-5 col-lg-7 mx-auto mb-5 mb-lg-0">
                   <div class="pr-lg-5"><img src="../images/login.png" alt="" class="img-fluid img-login"></img></div>
