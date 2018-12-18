@@ -8,8 +8,10 @@ class Api::V1::OrdersController < ApplicationController
     products = Product.find(params[:products].pluck(:id))
     restaurant = products.first.restaurant
 
-    head 422 unless params[:total] >= restaurant.min_order
-    
+    restaurant = products.first.restaurant
+
+    head 422 if restaurant.min_order > params[:total]
+
     order = Order.new(total: params[:total],
       payment_type: params[:payment_type],
       address: params[:address],
