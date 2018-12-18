@@ -5,10 +5,13 @@ import { AuthInput } from '../shared/form/AuthInput';
 import {RingLoader} from "react-spinners";
 
 const RestaurantInfoForm = props => {
+
     const { handleSubmit, pristine, submitting, submitCb, errors, restaurantInfo} = props;
     if (Object.keys(restaurantInfo).length > 0) {
+
         return (
-            <div>
+            <div className="wrap py-5 row justify-content-center">
+                <div className="col-md-8 py-5">
                 <form onSubmit={handleSubmit(submitCb)}>
                     <Field
                         name="delivery_zone"
@@ -40,6 +43,7 @@ const RestaurantInfoForm = props => {
                         </button>
                     </div>
                 </form>
+                </div>
             </div>
         )
     } else {
