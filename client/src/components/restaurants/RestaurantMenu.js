@@ -16,8 +16,8 @@ class RestaurantMenu extends React.Component {
   renderCategories(){
     return this.props.categories.map((category,i) => {
       return(
-        <li className="active" key={i}>
-          <a href="#">{category.attributes.name}</a>
+        <li className="nav-item" key={i}>
+          <a href={"#" + category.attributes.name} class="nav-link active" aria-selected="true">{category.attributes.name}</a>
         </li>
       )
     })
@@ -61,31 +61,22 @@ class RestaurantMenu extends React.Component {
     if (categories.length > 0 && Object.keys(restaurant).length > 0) {
       return(
         <section id='restaurant-menu'>
-        
-          <nav id="sidebar">
-              <div className="sidebar-header">
-                  {this.renderRestaurantName(restaurant)}
-              </div>
-              <ul className="components">
+          <div className="row justify-content-center wrap py-5">
+            <div className="col-md-12">
+              <div className="mb-5 d-flex">
+                <h2 class="row text-center pr-4 ml-5">{this.renderRestaurantName(restaurant)}'s Menu</h2>
+                <button className="info-button btn btn-info" data-toggle="modal" data-target="#exampleModalCenter">
+                  <i className="fas fa-info-circle"></i>
+                </button>
+              </div>       
+              <ul className="menu-tab-nav">
                   {this.renderCategories()}
               </ul>
-              <ul className="list-unstyled CTAs">
-                  <li>
-                      <a href="" className="reviews">Recenzii</a>
-                  </li>
-                  <li>
-                      <a class="article" data-toggle="modal" data-target="#exampleModalCenter">
-                        Info
-                      </a>
-                  </li>
-              </ul>
-          </nav>
-          <div className="wrapper">
-          <div id="content">
-            { this.renderCategoriesWithProducts() }
-          </div>
-
-          { this.renderRestaurantInfo(restaurant) }
+              <div>
+                  { this.renderCategoriesWithProducts() }
+              </div>
+            </div>
+              { this.renderRestaurantInfo(restaurant) }
           </div>
       </section>
     )

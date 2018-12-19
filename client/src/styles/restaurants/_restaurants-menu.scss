@@ -1,153 +1,84 @@
 
-
-
-.nav-toggle {
-    padding: 40px 10px;
-    background: #fff;
-    border: none;
-    border-radius: 0;
-    margin-bottom: 40px;
-    margin-top: 70px;
-    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+.info-button {
+    height: 36px;
 }
 
-.navbar-btn {
-    box-shadow: none;
-    outline: none !important;
-    border: none;
+.menu-tab-nav {
+  display: block;
+  text-align: center;
+  margin-bottom: 80px !important;
 }
 
-.line {
-    width: 100%;
-    height: 1px;
-    border-bottom: 1px dashed #ddd;
-    margin: 40px 0;
+.menu-tab-nav li {
+  float: none;
+  display: inline-block;
+  *display: inline;
+  zoom: 1;
 }
 
-/* ---------------------------------------------------
-    SIDEBAR STYLE
------------------------------------------------------ */
-
-// .wrapper {
-//     display: flex;
-//     width: 100%;
-// }
-
-#sidebar {
-    width: 250px;
-    position: fixed;
-    left: 0;
-    height: 100vh;
-    z-index: 999;
-    background: #305182;
-    color: #fff;
-    transition: all 0.3s;
+.menu-tab-nav li a {
+  background: none;
+  color: #b3b3b3;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: .2em;
+  border-bottom: 2px solid transparent;
+  padding-left: 0;
+  padding-right: 0;
+  margin: 0 10px;
 }
 
-// #sidebar.active {
-//     margin-left: -250px;
-// }
-
-#sidebar .sidebar-header {
-    font-weight: 300 !important;
-    padding: 20px;
+.menu-tab-nav li a:hover{
+    border-bottom: 2px solid #fdb44b;
 }
 
-#sidebar ul.components {
-    padding: 10px;
-    list-style: none;
-    border-bottom: 1px solid #47748b;
+.menu-tab-nav li a.active {
+  color: black;
+  background: none;
 }
 
-#sidebar ul li a {
-    padding: 10px;
-    font-size: 1.1em;
-    display: block;
+.menu-food-item {
+  border-bottom: 1px dotted #ccc;
+  float: left;
+  width: 100%;
+  padding-bottom: 30px;
+  margin-bottom: 30px;
 }
 
-#sidebar ul li a:hover {
-    background: #6a90c8;
+.menu-food-item .text {
+  width: calc(100%);
 }
 
-// #sidebar ul li.active>a,
-// a[aria-expanded="true"] {
-//     color: #fff;
-// }
-
-// a[data-toggle="collapse"] {
-//     position: relative;
-// }
-
-// .dropdown-toggle::after {
-//     display: block;
-//     position: absolute;
-//     top: 50%;
-//     right: 20px;
-//     transform: translateY(-50%);
-// }
-
-ul.CTAs {
-    padding: 20px;
+@media (min-width: 768px) {
+  .menu-food-item .text {
+    width: calc(100% - 70px);
+  }
 }
 
-ul.CTAs a {
-    text-align: center;
-    font-size: 0.9em !important;
-    border-radius: 5px;
-    margin-bottom: 5px;
+.menu-food-item .price {
+  text-align: left;
+  width: 100%;
 }
 
-a.reviews {
-    background: #fff;
-    color: #7386D5;
+@media (min-width: 768px) {
+  .menu-food-item .price {
+    width: 70px;
+    text-align: right;
+  }
 }
 
-a.article,
-a.article:hover {
-    background: #6a90c8 !important;
-    color: #fff !important;
-}
+.menu-food-item .price strong {
+  color: #343a40;
+  font-size: 16px;
 
-/* ---------------------------------------------------
-    CONTENT STYLE
------------------------------------------------------ */
-
-#content {
-    min-height: 100vh;
-    transition: all 0.3s;
-    top: 0;
-    right: 0;
-    margin-left: 100px;
-}
-
-#content.active {
-    width: 100%;
-}
-
-/* ---------------------------------------------------
-    MEDIAQUERIES
------------------------------------------------------ */
-
-@media (max-width: 768px) {
-    #sidebar {
-        margin-left: -250px;
-    }
-    #sidebar.active {
-        margin-left: 0;
-    }
-    #content {
-        width: 100%;
-    }
-    #content.active {
-        width: calc(100% - 250px);
-    }
-    #sidebarCollapse span {
-        display: none;
-    }
-
-    #content {
-      margin-left: 0px;
-    }
 }
 
 
+.menu-food-item p:last-child {
+  margin-bottom: 0;
+}
+
+.fa-shopping-bag {
+  color: #fdb44b;
+  font-size: x-large;
+}

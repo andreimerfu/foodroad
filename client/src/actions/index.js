@@ -21,16 +21,17 @@ import { LOGIN_SUCCESS,
          UPDATE_QUANTITY,
          SYNC_QUANTITY,
          HISTORY_ORDERS,
+         ACTIVE_ORDERS,
          CHECKOUT_ORDER_SUCCESS
        } from './types';
 
 /*-------------------------------------------*\
-    Auth 
+    Auth
 \*-------------------------------------------*/
     /**
-     * 
-     *  CONSTS 
-     * 
+     *
+     *  CONSTS
+     *
      */
 
 const loginSuccess = () => {
@@ -79,9 +80,9 @@ const passwordChangedFailure = (errors) => {
 }
 
 /**
-     * 
-     *  Actions 
-     * 
+     *
+     *  Actions
+     *
      */
 
 export const register = (userData) => {
@@ -280,12 +281,12 @@ export const registerRestaurant = (restaurantData) => {
 }
 
 /*-------------------------------------------*\
-    User profile 
+    User profile
 \*-------------------------------------------*/
     /**
-     * 
+     *
      *  User info
-     * 
+     *
      */
 
 const fetchUserProfileSuccess = (profile) => {
@@ -339,12 +340,12 @@ export const addProfileAddress = (address, tag) => {
 }
 
 /*-------------------------------------------*\
-    
+
 \*-------------------------------------------*/
     /**
-     * 
-     * 
-     * 
+     *
+     *
+     *
      */
 
 export const checkCuiAction = (restaurant_id) => {
@@ -363,7 +364,25 @@ export const checkCuiAction = (restaurant_id) => {
       console.log("error checkCuiAction");
     })
   }
-}
+};
+
+export const updateRestaurantInfo = (restaurant_id, informations) => {
+  return dispatch => {
+    return axios.put(`/api/v1/restaurants/${restaurant_id}`, informations, {
+      headers: {
+        'uid': localStorage.getItem('uid'),
+        'client': localStorage.getItem('client'),
+        'access-token': localStorage.getItem('accessToken'),
+        'expiry': localStorage.getItem('expiry'),
+        'token-type': 'Bearer',
+      }
+    }).then((response) => {
+      console.log(response);
+    }).catch(error => {
+      console.log("error updateRestaurantInfo");
+    })
+  }
+};
 
 //===============================================
 //===========Shopping Cart actions===============
@@ -408,6 +427,41 @@ export function syncQuantity(payload) {
 //===============Orders actions==================
 //===============================================
 
+const fetchActiveOrdersSuccess = (orders) => {
+  return {
+    type: ACTIVE_ORDERS,
+    orders
+  }
+}
+const fetchHistoryOrdersSuccess = (orders) => {
+  return {
+    type: HISTORY_ORDERS,
+    orders
+  }
+}
+
+const checkoutOrderSuccess = () => {
+  return {
+    type: CHECKOUT_ORDER_SUCCESS,
+  }
+}
+export const fetchActiveOrders = (restaurant_id) => {
+  return dispatch => {
+    return axios.get(`/api/v1/restaurants/${restaurant_id}/orders`, {
+       headers: {
+        'uid': localStorage.getItem('uid'),
+        'client': localStorage.getItem('client'),
+        'access-token': localStorage.getItem('accessToken'),
+        'expiry': localStorage.getItem('expiry'),
+      }
+    }).then((response) => {
+      dispatch(fetchActiveOrdersSuccess(response.data.data));
+    }).catch(error => {
+      console.log("Error in fetchOrders");
+    })
+  }
+}
+
 export const fetchOrders = () => {
   return dispatch => {
     return axios.get(`/api/v1/profiles/orders`, {
@@ -422,19 +476,6 @@ export const fetchOrders = () => {
     }).catch(error => {
       console.log("Error in fetchOrders");
     })
-  }
-}
-
-const fetchHistoryOrdersSuccess = (orders) => {
-  return {
-    type: HISTORY_ORDERS,
-    orders
-  }
-}
-
-const checkoutOrderSuccess = () => {
-  return {
-    type: CHECKOUT_ORDER_SUCCESS,
   }
 }
 
@@ -457,5 +498,21 @@ export const checkoutOrder = (cartDetails) => {
     }).catch(error => {
       console.log("Error in checkoutOrder");
     })
+  }
+}
+
+export const facebookLogin = (response) => {
+  return dispatch => {
+    return axios.post(`/api/v1/auth/facebook_login`, response)
+      .then(res => {
+        localStorage.setItem('uid', res.headers['uid']);
+        localStorage.setItem('client', res.headers['client']);
+        localStorage.setItem('accessToken', res.headers['access-token']);
+        localStorage.setItem('expiry', res.headers['expiry']);
+        localStorage.setItem('role', res.data.data.attributes.role);
+        dispatch(loginSuccess())
+      }).catch(error => {
+        console.log("Error facebook login");
+      })
   }
 }

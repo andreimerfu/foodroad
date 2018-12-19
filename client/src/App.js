@@ -6,10 +6,13 @@ import { CookiesProvider } from 'react-cookie';
 
 import { Router, Route} from 'react-router-dom';
 import history from './history';
+import requireRestaurantLogin  from './components/shared/protected/requireRestaurantLogin';
+import requireUserLogin  from './components/shared/protected/requireUserLogin';
+import requireLogin  from './components/shared/protected/requireLogin';
 import Login  from './components/login/Login';
 import Register from './components/register/Register';
 import RestaurantSearch  from './components/home/RestaurantSearch';
-import requireRestaurantLogin  from './components/restaurants/requireRestaurantLogin';
+
 import RestaurantIndex  from './components/restaurants/RestaurantIndex';
 import RestaurantMenu  from './components/restaurants/RestaurantMenu';
 import RestaurantRegister  from './components/restaurantRegistration/RestaurantRegister';
@@ -19,8 +22,12 @@ import Rest from './components/restaurants/restaurantAdmin/Rest';
 import Cart from './components/cart/Cart';
 import OrdersHistory from './components/users/OrdersHistory';
 import Checkout from './components/cart/Checkout';
+import RestaurantInfoEdit from './components/restaurants/RestaurantInfoEdit';
+import RestaurantActiveOrders from './components/restaurants/RestaurantActiveOrders';
 import './App.css';
 import * as actions from './actions';
+
+import  ScrollToTop from './ScrollToTop';
 
 
 const store = require('./reducers').init();
@@ -48,6 +55,7 @@ class App extends Component {
       <Provider store={store}>
         <CookiesProvider>
           <Router history={history}>
+          <ScrollToTop>
             <div className="App">
               <Header logout={this.logout}/>
                 <div className="container">
@@ -57,15 +65,18 @@ class App extends Component {
                   <Route exact path='/restaurants' component={RestaurantIndex}/>
                   <Route exact path='/menu/:id' component={RestaurantMenu}/>
                   <Route exact path='/registerRestaurant' component={RestaurantRegister}/>
-                  <Route exact path='/profile' component={UserProfile}/>
+                  <Route exact path='/profile' component={requireLogin(UserProfile)}/>
                   <Route exact path='/homeRestaurant' component={requireRestaurantLogin(RestaurantHome)}/>
                   <Route exact path='/restaurantAdmin' component={requireRestaurantLogin(Rest)}/>
-                  <Route exact path='/cart' component={Cart}/>
-                  <Route exact path='/orders' component={OrdersHistory}/>
-                  <Route exact path='/checkout' component={Checkout}/>
+                  <Route exact path='/cart' component={requireUserLogin(Cart)}/>
+                  <Route exact path='/orders' component={requireUserLogin(OrdersHistory)}/>
+                  <Route exact path='/checkout' component={requireUserLogin(Checkout)}/>
+                  <Route exact path='/restaurantInfo' component={requireRestaurantLogin(RestaurantInfoEdit)} />
+                  <Route exact path='/activeOrders' component={requireRestaurantLogin(RestaurantActiveOrders)}/>
                 </div>
               <Footer />
             </div>
+            </ScrollToTop>
           </Router>
         </CookiesProvider>
       </Provider>

@@ -25,4 +25,20 @@ class User < ActiveRecord::Base
   def set_role(role)
     self.role = role
   end
+
+  class << self
+    def facebook_login(data)
+      where(uid: data['email']).first_or_initialize.tap do |user|
+        user.provider = 'facebook_oauth2'
+        user.name = data[:name]
+        user.uid = data[:email]
+        user.email = data[:email]
+        user.image = data['picture']['url']
+        user.confirmed_at = Time.current
+        user.password = Devise.friendly_token[0, 20]
+        user.password_confirmation = user.password
+        user
+      end
+    end
+  end
 end

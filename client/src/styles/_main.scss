@@ -1,4 +1,4 @@
-@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display:400,400i|Raleway:300,500');
 @import 'variables.scss';
 @import 'header/header.scss';
 @import 'login/login.scss';
@@ -8,6 +8,7 @@
 @import 'footer/footer.scss';
 @import 'profile/profile.scss';
 @import 'restaurants/restaurant-crud.scss';
+@import 'restaurants/restaurant-home.scss';
 @import 'cart/cart.scss';
 
 body {
@@ -16,17 +17,17 @@ body {
 }
 
 p {
-    font-family: 'Poppins', sans-serif;
-    font-size: 1.1em;
-    font-weight: 300;
-    line-height: 1.7em;
-    color: #999;
+  font-family: $font-raleway;
+  font-size: 1.1em;
+  font-weight: 300;
+  line-height: 1.7em;
+  color: #999;
 }
 
 h1,h2,h3,h4,h5,h6 {
 	margin-bottom: 0.5rem;
-  font-family: "Poppins", sans-serif;
-  font-weight: 600;
+  font-family: "Raleway", sans-serif;
+  font-weight: 500;
   line-height: 1.2;
 }
 

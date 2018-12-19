@@ -4,10 +4,9 @@ import { AuthInput } from '../shared/form/AuthInput';
 import { ResErrors } from '../shared/form/ResErrors';
 
 const RegisterForm = props => {
-  const { handleSubmit, pristine, submitting, submitCb, errors} = props
+  const { handleSubmit, pristine, submitting, submitCb, errors} = props;
   return (
     <div>
-    <ResErrors errors={errors} />
     <form onSubmit={handleSubmit(submitCb)}>
       <Field
         name="email"

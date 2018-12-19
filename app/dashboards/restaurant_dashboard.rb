@@ -31,7 +31,7 @@ class RestaurantDashboard < Administrate::BaseDashboard
     manager_id: Field::Number,
     cui: Field::Number,
     progress_value: Field::Number,
-    validation_steps: Field::Text,
+    #validation_steps: Field::Text,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -71,7 +71,7 @@ class RestaurantDashboard < Administrate::BaseDashboard
     :manager_id,
     :cui,
     :progress_value,
-    :validation_steps,
+   # :validation_steps,
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -96,7 +96,7 @@ class RestaurantDashboard < Administrate::BaseDashboard
     :manager_id,
     :cui,
     :progress_value,
-    :validation_steps,
+    #:validation_steps,
   ].freeze
 
   # permitted for has_many_attached
