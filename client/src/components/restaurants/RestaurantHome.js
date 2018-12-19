@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import * as actions from '../../actions';
 import CircularProgressbar from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
-import { Link } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import {RingLoader} from "react-spinners";
 
 class RestaurantHome extends React.Component {
@@ -69,6 +69,10 @@ class RestaurantHome extends React.Component {
   render() {
     const restaurant = this.props.restaurant.attributes;
     if (restaurant && Object.keys(restaurant).length > 0) {
+       if (restaurant.approval_status === "approved") {
+          return <Redirect to={{pathname: '/activeOrders'}} />
+       }
+
       return(
         <div className="wrap">
           <div style={{ margin: "auto", width: 400, "margin-top": "120px"}}>
@@ -109,7 +113,7 @@ class RestaurantHome extends React.Component {
                     { this.renderVerifiedStatus(restaurant.validation_steps['informations'])}
                   </div>
                 </div>
-                
+
                 <div className="pb-4">
                   <p className="mb-2"> Step 4. Add restaurant menu </p>
                   <div className="d-flex justify-content-between">
@@ -117,7 +121,7 @@ class RestaurantHome extends React.Component {
                     { this.renderVerifiedStatus(restaurant.validation_steps['menu'])}
                   </div>
                 </div>
-               
+
              </div>
              </div>
         </div>
