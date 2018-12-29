@@ -216,7 +216,13 @@ export const getRestaurants = (latLng, search) => {
           lat: latLng.lat,
           lng: latLng.lng,
           search: search
-        }
+        },
+        headers: {
+        'uid': localStorage.getItem('uid'),
+        'client': localStorage.getItem('client'),
+        'access-token': localStorage.getItem('accessToken'),
+        'expiry': localStorage.getItem('expiry'),
+      }
       })
       .then(res => {
         dispatch(fetchRestaurants(res.data.data));
