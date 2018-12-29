@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 FactoryBot.define do
+  factory :recommendation do
+    
+  end
   factory :order do
     association :product
     association :profile
