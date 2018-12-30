@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, withRouter, Redirect  } from 'react-router-dom';
 import { connect } from 'react-redux';
+import RecommendationModal from '../shared/RecommendationModal';
 
 class Header extends React.Component  {
 
@@ -24,7 +25,7 @@ class Header extends React.Component  {
             <i className="far fa-user-circle"></i>
             <span className="sr-only">Toggle Dropdown</span>
           </button>
-         
+
           <div className="dropdown-menu dropdown-menu-right">
             <Link to="/profile" className="dropdown-item"> Profile </Link>
             <Link to="/restaurantAdmin" className="dropdown-item">Admin page</Link>
@@ -44,12 +45,16 @@ class Header extends React.Component  {
             <i className="far fa-user-circle"></i>
             <span className="sr-only">Toggle Dropdown</span>
           </button>
-         
+
           <div className="dropdown-menu dropdown-menu-right">
             <Link to="/profile" className="dropdown-item"> Profile </Link>
             <Link to="/orders" className="dropdown-item">Istoric comenzi</Link>
             <div className="dropdown-divider"></div>
             <a className='dropdown-item' onClick={this.handleLogout} > Logout </a>
+          </div>
+
+          <div style={{display: "flex"}}>
+            <RecommendationModal />
           </div>
         </div>
       )

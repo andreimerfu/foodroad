@@ -56,7 +56,7 @@ class Item extends React.Component {
             <strong className="price">{this.props.product.price} RON</strong>
           </div>
           {buttonCheck}
-        </div> 
+        </div>
     )
   }
 }
