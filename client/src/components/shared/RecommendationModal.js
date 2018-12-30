@@ -101,7 +101,7 @@ class RecommendationModal extends Component {
             </div>
             </ModalBody>
             <ModalFooter>
-              <Button color="secondary" onClick={this.toggle}>Not interested</Button>
+              <Button color="secondary" onClick={this.toggle}>Nope</Button>
               <Button color="primary" onClick={() => {this._addToCart(this.state.product.id, this.state.product.image, this.state.product.price, this.state.product.name, this.state.product.description, 1, this.state.product.restaurant_id)}}>Order</Button>
             </ModalFooter>
           </Modal>
