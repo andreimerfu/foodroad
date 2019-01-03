@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import * as actions from '../../actions';
 import CircularProgressbar from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
-import { Link } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import {RingLoader} from "react-spinners";
 
 class RestaurantHome extends React.Component {
@@ -32,11 +32,15 @@ class RestaurantHome extends React.Component {
   renderVerifiedStatus(status) {
     if (status == true) {
       return (
-        <span class="badge badge-success float-right">Verified</span>
+        <div className="my-auto">
+          <span class="badge badge-success float-right">Verified</span>
+        </div>
       )
     } else {
       return (
-        <span class="badge badge-warning float-right">Pending</span>
+        <div className="my-auto">
+          <span class="badge badge-warning float-right">Pending</span>
+        </div>
       )
     }
   }
@@ -65,32 +69,61 @@ class RestaurantHome extends React.Component {
   render() {
     const restaurant = this.props.restaurant.attributes;
     if (restaurant && Object.keys(restaurant).length > 0) {
+       if (restaurant.approval_status === "approved") {
+          return <Redirect to={{pathname: '/activeOrders'}} />
+       }
+
       return(
-        <div style={{ margin: "auto", width: 400, "margin-top": "100px"}}>
-         <CircularProgressbar
-            percentage={restaurant.progress_value}
-            text={(restaurant.progress_value) + " %"}
-            initialAnimation="true"
-          />
-          <div className="d-flex justify-content-between">
-            <p>Step 1. Check CUI </p>
-          </div>
-          { this.renderVerifiedStatus(restaurant.validation_steps['cui'])}
-          <button className="btn btn-primary" onClick={this.checkCuiAction}>Check CUI </button>
-            <p>Step 2. Add documents </p>
-            { this.renderVerifiedStatus(restaurant.validation_steps['documents'])}
-            <div class="custom-file">
-            <input type="file" class="custom-file-input" id="inputGroupFile04" onChange={this.handleAddDocumentsEvent}/>
-            <label class="custom-file-label" for="inputGroupFile04">Choose file</label>
-          </div>
-         <p>Step 3. Add restaurant info </p>
-         { this.renderVerifiedStatus(restaurant.validation_steps['informations'])}
-          <Link to="/restaurantInfo" className="btn btn-primary">Complete Information</Link>
+        <div className="wrap">
+          <div style={{ margin: "auto", width: 400, "margin-top": "120px"}}>
+           <CircularProgressbar
+              percentage={restaurant.progress_value}
+              text={(restaurant.progress_value) + " %"}
+              initialAnimation="true"
+            />
+            </div>
+            <div className="row justify-content-center">
+              <div className="py-5 col-md-8">
 
-         <p>Step 4. Add restaurant menu </p>
-         { this.renderVerifiedStatus(restaurant.validation_steps['menu'])}
+                <div className="pb-4">
+                  <p className="mb-2"> Step 1. Check CUI </p>
+                  <div className="d-flex justify-content-between">
+                    <div>
+                      <button className=" btn btn-primary" onClick={this.checkCuiAction}>Check CUI </button>
+                    </div>
+                    { this.renderVerifiedStatus(restaurant.validation_steps['cui'])}
+                  </div>
+                </div>
 
-         <Link to="/restaurantAdmin" className="btn btn-primary">Complete Menu</Link>
+                <div className="pb-4">
+                  <p className="mb-2"> Step 2. Add documents </p>
+                  <div className="d-flex justify-content-between">
+                    <div class="custom-file">
+                      <input type="file" class="custom-file-input" id="inputGroupFile04" onChange={this.handleAddDocumentsEvent}/>
+                      <label class="custom-file-label" for="inputGroupFile04">Choose file</label>
+                    </div>
+                    { this.renderVerifiedStatus(restaurant.validation_steps['documents'])}
+                  </div>
+                </div>
+
+                <div className="pb-4">
+                  <p className="mb-2"> Step 3. Add restaurant info </p>
+                  <div className="d-flex justify-content-between">
+                    <Link to="/restaurantInfo" className="btn btn-primary">Complete Information</Link>
+                    { this.renderVerifiedStatus(restaurant.validation_steps['informations'])}
+                  </div>
+                </div>
+
+                <div className="pb-4">
+                  <p className="mb-2"> Step 4. Add restaurant menu </p>
+                  <div className="d-flex justify-content-between">
+                    <Link to="/restaurantAdmin" className="btn btn-primary">Complete Menu</Link>
+                    { this.renderVerifiedStatus(restaurant.validation_steps['menu'])}
+                  </div>
+                </div>
+
+             </div>
+             </div>
         </div>
       )
     } else {

@@ -22,6 +22,9 @@ Rails.application.routes.draw do
       end
       get '/restaurants/find_by_manager/:manager_id', to: 'restaurants#find_by_manager'
       get 'get_restaurant_id', to: 'restaurants#get_restaurant_id'
+      post '/auth/facebook_login', to: 'auth#facebook_login'
+      get '/profiles/recommendations/random', to: 'profiles/recommendations#random'
+      get '/profiles/recommendations', to: 'profiles/recommendations#index'
 
       resources :categories
       resources :orders, only: [:create, :update]

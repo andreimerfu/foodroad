@@ -12,6 +12,9 @@ class Api::V1::RestaurantsController < ApplicationController
       restaurants = Restaurant.approved_filter
                       .find_nearest_restaurants(params[:lat], params[:lng])
     end
+
+    Recommendation.training(current_user, restaurants) if current_user
+
     render jsonapi: restaurants, status: :ok
   end
 

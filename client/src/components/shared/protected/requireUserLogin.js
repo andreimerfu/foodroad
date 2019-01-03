@@ -1,15 +1,14 @@
 import React from 'react';  
 import {connect} from 'react-redux';  
-import history from '../../history';
+import history from '../../../history';
 
-export default function requireRestaurantLogin(Component) {
+export default function requireUserLogin(Component) {
 
   class AuthenticatedComponent extends React.Component {
 
     componentWillMount() {
-      //const {isAuth} = this.props.auth
       const role = localStorage.getItem('role');
-      if (!this.props.auth.isAuth || role !== 'restaurant') {
+      if (!this.props.auth.isAuth || role !== 'user') {
         console.log('You need to login as a restaurant to see this page!');
         history.push('/login');
       }
@@ -18,7 +17,7 @@ export default function requireRestaurantLogin(Component) {
 
     componentDidUpdate(prevProps) {
       const role = localStorage.getItem('role');
-      if(!prevProps.auth.isAuth || role !== 'restaurant') {
+      if(!prevProps.auth.isAuth || role !== 'user') {
         history.push('/login');
       }
     }

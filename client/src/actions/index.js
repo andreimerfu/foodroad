@@ -216,7 +216,13 @@ export const getRestaurants = (latLng, search) => {
           lat: latLng.lat,
           lng: latLng.lng,
           search: search
-        }
+        },
+        headers: {
+        'uid': localStorage.getItem('uid'),
+        'client': localStorage.getItem('client'),
+        'access-token': localStorage.getItem('accessToken'),
+        'expiry': localStorage.getItem('expiry'),
+      }
       })
       .then(res => {
         dispatch(fetchRestaurants(res.data.data));
@@ -498,5 +504,21 @@ export const checkoutOrder = (cartDetails) => {
     }).catch(error => {
       console.log("Error in checkoutOrder");
     })
+  }
+}
+
+export const facebookLogin = (response) => {
+  return dispatch => {
+    return axios.post(`/api/v1/auth/facebook_login`, response)
+      .then(res => {
+        localStorage.setItem('uid', res.headers['uid']);
+        localStorage.setItem('client', res.headers['client']);
+        localStorage.setItem('accessToken', res.headers['access-token']);
+        localStorage.setItem('expiry', res.headers['expiry']);
+        localStorage.setItem('role', res.data.data.attributes.role);
+        dispatch(loginSuccess())
+      }).catch(error => {
+        console.log("Error facebook login");
+      })
   }
 }
