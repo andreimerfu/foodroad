@@ -46,31 +46,29 @@ class RestaurantSearch extends React.Component {
 		if (this.state.redirect === true) {
       return <Redirect to={{pathname: '/restaurants'}} />
 		}
-		return(
-      <section id="search-address">
-        <div class="search-address-image">
-        </div>
+		return <section id="search-address">
+        <div class="search-address-image" />
         <div class="wrap py-5 text-center">
-            <div class="row d-flex justify-content-center py-5">
-              <div class="col-lg-6 ">
-              <img src="../images/login.png" alt="" class="img-fluid img-home"></img>
-              <p class="lead text-muted mt-4 mb-4">Hungry? Then why don’t you treat yourself tonight to one of our delicious takeaways – order now from FoodRoad</p>
-                  <form action="#" class="subscription-form">
-                    <div class="form-group">
-                      <PlacesAutocomplete
-                          value={this.state.address}
-                          onChange={this.handleChange}
-                          onSelect={this.handleSelect}
-                        >
-                        {LocationInput}
-                        </PlacesAutocomplete>
-                    </div>
-                  </form>
-              </div>
+          <div class="row d-flex justify-content-center py-5">
+            <div class="col-lg-6 ">
+              <img src="../images/login.png" alt="" class="img-fluid img-home" />
+              <p class="lead text-muted mt-4 mb-4">
+                Comandă simplu și rapid
+              </p>
+              <p>
+                Găsește restaurante în apropierea ta.
+              </p>
+              <form action="#" class="subscription-form">
+                <div class="form-group">
+                  <PlacesAutocomplete value={this.state.address} onChange={this.handleChange} onSelect={this.handleSelect}>
+                    {LocationInput}
+                  </PlacesAutocomplete>
+                </div>
+              </form>
             </div>
           </div>
-      </section>
-		)
+        </div>
+      </section>;
 	}
 }
 export default withCookies(RestaurantSearch);

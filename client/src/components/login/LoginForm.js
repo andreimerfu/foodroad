@@ -28,8 +28,8 @@ const LoginForm = props => {
         component={AuthInput}
         validate={[required, minLength8]}
       />
-      <div>
-        <button className='btn btn-primary shadow px-5 my-4' type="submit" disabled={!valid || pristine || submitting }>
+      <div class="text-center">
+        <button className='btn btn-primary shadow px-5 my-4 ' type="submit" disabled={!valid || pristine || submitting }>
           Log In
         </button>
       </div>

@@ -27,12 +27,12 @@ class Header extends React.Component  {
           </button>
 
           <div className="dropdown-menu dropdown-menu-right">
-            <Link to="/profile" className="dropdown-item"> Profile </Link>
-            <Link to="/restaurantAdmin" className="dropdown-item">Admin page</Link>
-            <Link to="/restaurantInfo" className="dropdown-item">Restaurant Info</Link>
-              <Link to="/activeOrders" className="dropdown-item">Active Orders</Link>
+            <Link to="/profile" className="dropdown-item"> Profil </Link>
+            <Link to="/restaurantAdmin" className="dropdown-item">Administrare</Link>
+            <Link to="/restaurantInfo" className="dropdown-item">Informatii </Link>
+              <Link to="/activeOrders" className="dropdown-item">Comenzi active</Link>
             <div className="dropdown-divider"></div>
-            <a className='dropdown-item' onClick={this.handleLogout} > Logout </a>
+            <a className='dropdown-item' onClick={this.handleLogout} > Deconectare </a>
           </div>
         </div>
       )
@@ -47,10 +47,10 @@ class Header extends React.Component  {
           </button>
 
           <div className="dropdown-menu dropdown-menu-right">
-            <Link to="/profile" className="dropdown-item"> Profile </Link>
+            <Link to="/profile" className="dropdown-item"> Profil </Link>
             <Link to="/orders" className="dropdown-item">Istoric comenzi</Link>
             <div className="dropdown-divider"></div>
-            <a className='dropdown-item' onClick={this.handleLogout} > Logout </a>
+            <a className='dropdown-item' onClick={this.handleLogout} > Deconectare </a>
           </div>
 
           <div style={{display: "flex"}}>
@@ -60,7 +60,7 @@ class Header extends React.Component  {
       )
     }
     return (
-        <Link className='btn btn-outline-primary' to='/login'>Login <span className='sr-only'>(current)</span></Link>
+        <Link className='btn btn-outline-primary' to='/login'> Conectare <span className='sr-only'>(current)</span></Link>
     )
   }
 

@@ -16,7 +16,7 @@ body {
   background: $main-color
 }
 
-p {
+p, span {
   font-family: $font-raleway;
   font-size: 1.1em;
   font-weight: 300;
@@ -26,8 +26,7 @@ p {
 
 h1,h2,h3,h4,h5,h6 {
 	margin-bottom: 0.5rem;
-  font-family: "Raleway", sans-serif;
-  font-weight: 500;
+  font-family: $font-heading;
   line-height: 1.2;
 }
 
@@ -54,6 +53,7 @@ a:focus {
 .wrap {
   min-height:678px;
   margin-top: 68px;
+
 }
 
 .btn {
@@ -91,12 +91,12 @@ a:focus {
 }
 
 /*-------------------------------------------*\
-    Media Queries 
+    Media Queries
 \*-------------------------------------------*/
     /**
-     * 
-     *  Ipad Pro 
-     * 
+     *
+     *  Ipad Pro
+     *
      */
 @media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) {
   .wrap {

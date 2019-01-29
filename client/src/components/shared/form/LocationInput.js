@@ -9,7 +9,7 @@ export const LocationInput = ({
   <div>
     <input
       {...getInputProps({
-        placeholder: 'Search location ...',
+        placeholder: 'Adresa, de exemplu Calea Victoriei 1 ',
         className: 'location-search-input form-control form-control-search input-lg',
       })}
     />
