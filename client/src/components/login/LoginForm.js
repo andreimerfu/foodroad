@@ -30,7 +30,7 @@ const LoginForm = props => {
       />
       <div class="text-center">
         <button className='btn btn-primary shadow px-5 my-4 ' type="submit" disabled={!valid || pristine || submitting }>
-          Log In
+           Intra in cont
         </button>
       </div>
     </form>

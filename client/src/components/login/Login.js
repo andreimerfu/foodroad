@@ -60,120 +60,36 @@ class Login extends React.Component {
     return <section id="login">
         <div class="page-holder d-flex align-items-center">
           <div class="wrap">
-            <div class="  row align-items-center ">
+            <div class="row align-items-center ">
               <div class="col-5 col-lg-7 mx-auto mb-5 mb-lg-0">
                 <div class="pr-lg-5">
                   <img src="../images/login.png" alt="" class="img-fluid img-login" />
                 </div>
               </div>
-              <div class="col-lg-5 px-lg-4 wrap-login100 py-5">
-                <ToastContainer />
-                <h1 class="text-base text-primary text-uppercase mb-4">
-                  Conectare
-                </h1>
-                <h2 class="mb-4">Welcome back!</h2>
-                <p class="text-muted">
-                  Don’t feel like cooking tonight? Then let us deliver your
-                  favourite meals{" "}
-                </p>
-                {registerSuccess && <Alert color="success" isOpen={this.state.visible}>
-                    Thanks for signing up. Please confirm your email!
+              <div class="col-lg-5 px-lg-4 wrap-login py-5">
+                  <ToastContainer />
+                  <h1 class="text-base text-primary text-uppercase mb-4 pb-5"> Conectare </h1>
+
+                  {registerSuccess && <Alert color="success" isOpen={this.state.visible}>
+                      Thanks for signing up. Please confirm your email!
                   </Alert>}
-                <LoginForm submitCb={this.loginUser} errors={errors} />
-              <div class="text-center pb-3">
-                <span class="txt2 bo1">or</span>
-              </div>
-
-
-
-              <div class="text-center">
-                <FacebookLogin appId="1948869098482449" autoLoad={false} fields="name,email,picture" icon="fa fa-facebook-official" cssClass=" btn shadow fb-btn btn-facebook" textButton=" Facebook" callback={this.responseFacebook} />
-              </div>
-
-
-
-                <div class="row form-group mb-1 mx-0">
-
-
-
-                <div class="w-full text-center pt-4">
-                  <span class="txt2"> Nu ai un cont? </span>
-
-                  <a href="/register" class="txt2 bo1">
-                    Inregistreaza-te aici
-                  </a>
-                </div>
-
-
-                </div>
+                  <LoginForm submitCb={this.loginUser} errors={errors} />
+                  <div class="text-center pb-3">
+                    <span class="txt2 bo1">or</span>
+                  </div>
+                  <div class="text-center">
+                    <FacebookLogin appId="1948869098482449" autoLoad={false} fields="name,email,picture" icon="fa fa-facebook-official" cssClass=" btn shadow fb-btn" textButton=" Facebook" callback={this.responseFacebook} />
+                  </div>
+                  <div class="row form-group mb-1 mx-0 pt-4">
+                    <div class="pr-1">
+                      <span class="txt2">Nu ai un cont? </span>
+                    </div>
+                    <a href="/register" class="txt2 bo1"> Inregistreaza-te aici</a>
+                  </div>
               </div>
             </div>
           </div>
         </div>
-
-        {/* <div class="container-login100">
-        <div class="wrap">
-            <div class="wrap-login100 px-5 py-3 ">
-              <form class="login100-form validate-form flex-sb flex-w">
-                <span class="login100-form-title py-5"> Sign In With</span>
-                <div class="text-center">
-                  <FacebookLogin appId="1948869098482449" autoLoad={false} fields="name,email,picture" icon="fa fa-facebook-official" cssClass=" btn shadow fb-btn btn-facebook" textButton=" Facebook" callback={this.responseFacebook} />
-                </div>
-                <div class="w-full text-center pt-4">
-                  <span class="txt2 bo1">or</span>
-                </div>
-                <div class="pt-5">
-                  <span class="txt1">Username</span>
-                </div>
-                <div class="wrap-input100 validate-input" data-validate="Username is required">
-                  <input class="input100" type="text" name="username" />
-                  <span class="focus-input100" />
-                </div>
-
-                <div class="p-t-13 p-b-9">
-                  <span class="txt1">Password</span>
-
-                  <a href="#" class="txt2 bo1 m-l-5">
-                    Forgot?
-                  </a>
-                </div>
-                <div class="wrap-input100 validate-input" data-validate="Password is required">
-                  <input class="input100" type="password" name="pass" />
-                  <span class="focus-input100" />
-                </div>
-
-                <div class="p-t-13 p-b-9">
-                  <span class="txt1">Password</span>
-
-                  <a href="#" class="txt2 bo1 m-l-5">
-                    Forgot?
-                  </a>
-                </div>
-                <div class="wrap-input100 validate-input" data-validate="Password is required">
-                  <input class="input100" type="password" name="pass" />
-                  <span class="focus-input100" />
-                </div>
-
-                <div class="wrap-input100 validate-input" data-validate="Password is required">
-                  <input class="input100" type="password" name="pass" />
-                  <span class="focus-input100" />
-                </div>
-
-                <div class="container-login100-form-btn mt-5">
-                  <button class="login100-form-btn">Sign In</button>
-                </div>
-
-                <div class="w-full text-center pt-1">
-                  <span class="txt2"> Nu ai un cont? </span>
-
-                  <a href="#" class="txt2 bo1">
-                    Inregistreaza-te aici
-                  </a>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div> */}
       </section>;
   }
 }
