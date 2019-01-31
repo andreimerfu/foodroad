@@ -15,23 +15,29 @@ const RegisterForm = props => {
         label='Email address'
         placeholder="hhhhs"
         className='form-control border-0 shadow'
+        component={AuthInput}
+      />
+      <div class="row px-3">
+        <div class="mr-2" style={{width: 328 + 'px'}}>
+          <Field
+            name="password"
+            type="password"
+            label='Password'
+            className='form-control border-0 shadow text-violet'
+            component={AuthInput}
+          />
+        </div>
+          <div style={{ width: 328 + 'px' }}>
+          <Field
+            name="password-confirmation"
+            type="password"
+            label='Password Confirmation'
+            className='form-control border-0 shadow text-violet'
+            component={AuthInput}
+          />
+          </div>
 
-        component={AuthInput}
-      />
-      <Field
-        name="password"
-        type="password"
-        label='Password'
-        className='form-control border-0 shadow text-violet'
-        component={AuthInput}
-      />
-      <Field
-        name="password-confirmation"
-        type="password"
-        label='Password Confirmation'
-        className='form-control border-0 shadow text-violet'
-        component={AuthInput}
-      />
+      </div>
       <Field
         name="name"
         type="text"
@@ -67,10 +73,10 @@ const RegisterForm = props => {
         className='form-control border-0 shadow'
         component={AuthInput}
       />
-      <div>
-      <button className='btn btn-primary shadow px-5 my-4' type="submit" disabled={pristine || submitting}>
-        Submit
-      </button>
+      <div class="text-center">
+        <button className='btn btn-primary shadow px-5 my-4' type="submit" disabled={pristine || submitting}>
+          Inregistreaza
+        </button>
       </div>
     </form>
     </div>
