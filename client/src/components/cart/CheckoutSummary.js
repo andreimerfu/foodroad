@@ -43,9 +43,9 @@ class CheckoutSummary extends React.Component {
         <thead>
           <tr>
             <th scope="col">#</th>
-            <th scope="col">Product</th>
-            <th scope="col">Quantity</th>
-            <th scope="col">Price</th>
+            <th scope="col">Produs</th>
+            <th scope="col">Cantitate</th>
+            <th scope="col">Pret</th>
           </tr>
         </thead>
         <tbody>

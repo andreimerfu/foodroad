@@ -84,20 +84,20 @@ class RestaurantHome extends React.Component {
             </div>
             <div className="row justify-content-center">
               <div className="py-5 col-md-8">
-
+              <h3 class="text-base text-primary pb-5" > Esti la un click distanta de a deveni restaurant partener Food Road</h3>
                 <div className="pb-4">
-                  <p className="mb-2"> Step 1. Check CUI </p>
-                  <div className="d-flex justify-content-between">
+                  <p className="mb-2"> Pasul 1 : Verifica CUI-ul firmei </p>
+                  <div className="d-flex justify-content-between pl-5">
                     <div>
-                      <button className=" btn btn-primary" onClick={this.checkCuiAction}>Check CUI </button>
+                      <button className=" btn btn-primary" onClick={this.checkCuiAction}> Verifica CUI </button>
                     </div>
                     { this.renderVerifiedStatus(restaurant.validation_steps['cui'])}
                   </div>
                 </div>
 
                 <div className="pb-4">
-                  <p className="mb-2"> Step 2. Add documents </p>
-                  <div className="d-flex justify-content-between">
+                  <p className="mb-2"> Pasul 2 : Adauga documente restaurant </p>
+                  <div className="d-flex justify-content-between pl-5">
                     <div class="custom-file">
                       <input type="file" class="custom-file-input" id="inputGroupFile04" onChange={this.handleAddDocumentsEvent}/>
                       <label class="custom-file-label" for="inputGroupFile04">Choose file</label>
@@ -107,17 +107,17 @@ class RestaurantHome extends React.Component {
                 </div>
 
                 <div className="pb-4">
-                  <p className="mb-2"> Step 3. Add restaurant info </p>
-                  <div className="d-flex justify-content-between">
-                    <Link to="/restaurantInfo" className="btn btn-primary">Complete Information</Link>
+                  <p className="mb-2"> Pasul 3 : Adauga informatii referitoare la restaurant </p>
+                <div className="d-flex justify-content-between pl-5">
+                    <Link to="/restaurantInfo" className="btn btn-primary">Completeaza informatiile</Link>
                     { this.renderVerifiedStatus(restaurant.validation_steps['informations'])}
                   </div>
                 </div>
 
                 <div className="pb-4">
-                  <p className="mb-2"> Step 4. Add restaurant menu </p>
-                  <div className="d-flex justify-content-between">
-                    <Link to="/restaurantAdmin" className="btn btn-primary">Complete Menu</Link>
+                  <p className="mb-2"> Pasul 4 : Adauga meniul </p>
+                <div className="d-flex justify-content-between pl-5">
+                    <Link to="/restaurantAdmin" className="btn btn-primary">Completeaza meniul</Link>
                     { this.renderVerifiedStatus(restaurant.validation_steps['menu'])}
                   </div>
                 </div>

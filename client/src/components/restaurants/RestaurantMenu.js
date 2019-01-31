@@ -64,11 +64,11 @@ class RestaurantMenu extends React.Component {
           <div className="row justify-content-center wrap py-5">
             <div className="col-md-12">
               <div className="mb-5 d-flex">
-                <h2 class="row text-center pr-4 ml-5">{this.renderRestaurantName(restaurant)}'s Menu</h2>
+                <h2 class="row text-center pr-4 ml-5">Meniu {this.renderRestaurantName(restaurant)}</h2>
                 <button className="info-button btn btn-info" data-toggle="modal" data-target="#exampleModalCenter">
                   <i className="fas fa-info-circle"></i>
                 </button>
-              </div>       
+              </div>
               <ul className="menu-tab-nav">
                   {this.renderCategories()}
               </ul>

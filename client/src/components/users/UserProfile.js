@@ -94,17 +94,17 @@ class UserProfile extends React.Component {
                   <div class="col-lg-6 mb-5 mx-auto">
                     <div class="profile">
                       <div class="profile-header">
-                        <h6 class="text-uppercase mb-0">Profile</h6>
+                        <h6 class="text-uppercase mb-0">Profil</h6>
                       </div>
                       <div class="profile-body">
-                        <p>Change your email.</p>
+                        <p>Schimba email-ul</p>
                         <form class="form">
                           <div class="form-group">
-                            <label class="form-control-label text-uppercase mr-3">New email</label>
+                            <label class="form-control-label text-uppercase mr-3">Email nou</label>
                             <input id="" type="password" placeholder="" class="mr-3 form-control"></input>
                           </div>
                           <div class="form-group">
-                            <button class="btn btn-primary">Submit</button>
+                            <button class="btn btn-primary">Salveaza</button>
                           </div>
                         </form>
                       </div>
@@ -113,22 +113,21 @@ class UserProfile extends React.Component {
                   <div class="col-lg-6 mb-5 mx-auto">
                     <div class="profile">
                       <div class="profile-header">
-                        <h6 class="text-uppercase mb-0">Change password</h6>
+                        <h6 class="text-uppercase mb-0">Schimba parola</h6>
                       </div>
                       <ResErrors errors={errors} />
                       <div class="profile-body">
-                        <p>Change your password.</p>
                         <form class="form">
                           <div class="form-group">
-                            <label class="form-control-label text-uppercase mr-3">New password</label>
+                            <label class="form-control-label text-uppercase mr-3">Parola noua</label>
                             <input id="inlineFormInput" type="password" placeholder="" class="mr-3 form-control" onChange={this.handleNewPassword}></input>
                           </div>
                           <div class="form-group">
-                            <label class="form-control-label text-uppercase mr-3">New Password confirmation</label><label for="inlineFormInputGroup" class="sr-only">Username</label>
+                            <label class="form-control-label text-uppercase mr-3">Confirmare parola noua</label><label for="inlineFormInputGroup" class="sr-only">Username</label>
                             <input id="inlineFormInputGroup" type="password" placeholder="" class="mr-3 form-control" onChange={this.handleNewPasswordConfirmation}></input>
                           </div>
                           <div class="form-group">
-                            <button class="btn btn-primary" onClick={this.changePassword} >Submit</button>
+                            <button class="btn btn-primary" onClick={this.changePassword} >Salveaza</button>
                           </div>
                         </form>
                       </div>
@@ -137,7 +136,7 @@ class UserProfile extends React.Component {
                   <div class="col-lg-6 mb-5 mx-auto">
                     <div class="profile">
                       <div class="profile-header">
-                        <h6 class="text-uppercase mb-0">Delivery address</h6>
+                        <h6 class="text-uppercase mb-0">Adresa de livrare</h6>
                       </div>
                       <div class="profile-body">
                         {this.renderAddresses(userProfile.addresses)}
@@ -184,7 +183,7 @@ class UserProfile extends React.Component {
           <section id="profile">
               <div class="wrap">
                 <div class = "col pt-5">
-          
+
                   <div class="col-lg-6 mb-5 mx-auto">
                     <div class="profile">
                       <div class="profile-header">
@@ -208,7 +207,7 @@ class UserProfile extends React.Component {
                         </form>
                       </div>
                     </div>
-                  </div>  
+                  </div>
               </div>
             </div>
           </section>
