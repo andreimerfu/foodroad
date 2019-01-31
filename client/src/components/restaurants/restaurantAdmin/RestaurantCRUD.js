@@ -151,26 +151,26 @@ export const RestaurantCRUD = (products) => (
 
   <div class="crud-panel">
     <CRUDTable
-      caption="Products"
+      caption="Produse"
       fetchItems={payload => service.fetchItems(products)}
     >
       <Fields>
         <Field name="id" label="Id" hideInCreateForm />
-        <Field name="name" label="Name" placeholder="Name" />
+        <Field name="name" label="Nume" placeholder="Name" />
         <Field
           name="description"
-          label="Description"
+          label="Descriere"
           render={DescriptionRenderer}
         />
-        <Field name="price" label="Price" placeholder="Price" />
-        <Field name="image" label="Image" placeholder="Image url"/>
+        <Field name="price" label="Pret" placeholder="Price" />
+        <Field name="image" label="Imagine" placeholder="Image url"/>
       </Fields>
       <CreateForm
-        title="Task Creation"
-        message="Create a new task!"
-        trigger="Create Task"
+        title="Adaugare produs"
+        message="Creare produs nou!"
+        trigger="Adauga produs"
         onSubmit={task => service.create(task)}
-        submitText="Create"
+        submitText="Adauga"
         validate={values => {
           const errors = {};
           if (!values.name) {
@@ -194,11 +194,11 @@ export const RestaurantCRUD = (products) => (
       />
 
       <UpdateForm
-        title="Task Update Process"
-        message="Update task"
+        title="Actualizare produs"
+        // message="Update task"
         trigger="Update"
         onSubmit={task => service.update(task)}
-        submitText="Update"
+        submitText="Actualizeaza"
         validate={values => {
           const errors = {};
 
@@ -227,11 +227,11 @@ export const RestaurantCRUD = (products) => (
       />
 
       <DeleteForm
-        title="Task Delete Process"
-        message="Are you sure you want to delete the task?"
+        title="Stergere produs"
+        message="Esti sigur ca vrei sa stergi acest produs?"
         trigger="Delete"
         onSubmit={task => service.delete(task)}
-        submitText="Delete"
+        submitText="Sterge"
         validate={values => {
           const errors = {};
           if (!values.id) {
