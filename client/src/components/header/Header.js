@@ -2,16 +2,23 @@ import React from 'react';
 import { Link, withRouter, Redirect  } from 'react-router-dom';
 import { connect } from 'react-redux';
 import RecommendationModal from '../shared/RecommendationModal';
+import { withCookies, Cookies } from 'react-cookie';
 
 class Header extends React.Component  {
 
   constructor() {
     super();
     this.handleLogout = this.handleLogout.bind(this);
+    this.recommendation = this.recommendation.bind(this);
   }
 
   handleLogout() {
     this.props.logout();
+  }
+
+  recommendation() {
+    const { cookies } = this.props
+    cookies.remove('showModal');
   }
 
   renderAuthButtons(role, isAuth) {
@@ -49,6 +56,7 @@ class Header extends React.Component  {
           <div className="dropdown-menu dropdown-menu-right">
             <Link to="/profile" className="dropdown-item"> Profil </Link>
             <Link to="/orders" className="dropdown-item">Istoric comenzi</Link>
+            <button className="dropdown-item" onClick={this.recommendation}>Ce sa mananc?</button>
             <div className="dropdown-divider"></div>
             <a className='dropdown-item' onClick={this.handleLogout} > Deconectare </a>
           </div>
@@ -108,4 +116,6 @@ function mapStateToProps(state) {
   }
 }
 
-export default withRouter(connect(mapStateToProps)(Header));
+//export default withRouter(connect(mapStateToProps)(Header));
+export default connect(mapStateToProps)(withCookies(Header));
+
