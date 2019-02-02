@@ -30,9 +30,11 @@ const RegisterForm = props => {
         component={AuthInput}
       />
       <div>
-      <button className='btn btn-primary shadow px-5 my-4' type="submit" disabled={pristine || submitting}>
-        Sign up
-      </button>
+      <div class="text-center">
+         <button className='btn btn-primary shadow px-5 my-4' type="submit" disabled={pristine || submitting}>
+            Inregistreaza-te
+         </button>
+      </div>
       </div>
     </form>
     </div>

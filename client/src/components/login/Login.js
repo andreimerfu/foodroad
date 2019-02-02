@@ -57,57 +57,40 @@ class Login extends React.Component {
       return <Redirect to={{pathname: '/homeRestaurant'}} />
     }
 
-    return (
-      <section id="login">
+    return <section id="login">
         <div class="page-holder d-flex align-items-center">
-            <div class="wrap">
-              <div class="row align-items-center py-5">
-                <div class="col-5 col-lg-7 mx-auto mb-5 mb-lg-0">
-
-                  <div class="pr-lg-5"><img src="../images/login.png" alt="" class="img-fluid img-login"></img></div>
-
+          <div class="wrap">
+            <div class="row align-items-center ">
+              <div class="col-5 col-lg-7 mx-auto mb-5 mb-lg-0">
+                <div class="pr-lg-5">
+                  <img src="../images/login.png" alt="" class="img-fluid img-login" />
                 </div>
-                <div class="col-lg-5 px-lg-4">
+              </div>
+              <div class="col-lg-5 px-lg-4 wrap-login py-5">
                   <ToastContainer />
-                  <h1 class="text-base text-primary text-uppercase mb-4">Food Delivery</h1>
-                  <h2 class="mb-4">Welcome back!</h2>
-                  <p class="text-muted">Don’t feel like cooking tonight? Then let us deliver your favourite meals </p>
-                  {
-                     registerSuccess&&
-                     <Alert color="success" isOpen={this.state.visible} >
-                        Thanks for signing up. Please confirm your email!
-                    </Alert>
-                  }
-                  <LoginForm submitCb={this.loginUser} errors={errors}/>
-                  <div class="row form-group mx-0">
-                    <p class="text-muted mb-0 py-1"> Don't have an account? </p>
+                  <h1 class="text-base text-primary text-uppercase mb-4 pb-5"> Conectare </h1>
+
+                  {registerSuccess && <Alert color="success" isOpen={this.state.visible}>
+                      Thanks for signing up. Please confirm your email!
+                  </Alert>}
+                  <LoginForm submitCb={this.loginUser} errors={errors} />
+                  <div class="text-center pb-3">
+                    <span class="txt2 bo1">or</span>
                   </div>
-
-                  <div class="row form-group mb-1 mx-0">
-                    <div>
-                      <Link className='btn btn-outline-primary shadow px-5 ml-3' to='/register'>Sign up</Link>
+                  <div class="text-center">
+                    <FacebookLogin appId="1948869098482449" autoLoad={false} fields="name,email,picture" icon="fa fa-facebook-official" cssClass=" btn shadow fb-btn" textButton=" Facebook" callback={this.responseFacebook} />
+                  </div>
+                  <div class="row form-group mb-1 mx-0 pt-4">
+                    <div class="pr-1">
+                      <span class="txt2">Nu ai un cont? </span>
                     </div>
-                    <p class="text-muted mb-0 ml-3 mr-3"> or </p>
-                    <div>
-                    <FacebookLogin
-                        appId="1948869098482449"
-                        autoLoad={false}
-                        fields="name,email,picture"
-                        icon="fa-facebook"
-                        cssClass="btn btn-primary shadow fb-btn"
-                        textButton=""
-                        callback={this.responseFacebook} />
-                    </div>
-                </div>
-                 
-                  
-
+                    <a href="/register" class="txt2 bo1"> Inregistreaza-te aici</a>
+                  </div>
               </div>
             </div>
           </div>
         </div>
-      </section>
-    )
+      </section>;
   }
 }
 

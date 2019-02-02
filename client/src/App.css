@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Playfair+Display:400,400i|Raleway:300,500");
 @import url("https://fonts.googleapis.com/css?family=Rock+Salt");
+@import url("https://fonts.googleapis.com/css?family=Montserrat:500");
 .navbar {
   padding: 0.5rem;
   background: #fff;
@@ -21,19 +22,19 @@
 .img-login {
   border-radius: 35%; }
 
-.img-partner {
-  border-radius: 40%; }
-
-.auth-row {
-  margin: 0 auto; }
-  .auth-row .auth-text {
-    margin-left: auto; }
-  .auth-row .auth-btn {
-    margin-right: auto; }
-
 .fb-btn {
   padding-left: 68px;
-  padding-right: 68px; }
+  padding-right: 68px;
+  color: #fff;
+  background-color: #3b5998; }
+
+.wrap-login {
+  background: #fff;
+  border-radius: 10px;
+  position: relative; }
+
+.fc-r {
+  width: 700px; }
 
 .search-address-image {
   position: absolute;
@@ -193,7 +194,7 @@ footer.main-footer {
   bottom: 0; }
   footer.main-footer .footer-logo {
     position: absolute;
-    top: 20px;
+    top: 95px;
     width: 14.5rem; }
   footer.main-footer .footer-heading {
     margin-bottom: 1.25rem;
@@ -700,7 +701,7 @@ body {
   font-family: "Raleway", sans-serif;
   background: #fafafa; }
 
-p {
+p, span {
   font-family: "Raleway", sans-serif;
   font-size: 1.1em;
   font-weight: 300;
@@ -709,8 +710,7 @@ p {
 
 h1, h2, h3, h4, h5, h6 {
   margin-bottom: 0.5rem;
-  font-family: "Raleway", sans-serif;
-  font-weight: 500;
+  font-family: "Montserrat", sans-serif;
   line-height: 1.2; }
 
 h1 {
@@ -725,6 +725,19 @@ a:focus {
   color: inherit;
   text-decoration: none;
   transition: all 0.3s; }
+
+.txt1 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  color: #555555;
+  line-height: 1.5; }
+
+.txt2 {
+  color: #999999;
+  line-height: 1.5; }
+
+.bo1 {
+  border-bottom: 1px solid #999999; }
 
 .container {
   margin-top: 68px; }
@@ -761,12 +774,12 @@ a:focus {
   margin: auto; }
 
 /*-------------------------------------------*\
-    Media Queries 
+    Media Queries
 \*-------------------------------------------*/
 /**
-     * 
-     *  Ipad Pro 
-     * 
+     *
+     *  Ipad Pro
+     *
      */
 @media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) {
   .wrap {

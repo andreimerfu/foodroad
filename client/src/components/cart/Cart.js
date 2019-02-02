@@ -28,12 +28,12 @@ class Cart extends React.Component {
   renderCheckoutButton(valid, min_order) {
     if (valid) {
       return (
-        <Link to='/checkout' className="btn btn-success btn-block">Checkout <i className="fa fa-angle-right"></i></Link>
+        <Link to='/checkout' className="btn btn-success btn-block">Mai departe <i className="fa fa-angle-right"></i></Link>
       )
     } else {
       return (
         <div>
-          <button className="btn btn-success btn-block" onClick={this.notify}>Checkout <i className="fa fa-angle-right"></i></button>
+          <button className="btn btn-success btn-block" onClick={this.notify}>Mai departe <i className="fa fa-angle-right"></i></button>
           <ToastContainer />
         </div>
       )
@@ -67,9 +67,9 @@ class Cart extends React.Component {
           <table id="cart" class="table table-hover table-condensed">
             <thead>
               <tr>
-                <th style={{width: "60%"}}>Product</th>
-                <th style={{width: 10}}>Price</th>
-                <th style={{width: 5}}>Quantity</th>
+                <th style={{width: "60%"}}>Produs</th>
+                <th style={{width: 10}}>Pret</th>
+                <th style={{width: 5}}>Cantitate</th>
                 <th style={{width: 22}} class="text-center">Subtotal</th>
                 <th style={{width: 10}}></th>
               </tr>
@@ -84,10 +84,9 @@ class Cart extends React.Component {
                 <td class="text-center"><strong>Total {sum} LEI</strong></td>
               </tr>
               <tr class="visible-xs">
-                <td class="text-center"><strong>Minimal order {min_order} LEI</strong></td>
+                <td class="text-center"><strong>Comanda minima {min_order} LEI</strong></td>
               </tr>
               <tr>
-                <td><a href="#" class="d-none btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
                 <td colspan="2" class="hidden-xs"></td>
                 <td class="hidden-xs text-center"><strong>Total {sum} LEI</strong></td>
                 <td>{this.renderCheckoutButton(isValidForCheckout)}</td>

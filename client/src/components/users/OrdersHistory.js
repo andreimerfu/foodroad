@@ -31,8 +31,8 @@ class OrdersHistory extends React.Component {
             <thead>
               <tr>
                 <th scope="col">#</th>
-                <th scope="col">Address</th>
-                <th scope="col">Products</th>
+                <th scope="col">Adresa</th>
+                <th scope="col">Produse</th>
                 <th scope="col">Total</th>
               </tr>
             </thead>

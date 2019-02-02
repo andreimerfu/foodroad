@@ -16,14 +16,14 @@ const RestaurantInfoForm = props => {
                     <Field
                         name="delivery_zone"
                         type="text"
-                        label='Delivery zone (km)'
+                        label='Zona de livrare (km)'
                         className='form-control border-0 shadow'
                         component={AuthInput}
                     />
                     <Field
                         name="delivery_time"
                         type="number"
-                        label='Deliver_time (minutes)'
+                        label='Timpul de livrare (minute)'
                         className='form-control border-0 shadow text-violet'
                         value={restaurantInfo.delivery_time}
                         component={AuthInput}
@@ -31,7 +31,7 @@ const RestaurantInfoForm = props => {
                     <Field
                         name="min_order"
                         type="number"
-                        label='Minimal Order (LEI)'
+                        label='Comanda minima (LEI)'
                         className='form-control border-0 shadow text-violet'
                         value={restaurantInfo.min_order}
                         component={AuthInput}
@@ -39,7 +39,7 @@ const RestaurantInfoForm = props => {
                     <div>
                         <button className='btn btn-primary shadow px-5 my-4' type="submit"
                                 disabled={pristine || submitting}>
-                            Update
+                            Actualizeaza
                         </button>
                     </div>
                 </form>

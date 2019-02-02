@@ -2,22 +2,20 @@
 	border-radius: 35%;
 }
 
-.img-partner {
-	border-radius: 40%;
-}
-.auth-row {
- 	 margin: 0 auto;
-  
-	  .auth-text {
-	    margin-left: auto;
-	  }
-
-	  .auth-btn {
-	  	margin-right: auto;
-	  }
-}
-
 .fb-btn {
 	padding-left: 68px;
 	padding-right: 68px;
+	color: #fff;
+  background-color: #3b5998;
+}
+
+.wrap-login {
+  background: #fff;
+  border-radius: 10px;
+	position: relative;
+}
+
+
+.fc-r{
+	width: 700px;
 }
