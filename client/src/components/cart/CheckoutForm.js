@@ -23,7 +23,7 @@ const CheckoutForm = props => {
         name="observations"
         type="observations"
         label="Observations"
-        className="form-control"
+        className="form-control border-0 shadow"
         component="textarea"
       />
 

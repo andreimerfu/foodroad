@@ -32,14 +32,16 @@ class Header extends React.Component  {
             <i className="far fa-user-circle"></i>
             <span className="sr-only">Toggle Dropdown</span>
           </button>
-
-          <div className="dropdown-menu dropdown-menu-right">
+          <div class="dropdown-menu-right">
+          <div className="dropdown-menu dropdown-toggle">
             <Link to="/profile" className="dropdown-item"> Profil </Link>
             <Link to="/restaurantAdmin" className="dropdown-item">Administrare</Link>
             <Link to="/restaurantInfo" className="dropdown-item">Informatii </Link>
-              <Link to="/activeOrders" className="dropdown-item">Comenzi active</Link>
+            <Link to="/activeOrders" className="dropdown-item">Comenzi active</Link>
+            <Link to="/statistics" className="dropdown-item">Statistici</Link>
             <div className="dropdown-divider"></div>
-            <a className='dropdown-item' onClick={this.handleLogout} > Deconectare </a>
+              <a className='dropdown-item' onClick={this.handleLogout} > Deconectare </a>
+            </div>
           </div>
         </div>
       )

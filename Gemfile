@@ -38,6 +38,7 @@ gem 'administrate'
 gem 'administrate-field-active_storage'
 gem 'httparty'
 gem "activerecord-import"
+gem 'easy_translate'
 
 
 group :development, :test do

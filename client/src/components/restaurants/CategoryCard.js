@@ -9,7 +9,7 @@ export function CategoryCard(props) {
   if (showCategory == true) {
     return(
       <div>
-        <h2 className="text-uppercase" id={product.category.name} tabindex="-1" role="dialog" aria-hidden="true">{product.category.name}</h2>
+        <h4 className="text-uppercase" id={product.category.name} tabindex="-1" role="dialog" aria-hidden="true">{product.category.name}</h4>
         <Item product={product}/>
       </div>
     )

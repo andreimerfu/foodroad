@@ -52,7 +52,8 @@ class RecommendationModal extends Component {
       }
     }).then(res => {
       this.setState({
-        product: res.data.data.attributes.product
+        product: res.data.data.attributes.product,
+        restaurant_name: res.data.data.attributes.restaurant_name
       });
     });
   }
@@ -106,6 +107,7 @@ class RecommendationModal extends Component {
               <br/>
               <br/>
               <p>{this.state.product.price} LEI</p>
+              <p>Restaurant: {this.state.restaurant_name}</p>
             </div>
             </div>
             </ModalBody>

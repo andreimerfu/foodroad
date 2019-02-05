@@ -24,6 +24,7 @@ import OrdersHistory from './components/users/OrdersHistory';
 import Checkout from './components/cart/Checkout';
 import RestaurantInfoEdit from './components/restaurants/RestaurantInfoEdit';
 import RestaurantActiveOrders from './components/restaurants/RestaurantActiveOrders';
+import RestaurantStatistics from './components/restaurants/RestaurantStatistics';
 import './App.css';
 import * as actions from './actions';
 
@@ -73,6 +74,7 @@ class App extends Component {
                   <Route exact path='/checkout' component={requireUserLogin(Checkout)}/>
                   <Route exact path='/restaurantInfo' component={requireRestaurantLogin(RestaurantInfoEdit)} />
                   <Route exact path='/activeOrders' component={requireRestaurantLogin(RestaurantActiveOrders)}/>
+                  <Route exact path='/statistics' component={requireRestaurantLogin(RestaurantStatistics)} />
                 </div>
               <Footer />
             </div>
