@@ -39,8 +39,8 @@ class RestaurantRegister extends React.Component {
     return (
       <section id="register">
           <div class="page-holder d-flex align-items-center">
-            <div class="wrap justify-content-center mx-auto">
-              <div class="row wrap-login py-5">
+            <div class="wrap py-5 justify-content-center mx-auto">
+              <div class="row wrap-login py-5 mt-5">
 
 
                   <div class="col fc-r">

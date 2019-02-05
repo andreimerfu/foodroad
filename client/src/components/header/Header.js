@@ -32,8 +32,8 @@ class Header extends React.Component  {
             <i className="far fa-user-circle"></i>
             <span className="sr-only">Toggle Dropdown</span>
           </button>
-          <div class="dropdown-menu-right">
-          <div className="dropdown-menu dropdown-toggle">
+          <div class="">
+          <div className="dropdown-menu" role="memu">
             <Link to="/profile" className="dropdown-item"> Profil </Link>
             <Link to="/restaurantAdmin" className="dropdown-item">Administrare</Link>
             <Link to="/restaurantInfo" className="dropdown-item">Informatii </Link>
@@ -80,7 +80,7 @@ class Header extends React.Component  {
     if (isAuth && role === 'restaurant') {
       return (
         <nav className='navbar navbar-expand-lg navbar-light bg-light'>
-          <div className='container-fluid'>
+          <div className='container'>
             <a className='navbar-brand d-inline-block align-top' href='homeRestaurant'>
               Food
               <img src='../images/logo.jpg' width='40' height='42'  alt=''/>
@@ -95,7 +95,7 @@ class Header extends React.Component  {
   } else {
     return (
         <nav className='navbar navbar-expand-lg navbar-light bg-light'>
-          <div className='container-fluid'>
+          <div className='container'>
             <a className='navbar-brand d-inline-block align-top' href='/'>
               Food
               <img src='../images/logo.jpg' width='40' height='42'  alt=''/>

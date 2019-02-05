@@ -49,14 +49,14 @@ class Register extends React.Component {
     return <section id="register">
         <div class="page-holder d-flex align-items-center">
           <ToastContainer />
-          <div class="wrap">
+          <div class="wrap py-5">
             <div class="row align-items-center">
               <div class="col-5 col-lg-7 mx-auto mb-5 mb-lg-0">
                 <div class="pr-lg-5">
                   <img src="../images/login.png" alt="" class="img-fluid img-login" />
                 </div>
               </div>
-              <div class="col-lg-5 px-lg-4 wrap-login py-5">
+              <div class="col-lg-5 px-lg-4 wrap-login py-5 mt-5">
                 <h1 class="text-base text-primary text-uppercase mb-4 pb-5">
                   Inregistrare
                 </h1>
