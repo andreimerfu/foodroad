@@ -6,5 +6,5 @@ class Category < ApplicationRecord
 
   validates_presence_of :name
 
-  BANNED_WORDS = %w(alimente farfurie bucătărie ceașcă).freeze
+  BANNED_WORDS = %w(alimente farfurie bucătărie ceașcă ingredient).freeze
 end
