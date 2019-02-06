@@ -12,7 +12,7 @@ const RegisterForm = props => {
       <Field
         name="email"
         type="email"
-        label='Email address'
+        label='Email'
         placeholder="hhhhs"
         className='form-control border-0 shadow'
         component={AuthInput}
@@ -22,7 +22,7 @@ const RegisterForm = props => {
           <Field
             name="password"
             type="password"
-            label='Password'
+            label='Parola'
             className='form-control border-0 shadow text-violet'
             component={AuthInput}
           />
@@ -31,7 +31,7 @@ const RegisterForm = props => {
           <Field
             name="password-confirmation"
             type="password"
-            label='Password Confirmation'
+            label='Parola'
             className='form-control border-0 shadow text-violet'
             component={AuthInput}
           />
@@ -41,7 +41,7 @@ const RegisterForm = props => {
       <Field
         name="name"
         type="text"
-        label='Restaurant Name'
+        label='Nume restaurant'
         className='form-control border-0 shadow'
         component={AuthInput}
       />
@@ -55,14 +55,14 @@ const RegisterForm = props => {
        <Field
         name="manager_name"
         type="text"
-        label='Manager name'
+        label='Nume manager'
         className='form-control border-0 shadow'
         component={AuthInput}
       />
        <Field
         name="manager_phone"
         type="text"
-        label='Phone'
+        label='Telefon'
         className='form-control border-0 shadow'
         component={AuthInput}
       />

@@ -15,7 +15,7 @@ const LoginForm = props => {
       <Field
         name="email"
         type="email"
-        label='Email address'
+        label='Email'
         className='form-control border-0 shadow'
         component={AuthInput}
         validate={[required]}
@@ -23,7 +23,7 @@ const LoginForm = props => {
       <Field
         name="password"
         type="password"
-        label='Password'
+        label='Parola'
         className='form-control border-0 shadow text-violet'
         component={AuthInput}
         validate={[required, minLength8]}

@@ -11,21 +11,21 @@ const RegisterForm = props => {
       <Field
         name="email"
         type="email"
-        label='Email address'
+        label='Email'
         className='form-control border-0 shadow'
         component={AuthInput}
       />
       <Field
         name="password"
         type="password"
-        label='Password'
+        label='Parola'
         className='form-control border-0 shadow text-violet'
         component={AuthInput}
       />
       <Field
         name="password-confirmation"
         type="password"
-        label='Password Confirmation'
+        label='Confirmare parola'
         className='form-control border-0 shadow text-violet'
         component={AuthInput}
       />

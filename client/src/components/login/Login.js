@@ -75,7 +75,7 @@ class Login extends React.Component {
                   </Alert>}
                   <LoginForm submitCb={this.loginUser} errors={errors} />
                   <div class="text-center pb-3">
-                    <span class="txt2 bo1">or</span>
+                    <span class="txt2 bo1">sau</span>
                   </div>
                   <div class="text-center">
                     <FacebookLogin appId="1948869098482449" autoLoad={false} fields="name,email,picture" icon="fa fa-facebook-official" cssClass=" btn shadow fb-btn" textButton=" Facebook" callback={this.responseFacebook} />
