@@ -65,10 +65,10 @@ class Register extends React.Component {
                   <div class="mr-1">
                     <span class="txt2 pr-2">Ai un cont? </span>
                   </div>
-                  <a href="/login" class="txt2 bo1">
+                  <Link to="/login" class="txt2 bo1">
                     {" "}
                     Autentifica-te
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>

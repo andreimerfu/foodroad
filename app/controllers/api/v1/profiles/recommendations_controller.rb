@@ -6,7 +6,7 @@ class Api::V1::Profiles::RecommendationsController < ApplicationController
   def index
     recommendations = Recommendation.find_by(profile: current_user.profile)
 
-    render jstonapi: recommendations, status: :ok
+    render jsonapi: recommendations, status: :ok
   end
 
   def random

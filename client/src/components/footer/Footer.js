@@ -17,10 +17,10 @@ export class Footer extends React.Component  {
         <div class="row pt-5 justify-content-center text-right">
           <div class="col-lg-12 mb-5 mb-lg-0 text-right">
             <ul class="list-unstyled">
-                <li> <a href="/registeRrestaurant" class="footer-link ">Inregistreaza un restaurant</a></li>
-                <li> <a href="/" class="footer-link">Home</a></li>
-                <li> <a href="/" class="footer-link">About</a></li>
-                <li> <a href="/" class="footer-link">Contact</a></li>
+                <li> <Link to="/registerRestaurant" class="footer-link ">Inregistreaza un restaurant</Link></li>
+                <li> <Link to="/" class="footer-link">Home</Link></li>
+                <li> <Link to="/" class="footer-link">About</Link></li>
+                <li> <Link to="/" class="footer-link">Contact</Link></li>
             </ul>
           </div>
         </div>
