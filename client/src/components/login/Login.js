@@ -84,7 +84,7 @@ class Login extends React.Component {
                     <div class="pr-1">
                       <span class="txt2">Nu ai un cont? </span>
                     </div>
-                    <a href="/register" class="txt2 bo1"> Inregistreaza-te aici</a>
+                    <Link to="/register" class="txt2 bo1"> Inregistreaza-te aici</Link>
                   </div>
               </div>
             </div>

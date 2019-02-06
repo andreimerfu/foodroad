@@ -1,0 +1,13 @@
+{
+  "name": "food-road",
+  "engines": {
+    "node": "8.12.0",
+    "yarn": "1.12.1"
+  },
+  "scripts": {
+    "build": "cd client && yarn install && yarn run build && cd ..",
+    "deploy": "cp -a client/build/. public/",
+    "postinstall": "yarn run build && yarn run deploy && echo 'Client built!'"
+  }
+}
+

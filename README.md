@@ -38,5 +38,9 @@ Things you may want to cover:
 * Services (job queues, cache servers, search engines, etc.)
 
 * Deployment instructions
+    * Files needed for deploy: `Procfile`, `package.json` (from root)
+    * There is a bug with devise, we need to override `User#tokens_has_json_column_type?`
+    * `git remote add heroku https://git.heroku.com/foodroad.git` (only the first time)
+    * `git push heroku HEAD:master`
 
 * ...
