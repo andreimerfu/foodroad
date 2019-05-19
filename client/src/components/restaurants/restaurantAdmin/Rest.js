@@ -7,9 +7,9 @@ import { RingLoader } from 'react-spinners';
 
 class Rest extends React.Component {
 
-	state = {
-    products: null
-  }
+    state = {
+        products: null
+    };
 
 	componentDidMount() {
     axios.get(`/api/v1/get_restaurant_id`, {
@@ -31,10 +31,10 @@ class Rest extends React.Component {
 
 	render() {
 		if (this.state.products && this.state.products.length >= 0) {
-			var products = []
-			this.state.products.forEach(product => {
+            let products = [];
+            this.state.products.forEach(product => {
 				products.push(product.attributes);
-			})
+			});
 			return(
 				<div class="wrap">
 					<RestaurantCRUD products={products}/>

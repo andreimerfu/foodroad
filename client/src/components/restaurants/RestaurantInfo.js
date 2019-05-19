@@ -16,11 +16,11 @@ export function RestaurantInfo(props) {
             </button>
           </div>
           <div class="modal-body">
-            <h6>Address: {restaurant.address}</h6>
-            <p>Minimal order: {restaurant.min_order} LEI </p>
+            <h6>Adresa: {restaurant.address}</h6>
+            <p>Comanda minima: {restaurant.min_order} LEI </p>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Inchide</button>
           </div>
         </div>
       </div>

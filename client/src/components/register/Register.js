@@ -2,7 +2,8 @@ import React from 'react';
 import RegisterForm from './RegisterForm';
 import { connect } from 'react-redux';
 import { Redirect, Link } from 'react-router-dom';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import * as actions from '../../actions';
 
 class Register extends React.Component {
@@ -11,8 +12,8 @@ class Register extends React.Component {
     super();
 
     this.state = {
-      redirect: false
-    }
+      redirect: false,
+    };
 
     this.registerUser = this.registerUser.bind(this);
   }
@@ -20,42 +21,60 @@ class Register extends React.Component {
 
   registerUser(userData) {
     this.props.dispatch(actions.register(userData)).then(
-      registerd=> this.setState({redirect: true})
+      response => {
+        if (response) {
+          this.setState({redirect: true})
+        }
+      }
     );
   }
 
+  notify = (error) => toast.error(error);
+
+
   render() {
-
-
     const { redirect } = this.state;
     const { errors } = this.props.auth;
-    if( errors.length === 0 && redirect) {
+
+    if(errors && errors.length === 0 && redirect) {
       return <Redirect to={{pathname: '/login', state: {registerSuccess: true  }}} />
     }
 
-    return (
-      <section id="register">
+    if (errors && errors.length > 0) {
+      errors.forEach(error => {
+        this.notify(error);
+      });
+    }
+
+    return <section id="register">
         <div class="page-holder d-flex align-items-center">
-            <div class="container">
-              <div class="row align-items-center py-5">
-                <div class="col-5 col-lg-7 mx-auto mb-5 mb-lg-0">
-                  <div class="pr-lg-5"><img src="../images/login.png" alt="" class="img-fluid img-login"></img></div>
+          <ToastContainer />
+          <div class="wrap py-5">
+            <div class="row align-items-center">
+              <div class="col-5 col-lg-7 mx-auto mb-5 mb-lg-0">
+                <div class="pr-lg-5">
+                  <img src="../images/login.png" alt="" class="img-fluid img-login" />
                 </div>
-                <div class="col-lg-5 px-lg-4">
-                  <h1 class="text-base text-primary text-uppercase mb-4">Create a FoodRoad Account</h1>
-                  <h2 class="mb-4">Welcome back!</h2>
-                  <p class="text-muted">Don’t feel like cooking tonight? Then let us deliver your favourite meals</p>
-                  <RegisterForm submitCb={this.registerUser} errors={errors} />
-                  <div class="row form-group mb-4 mx-0">
-                    <p class="text-muted mb-0 py-1"> Already have an account? </p>
-                    <Link className='btn btn-outline-primary shadow px-5 mx-3' to='/login'>Log In</Link>
+              </div>
+              <div class="col-lg-5 px-lg-4 wrap-login py-5 mt-5">
+                <h1 class="text-base text-primary text-uppercase mb-4 pb-5">
+                  Inregistrare
+                </h1>
+                <RegisterForm submitCb={this.registerUser} errors={errors} />
+                <div class="row form-group mb-1 mx-0 pt-4">
+                  <div class="mr-1">
+                    <span class="txt2 pr-2">Ai un cont? </span>
                   </div>
+                  <Link to="/login" class="txt2 bo1">
+                    {" "}
+                    Autentifica-te
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </section>
-    )
+      </section>;
   }
 }
 

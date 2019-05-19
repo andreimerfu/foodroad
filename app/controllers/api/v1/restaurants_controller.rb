@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Api::V1::RestaurantsController < ApplicationController
-  before_action -> { is_authenticated_as(:restaurant || :admin) }, only: [:update]
+  before_action -> { is_authenticated_as(:restaurant) }, only: [:update]
 
   def index
     if params[:search].present?
@@ -12,6 +12,9 @@ class Api::V1::RestaurantsController < ApplicationController
       restaurants = Restaurant.approved_filter
                       .find_nearest_restaurants(params[:lat], params[:lng])
     end
+
+    Recommendation.training(current_user, restaurants) if current_user
+
     render jsonapi: restaurants, status: :ok
   end
 
@@ -52,6 +55,7 @@ class Api::V1::RestaurantsController < ApplicationController
     end
 
     if restaurant.update(restaurants_params)
+      restaurant.check_step_validation('informations')
       render jsonapi: restaurant, status: :ok
     else
       render jsonapi_errors: restaurant.errors, status: :unprocessable_entity

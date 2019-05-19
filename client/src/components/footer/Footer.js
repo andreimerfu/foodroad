@@ -9,24 +9,18 @@ export class Footer extends React.Component  {
       <footer class="main-footer shadow">
       <div class="container">
         <div class="col-lg-3 mb-5 mb-lg-0 pb-5">
-            <div class="footer-logo"><img src="../images/footer.png" alt="..." class="img-fluid"></img></div>
+            <div class="footer-logo">
+              <img src="../images/logo.jpg" alt="..." class="img-fluid" width="30px" height="30px"></img>
+              <h3></h3>
+            </div>
         </div>
-        <div class="row pt-5 justify-content-center">
-          
-          <div class="col-lg-3 mb-5 mb-lg-0 text-center text-sm-right">
-            <h5 class="footer-heading">Site pages</h5>
+        <div class="row pt-5 justify-content-center text-right">
+          <div class="col-lg-12 mb-5 mb-lg-0 text-right">
             <ul class="list-unstyled">
-              <li> <Link to="/registerRestaurant" class="footer-link">Become a partner restaurant</Link></li>
-
-            </ul>
-          </div>
-          <div class="col-lg-3 mb-5 mb-lg-0 text-center text-sm-right">
-            <h5 class="footer-heading">Resources</h5>
-            <ul class="list-unstyled">
-              <li> <a href="/" class="footer-link ">Home</a></li>
-              <li> <a href="/" class="footer-link">About</a></li>
-              <li> <a href="/" class="footer-link">Contact</a></li>
-              <li> <a href="/" class="footer-link">Pricing</a></li>
+                <li> <Link to="/registerRestaurant" class="footer-link ">Inregistreaza un restaurant</Link></li>
+                <li> <Link to="/" class="footer-link">Home</Link></li>
+                <li> <Link to="/" class="footer-link">About</Link></li>
+                <li> <Link to="/" class="footer-link">Contact</Link></li>
             </ul>
           </div>
         </div>

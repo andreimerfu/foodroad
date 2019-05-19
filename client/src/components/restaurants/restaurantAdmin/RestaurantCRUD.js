@@ -49,11 +49,11 @@ const service = {
     return Promise.resolve(tasks);
   },
   create: task => {
-    count += 1;
-    tasks.push({
-      ...task,
-      id: count
-    });
+    // count += 1;
+    // tasks.push({
+    //   ...task,
+    //   id: count
+    // });
 
     axios.get(`/api/v1/get_restaurant_id`, {
       headers: {
@@ -63,7 +63,12 @@ const service = {
         'expiry': localStorage.getItem('expiry'),
       }
     }).then(res => {
-      axios.post(`/api/v1/restaurants/9/products`, task, {
+      axios.post(`/api/v1/restaurants/${res.data}/products`, {
+          name: task.name,
+          description: task.description,
+          price: task.price,
+          image: task.image
+      }, {
         headers: {
           'uid': localStorage.getItem('uid'),
           'client': localStorage.getItem('client'),
@@ -75,7 +80,7 @@ const service = {
       .then(res => {
 
         })
-    })
+    });
     return Promise.resolve(task);
   },
   update: data => {
@@ -90,10 +95,11 @@ const service = {
         'expiry': localStorage.getItem('expiry'),
       }
     }).then(res => {
-       axios.put(`/api/v1/restaurants/9/products/${data.id}`, {
+       axios.put(`/api/v1/restaurants/${res.data}/products/${data.id}`, {
         name: data.name,
         description: data.description,
-        price: data.price
+        price: data.price,
+        image: data.image
        }, {
         headers: {
           'uid': localStorage.getItem('uid'),
@@ -106,7 +112,7 @@ const service = {
       .then(res => {
 
       })
-    })
+    });
 
     return Promise.resolve(data);
   },
@@ -122,7 +128,7 @@ const service = {
         'expiry': localStorage.getItem('expiry'),
       }
     }).then(res => {
-      axios.delete(`/api/v1/restaurants/9/products/${data.id}`, {
+      axios.delete(`/api/v1/restaurants/${res.data}/products/${data.id}`, {
         headers: {
           'uid': localStorage.getItem('uid'),
           'client': localStorage.getItem('client'),
@@ -145,25 +151,26 @@ export const RestaurantCRUD = (products) => (
 
   <div class="crud-panel">
     <CRUDTable
-      caption="Products"
+      caption="Produse"
       fetchItems={payload => service.fetchItems(products)}
     >
       <Fields>
         <Field name="id" label="Id" hideInCreateForm />
-        <Field name="name" label="Name" placeholder="Name" />
+        <Field name="name" label="Nume" placeholder="Name" />
         <Field
           name="description"
-          label="Description"
+          label="Descriere"
           render={DescriptionRenderer}
         />
-        <Field name="price" label="Price" placeholder="Price" />
+        <Field name="price" label="Pret" placeholder="Price" />
+        <Field name="image" label="Imagine" placeholder="Image url"/>
       </Fields>
       <CreateForm
-        title="Task Creation"
-        message="Create a new task!"
-        trigger="Create Task"
+        title="Adaugare produs"
+        message="Creare produs nou!"
+        trigger="Adauga produs"
         onSubmit={task => service.create(task)}
-        submitText="Create"
+        submitText="Adauga"
         validate={values => {
           const errors = {};
           if (!values.name) {
@@ -178,16 +185,20 @@ export const RestaurantCRUD = (products) => (
             errors.price = "Please, provide task's price";
           }
 
+          if (!values.image) {
+              errors.image = "Please provide a image url";
+          }
+
           return errors;
         }}
       />
 
       <UpdateForm
-        title="Task Update Process"
-        message="Update task"
+        title="Actualizare produs"
+        // message="Update task"
         trigger="Update"
         onSubmit={task => service.update(task)}
-        submitText="Update"
+        submitText="Actualizeaza"
         validate={values => {
           const errors = {};
 
@@ -207,16 +218,20 @@ export const RestaurantCRUD = (products) => (
             errors.price = "Please, provide task's price";
           }
 
+          if (!values.image) {
+              errors.image = "Please provide a image url";
+          }
+
           return errors;
         }}
       />
 
       <DeleteForm
-        title="Task Delete Process"
-        message="Are you sure you want to delete the task?"
+        title="Stergere produs"
+        message="Esti sigur ca vrei sa stergi acest produs?"
         trigger="Delete"
         onSubmit={task => service.delete(task)}
-        submitText="Delete"
+        submitText="Sterge"
         validate={values => {
           const errors = {};
           if (!values.id) {

@@ -11,23 +11,23 @@ const CheckoutForm = props => {
     <ResErrors errors={errors} />
     <form onSubmit={handleSubmit(submitCb)}>
       <div>
-      <p>Delivery Address</p>
+      <p>Adresa de livrare</p>
       <Field
         name="address"
         type="address"
         className='form-control border-0 shadow'
         component={AuthInput}
       />
-      <p>Observations</p>
+      <p>Observatii</p>
       <Field
         name="observations"
         type="observations"
         label="Observations"
-        className="form-control"
+        className="form-control border-0 shadow"
         component="textarea"
       />
 
-      <p>Payment Method</p>
+      <p>Metoda de plata</p>
       <Field
         name="payment_type"
         className='form-control border-0 shadow'
@@ -38,7 +38,7 @@ const CheckoutForm = props => {
           <option value="Bonuri">Bonuri de masa</option>
       </Field>
         <button className='btn btn-primary shadow px-5 my-4' type="submit" disabled={ pristine || submitting }>
-          Submit
+          Comanda
         </button>
       </div>
     </form>

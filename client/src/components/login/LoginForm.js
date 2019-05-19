@@ -3,30 +3,34 @@ import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { AuthInput } from '../shared/form/AuthInput';
 import { ResErrors } from '../shared/form/ResErrors';
+import { required, minLength8 } from '../shared/form/validators';
+
 
 const LoginForm = props => {
-  const { handleSubmit, pristine, submitting, submitCb, errors} = props
+  const { handleSubmit, pristine, submitting, submitCb, valid, errors} = props
+
   return (
    <div>
-    <ResErrors errors={errors} />
     <form onSubmit={handleSubmit(submitCb)}>
       <Field
         name="email"
         type="email"
-        label='Email address'
+        label='Email'
         className='form-control border-0 shadow'
         component={AuthInput}
+        validate={[required]}
       />
       <Field
         name="password"
         type="password"
-        label='Password'
+        label='Parola'
         className='form-control border-0 shadow text-violet'
         component={AuthInput}
+        validate={[required, minLength8]}
       />
-      <div>
-        <button className='btn btn-primary shadow px-5 my-4' type="submit" disabled={ pristine || submitting }>
-          Log In
+      <div class="text-center">
+        <button className='btn btn-primary shadow px-5 my-4 ' type="submit" disabled={!valid || pristine || submitting }>
+           Intra in cont
         </button>
       </div>
     </form>

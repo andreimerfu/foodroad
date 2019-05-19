@@ -44,8 +44,8 @@ class RestaurantIndex extends React.Component {
       return(
         <section id='restaurant-index'>
           <div class="justify-content-center py-5">
-            <div className="col-lg-6 food-search py-5">
-              <input className="form-control form-control-lg form-control-borderless"  onChange={(e) => {this.getRestaurantsBySearch(e) }} placeholder="Search restaurants, food or other delicious things" />
+            <div className="col-lg-6 food-search  mt-5 py-5">
+              <input className="form-control form-control-lg form-control-borderless"  onChange={(e) => {this.getRestaurantsBySearch(e) }} placeholder="Cauta restaurante sau mancaruri delicioase" />
             </div>
             <div className='row card-container'>
                   {this.renderRentals()}

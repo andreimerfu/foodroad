@@ -6,7 +6,7 @@ export function AddressCard(address) {
     <div>
       <div className="d-flex justify-content-between">
         <p>Tag: {address.tag}</p>
-        <button className="btn btn-danger float-right">Remove</button>
+        <button className="btn btn-danger float-right">Elimina</button>
       </div>
       <div className="d-flex justify-content-between">
         <p>{address.address}</p>

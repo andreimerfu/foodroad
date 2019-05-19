@@ -1,5 +1,6 @@
-@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
-@import url("https://fonts.googleapis.com/css?family=Dosis|Raleway|Roboto|Rock+Salt");
+@import url("https://fonts.googleapis.com/css?family=Playfair+Display:400,400i|Raleway:300,500");
+@import url("https://fonts.googleapis.com/css?family=Rock+Salt");
+@import url("https://fonts.googleapis.com/css?family=Montserrat:500");
 .navbar {
   padding: 0.5rem;
   background: #fff;
@@ -21,15 +22,19 @@
 .img-login {
   border-radius: 35%; }
 
-.img-partner {
-  border-radius: 40%; }
+.fb-btn {
+  padding-left: 68px;
+  padding-right: 68px;
+  color: #fff;
+  background-color: #3b5998; }
 
-.auth-row {
-  margin: 0 auto; }
-  .auth-row .auth-text {
-    margin-left: auto; }
-  .auth-row .auth-btn {
-    margin-right: auto; }
+.wrap-login {
+  background: #fff;
+  border-radius: 10px;
+  position: relative; }
+
+.fc-r {
+  width: 700px; }
 
 .search-address-image {
   position: absolute;
@@ -115,103 +120,71 @@
           font-weight: 600;
           color: #20322a; }
 
-.nav-toggle {
-  padding: 40px 10px;
-  background: #fff;
-  border: none;
-  border-radius: 0;
-  margin-bottom: 40px;
-  margin-top: 70px;
-  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1); }
+.info-button {
+  height: 36px; }
 
-.navbar-btn {
-  box-shadow: none;
-  outline: none !important;
-  border: none; }
-
-.line {
-  width: 100%;
-  height: 1px;
-  border-bottom: 1px dashed #ddd;
-  margin: 40px 0; }
-
-/* ---------------------------------------------------
-    SIDEBAR STYLE
------------------------------------------------------ */
-#sidebar {
-  width: 250px;
-  position: fixed;
-  left: 0;
-  height: 100vh;
-  z-index: 999;
-  background: #305182;
-  color: #fff;
-  transition: all 0.3s; }
-
-#sidebar .sidebar-header {
-  font-weight: 300 !important;
-  padding: 20px; }
-
-#sidebar ul.components {
-  padding: 10px;
-  list-style: none;
-  border-bottom: 1px solid #47748b; }
-
-#sidebar ul li a {
-  padding: 10px;
-  font-size: 1.1em;
-  display: block; }
-
-#sidebar ul li a:hover {
-  background: #6a90c8; }
-
-ul.CTAs {
-  padding: 20px; }
-
-ul.CTAs a {
+.menu-tab-nav {
+  display: block;
   text-align: center;
-  font-size: 0.9em !important;
-  border-radius: 5px;
-  margin-bottom: 5px; }
+  margin-bottom: 80px !important; }
 
-a.reviews {
-  background: #fff;
-  color: #7386D5; }
+.menu-tab-nav li {
+  float: none;
+  display: inline-block;
+  *display: inline;
+  zoom: 1; }
 
-a.article,
-a.article:hover {
-  background: #6a90c8 !important;
-  color: #fff !important; }
+.menu-tab-nav li a {
+  background: none;
+  color: #b3b3b3;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: .2em;
+  border-bottom: 2px solid transparent;
+  padding-left: 0;
+  padding-right: 0;
+  margin: 0 10px; }
 
-/* ---------------------------------------------------
-    CONTENT STYLE
------------------------------------------------------ */
-#content {
-  min-height: 100vh;
-  transition: all 0.3s;
-  top: 0;
-  right: 0;
-  margin-left: 100px; }
+.menu-tab-nav li a:hover {
+  border-bottom: 2px solid #fdb44b; }
 
-#content.active {
+.menu-tab-nav li a.active {
+  color: black;
+  background: none; }
+
+.menu-food-item {
+  border-bottom: 1px dotted #ccc;
+  float: left;
+  width: 100%;
+  padding-bottom: 30px;
+  margin-bottom: 30px; }
+
+.menu-food-item .text {
+  width: calc(100%); }
+
+@media (min-width: 768px) {
+  .menu-food-item .text {
+    width: calc(100% - 70px); } }
+
+.menu-food-item .price {
+  text-align: left;
   width: 100%; }
 
-/* ---------------------------------------------------
-    MEDIAQUERIES
------------------------------------------------------ */
-@media (max-width: 768px) {
-  #sidebar {
-    margin-left: -250px; }
-  #sidebar.active {
-    margin-left: 0; }
-  #content {
-    width: 100%; }
-  #content.active {
-    width: calc(100% - 250px); }
-  #sidebarCollapse span {
-    display: none; }
-  #content {
-    margin-left: 0px; } }
+@media (min-width: 768px) {
+  .menu-food-item .price {
+    width: 70px;
+    text-align: right; } }
+
+.menu-food-item .price strong {
+  color: #343a40;
+  font-size: 16px; }
+
+.menu-food-item p:last-child {
+  margin-bottom: 0; }
+
+.fa-shopping-bag {
+  color: #fdb44b;
+  font-size: x-large; }
 
 footer.main-footer {
   background: #fafafa;
@@ -221,7 +194,7 @@ footer.main-footer {
   bottom: 0; }
   footer.main-footer .footer-logo {
     position: absolute;
-    top: 20px;
+    top: 95px;
     width: 14.5rem; }
   footer.main-footer .footer-heading {
     margin-bottom: 1.25rem;
@@ -244,7 +217,7 @@ footer.main-footer {
     footer.main-footer .copyrights .social-link:hover {
       color: #aaa; }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 985px) {
   .footer-logo {
     width: 7.5rem !important;
     left: 0;
@@ -687,6 +660,9 @@ footer.main-footer {
     font-size: 1.2em;
     margin-top: 37px; }
 
+.custom-file-label {
+  width: 90%; }
+
 .table > tbody > tr > td,
 .table > tfoot > tr > td {
   vertical-align: middle; }
@@ -725,8 +701,8 @@ body {
   font-family: "Raleway", sans-serif;
   background: #fafafa; }
 
-p {
-  font-family: 'Poppins', sans-serif;
+p, span {
+  font-family: "Raleway", sans-serif;
   font-size: 1.1em;
   font-weight: 300;
   line-height: 1.7em;
@@ -734,8 +710,7 @@ p {
 
 h1, h2, h3, h4, h5, h6 {
   margin-bottom: 0.5rem;
-  font-family: "Poppins", sans-serif;
-  font-weight: 600;
+  font-family: "Montserrat", sans-serif;
   line-height: 1.2; }
 
 h1 {
@@ -751,8 +726,18 @@ a:focus {
   text-decoration: none;
   transition: all 0.3s; }
 
-.container {
-  margin-top: 68px; }
+.txt1 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  color: #555555;
+  line-height: 1.5; }
+
+.txt2 {
+  color: #999999;
+  line-height: 1.5; }
+
+.bo1 {
+  border-bottom: 1px solid #999999; }
 
 .wrap {
   min-height: 678px;
@@ -786,12 +771,12 @@ a:focus {
   margin: auto; }
 
 /*-------------------------------------------*\
-    Media Queries 
+    Media Queries
 \*-------------------------------------------*/
 /**
-     * 
-     *  Ipad Pro 
-     * 
+     *
+     *  Ipad Pro
+     *
      */
 @media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) {
   .wrap {

@@ -4,9 +4,10 @@ class Api::V1::Restaurants::ProductsController < ApplicationController
   before_action -> { is_authenticated_as(:restaurant) }, only: [:create, :update, :destroy]
 
   def index
-    products = Product.where(restaurant_id: params[:restaurant_id])
-                      .order(:category_id)
-                      .includes(:category)
+    products = Product.includes(:category)
+                   .where(restaurant_id: params[:restaurant_id])
+                   .order(:category_id)
+
     render jsonapi: products, status: :ok
   end
 
@@ -18,7 +19,7 @@ class Api::V1::Restaurants::ProductsController < ApplicationController
   def create
     product = Product.new(products_params)
     product.restaurant = Restaurant.find_by(manager_id: current_user.id) if product
-    product.category = Category.first
+    product.category = product.computer_vision_category
 
     if product.save
       product.restaurant.check_step_validation('menu')
@@ -48,6 +49,6 @@ class Api::V1::Restaurants::ProductsController < ApplicationController
 
   private
     def products_params
-      params.permit(:name, :price, :description)
+      params.permit(:name, :price, :description, :image)
     end
 end

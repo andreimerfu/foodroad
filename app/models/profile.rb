@@ -3,6 +3,7 @@
 class Profile < ApplicationRecord
   belongs_to :user, dependent: :destroy
   has_many :orders
+  has_many :recommendations
 
   validate :valid_addresses
 
